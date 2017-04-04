@@ -1,24 +1,33 @@
 package Model;
 
-public class User {
+/**
+ * Created by dimz on 5/4/17.
+ * Abstract implementation of user class
+ */
+abstract class User implements IUser {
 
-	private String name;
+    // fields & getters
+    // name
+    private String name;
+    public String getName() {
+        return name;
+    }
+
+    // username
 	private String username;
-	private String password;
-
-	public void login() {
-		// TODO - implement Model.User.login
-		throw new UnsupportedOperationException();
+	public String getUsername() {
+		return username;
 	}
 
-	public void changePassword() {
-		// TODO - implement Model.User.changePassword
-		throw new UnsupportedOperationException();
-	}
+    //constructor
+    User(String name, String username){
+        this.name = name;
+        this.username = username;
+    }
+
 
 	public void viewCourseOffereings() {
-		// TODO - implement Model.User.viewCourseOffereings
-		throw new UnsupportedOperationException();
+
 	}
 
 }

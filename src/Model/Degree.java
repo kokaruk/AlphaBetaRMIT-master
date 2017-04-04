@@ -2,7 +2,7 @@ package Model;
 
 import java.util.List;
 
-public class Degree {
+class Degree {
 
 	private String name;
 	private List<Course> courses;

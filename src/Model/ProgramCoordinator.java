@@ -1,6 +1,10 @@
 package Model;
 
-public class ProgramCoordinator extends Staff {
+class ProgramCoordinator extends Staff {
+
+	public ProgramCoordinator(String name, String password) {
+		super(name, password);
+	}
 
 	public void addNewCourse() {
 		// TODO - implement Model.ProgramCoordinator.addNewCourse
@@ -12,10 +16,7 @@ public class ProgramCoordinator extends Staff {
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param Student
-	 */
+
 	public void increaseLoad(int Student) {
 		// TODO - implement Model.ProgramCoordinator.increaseLoad
 		throw new UnsupportedOperationException();

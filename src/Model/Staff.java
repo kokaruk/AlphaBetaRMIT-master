@@ -1,8 +1,12 @@
 package Model;
 
-public class Staff extends User {
+abstract class Staff extends User {
 
-	public void viewAllResults() {
+    public Staff(String name, String password) {
+        super(name, password);
+    }
+
+    public void viewAllResults() {
 		// TODO - implement Model.Staff.viewAllResults
 		throw new UnsupportedOperationException();
 	}

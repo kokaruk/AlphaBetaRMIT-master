@@ -1,6 +1,6 @@
 package Model;
 
-public class Semester {
+class Semester {
 
 	private int semester;
 	private int year;

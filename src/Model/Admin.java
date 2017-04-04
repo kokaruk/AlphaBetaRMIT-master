@@ -1,8 +1,12 @@
 package Model;
 
-public class Admin extends Staff {
+class Admin extends Staff {
 
-	public void addNewCourseOffering() {
+    public Admin(String name, String password) {
+        super(name, password);
+    }
+
+    public void addNewCourseOffering() {
 		// TODO - implement Model.Admin.addNewCourseOffering
 		throw new UnsupportedOperationException();
 	}

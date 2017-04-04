@@ -1,6 +1,6 @@
 package Model;
 
-public class CourseOffering extends Course {
+class CourseOffering extends Course {
 
 	private Semester semester;
 	private int maxStudents;

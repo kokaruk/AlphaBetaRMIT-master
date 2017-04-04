@@ -5,7 +5,7 @@ import java.util.List;
 /**
  *
  */
-public class Course {
+class Course {
 
 	private String name;
 	private List<Course> prerequisiteList;

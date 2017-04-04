@@ -1,6 +1,6 @@
 package Model;
 
-public class Enrollment {
+class Enrollment {
 
 	private Student student;
 	private String result;
