@@ -1,9 +1,11 @@
 package Model;
 
+import java.util.List;
+
 public class Course {
 
 	private String name;
 	private List<Course> prerequisiteList;
-	private List<Topics> topics;
+	private List<Topic> topics;
 
 }

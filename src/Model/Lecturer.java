@@ -1,8 +1,10 @@
 package Model;
 
+import java.util.List;
+
 public class Lecturer extends Staff {
 
-	private ArrayList<CourseOffering> courses;
+	private List<CourseOffering> courses;
 
 	public void upLoadResults() {
 		// TODO - implement Model.Lecturer.upLoadResults
