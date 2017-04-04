@@ -1,3 +1,5 @@
+package Model;
+
 public class CourseOffering extends Course {
 
 	private Semester semester;

@@ -1,3 +1,5 @@
+package Model;
+
 public class Enrollment {
 
 	private Student student;

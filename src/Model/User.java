@@ -1,3 +1,5 @@
+package Model;
+
 public class User {
 
 	private String name;
@@ -5,17 +7,17 @@ public class User {
 	private String password;
 
 	public void login() {
-		// TODO - implement User.login
+		// TODO - implement Model.User.login
 		throw new UnsupportedOperationException();
 	}
 
 	public void changePassword() {
-		// TODO - implement User.changePassword
+		// TODO - implement Model.User.changePassword
 		throw new UnsupportedOperationException();
 	}
 
 	public void viewCourseOffereings() {
-		// TODO - implement User.viewCourseOffereings
+		// TODO - implement Model.User.viewCourseOffereings
 		throw new UnsupportedOperationException();
 	}
 

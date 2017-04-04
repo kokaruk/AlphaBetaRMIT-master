@@ -1,3 +1,5 @@
+package Model;
+
 public class Degree {
 
 	private String name;
