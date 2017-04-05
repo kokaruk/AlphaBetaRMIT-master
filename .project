@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>tests</name>
+			<type>2</type>
+			<location>/Volumes/Study Projects/SEF/AlphaBetaRMIT/src/tests</location>
+		</link>
+	</linkedResources>
 </projectDescription>

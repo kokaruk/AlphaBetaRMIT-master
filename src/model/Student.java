@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 import java.util.List;
 
@@ -40,17 +40,17 @@ class Student extends User implements IStudent {
     }
 
     public void viewMyResults() {
-		// TODO - implement Model.Student.viewMyResults
+		// TODO - implement model.Student.viewMyResults
 		throw new UnsupportedOperationException();
 	}
 
 	public boolean enrol() {
-		// TODO - implement Model.Student.enrol
+		// TODO - implement model.Student.enrol
 		throw new UnsupportedOperationException();
 	}
 
 	public boolean withdraw() {
-		// TODO - implement Model.Student.withdraw
+		// TODO - implement model.Student.withdraw
 		throw new UnsupportedOperationException();
 	}
 

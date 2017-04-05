@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 class ProgramCoordinator extends Staff {
 
@@ -7,18 +7,18 @@ class ProgramCoordinator extends Staff {
 	}
 
 	public void addNewCourse() {
-		// TODO - implement Model.ProgramCoordinator.addNewCourse
+		// TODO - implement model.ProgramCoordinator.addNewCourse
 		throw new UnsupportedOperationException();
 	}
 
 	public void grantWaivers() {
-		// TODO - implement Model.ProgramCoordinator.grantWaivers
+		// TODO - implement model.ProgramCoordinator.grantWaivers
 		throw new UnsupportedOperationException();
 	}
 
 
 	public void increaseLoad(int Student) {
-		// TODO - implement Model.ProgramCoordinator.increaseLoad
+		// TODO - implement model.ProgramCoordinator.increaseLoad
 		throw new UnsupportedOperationException();
 	}
 

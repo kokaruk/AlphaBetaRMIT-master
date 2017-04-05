@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 abstract class Staff extends User {
 
@@ -7,7 +7,7 @@ abstract class Staff extends User {
     }
 
     public void viewAllResults() {
-		// TODO - implement Model.Staff.viewAllResults
+		// TODO - implement model.Staff.viewAllResults
 		throw new UnsupportedOperationException();
 	}
 

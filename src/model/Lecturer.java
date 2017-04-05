@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ class Lecturer extends Staff {
     private List<CourseOffering> courses;
 
 	public void upLoadResults() {
-		// TODO - implement Model.Lecturer.upLoadResults
+		// TODO - implement model.Lecturer.upLoadResults
 		throw new UnsupportedOperationException();
 	}
 
