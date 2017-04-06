@@ -5,53 +5,50 @@ import java.util.List;
 /**
  * Student Class
  */
-class Student extends User implements IStudent {
+class Student extends User {
 
-    public Student(String name, String password) {
-        super(name, password);
+    private Degree myDegree;
+    public Degree getMyDegree() {
+        return myDegree;
+    }
+    public void setMyDegree(Degree myDegree) {
+        this.myDegree = myDegree;
     }
 
-    private Degree degree;
-	private List<Enrollment> course;
-	private int currentCourseLoad;
-
-    public Degree getDegree() {
-        return degree;
+    private List<Enrollment> myEnrollment;
+    public List<Enrollment> getMyEnrollment() {
+        return myEnrollment;
+    }
+    public void setMyEnrollment(List<Enrollment> myEnrollment) {
+        this.myEnrollment = myEnrollment;
     }
 
-    public void setDegree(Degree degree) {
-        this.degree = degree;
-    }
 
-    public List<Enrollment> getCourse() {
-        return course;
-    }
-
-    public void setCourse(List<Enrollment> course) {
-        this.course = course;
-    }
-
+    private int currentCourseLoad;
     public int getCurrentCourseLoad() {
         return currentCourseLoad;
     }
-
     public void setCurrentCourseLoad(int currentCourseLoad) {
         this.currentCourseLoad = currentCourseLoad;
     }
 
+    public Student(String name, String username) {
+        super(name, username);
+    }
+
     public void viewMyResults() {
-		// TODO - implement model.Student.viewMyResults
-		throw new UnsupportedOperationException();
-	}
+        // TODO - implement model.Student.viewMyResults
+        throw new UnsupportedOperationException();
+    }
 
-	public boolean enrol() {
-		// TODO - implement model.Student.enrol
-		throw new UnsupportedOperationException();
-	}
+    public boolean enrol() {
+        // TODO - implement model.Student.enrol
+        throw new UnsupportedOperationException();
+    }
 
-	public boolean withdraw() {
-		// TODO - implement model.Student.withdraw
-		throw new UnsupportedOperationException();
-	}
+    public boolean withdraw() {
+        // TODO - implement model.Student.withdraw
+        throw new UnsupportedOperationException();
+    }
 
 }

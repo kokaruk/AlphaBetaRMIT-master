@@ -7,8 +7,8 @@ abstract class Staff extends User {
     }
 
     public void viewAllResults() {
-		// TODO - implement model.Staff.viewAllResults
-		throw new UnsupportedOperationException();
-	}
+        // TODO - implement model.Staff.viewAllResults
+        throw new UnsupportedOperationException();
+    }
 
 }

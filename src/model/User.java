@@ -1,12 +1,16 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * Created by dimz on 5/4/17.
  * Abstract implementation of user class
  */
-abstract class User implements IUser {
+abstract class User {
 
-    // fields & getters
+    // readonly properties
     // name
     private String name;
     public String getName() {
@@ -14,10 +18,10 @@ abstract class User implements IUser {
     }
 
     // username
-	private String username;
-	public String getUsername() {
-		return username;
-	}
+    private String username;
+    public String getUsername() {
+        return username;
+    }
 
     //constructor
     User(String name, String username){
@@ -25,9 +29,8 @@ abstract class User implements IUser {
         this.username = username;
     }
 
-
-	public void viewCourseOffereings() {
-
-	}
+    public List<CourseOffering> viewCourseOffereings() {
+        return new LinkedList<>();
+    }
 
 }

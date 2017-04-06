@@ -10,9 +10,9 @@ class Lecturer extends Staff {
 
     private List<CourseOffering> courses;
 
-	public void upLoadResults() {
-		// TODO - implement model.Lecturer.upLoadResults
-		throw new UnsupportedOperationException();
-	}
+    public void upLoadResults() {
+        // TODO - implement model.Lecturer.upLoadResults
+        throw new UnsupportedOperationException();
+    }
 
 }
