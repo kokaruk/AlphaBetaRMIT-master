@@ -1,6 +1,6 @@
 package model;
 
-
+// A new comment to push and pull
 
 class Admin extends Staff {
 
