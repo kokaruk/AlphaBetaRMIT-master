@@ -1,7 +1,6 @@
 package model;
 
-// Comment added to see if this can be pushed and pulled from GitHub
-// Another small change to attempt another push and pull
+
 
 class Admin extends Staff {
 
