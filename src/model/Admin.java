@@ -1,5 +1,7 @@
 package model;
 
+// Comment added to see if this can be pushed and pulled from GitHub
+
 class Admin extends Staff {
 
     public Admin(String name, String password) {
