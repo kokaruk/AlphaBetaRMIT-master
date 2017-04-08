@@ -1,9 +1,5 @@
 package model;
 
-import static org.mockito.Mockito.*;
-
-import java.util.List;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,14 +7,15 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import model.Degree;
-import model.Enrollment;
-import model.Student;
+import java.util.List;
 
 /**
  * Created by dimz on 7/4/17.
  */
 public class StudentTest {
+
+    // comment
+
     @Mock
     Degree myDegree;
     @Mock
@@ -53,5 +50,3 @@ public class StudentTest {
         student.viewCourseOffereings();
     }
 }
-
-//Generated with love by TestMe :) Please report issues and submit feature requests at: http://weirddev.com/forum#!/testme
