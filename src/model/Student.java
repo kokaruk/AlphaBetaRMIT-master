@@ -1,12 +1,15 @@
 package model;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
+ * Created by dimz on 8/4/17.
  * Student Class
  */
-class Student extends User {
+final class Student extends User {
 
+    // degree. OK to be null. Student can exist without enrollment
     private Degree degree;
     public Degree getDegree() {
         return degree;
@@ -15,28 +18,29 @@ class Student extends User {
         this.degree = degree;
     }
 
-    private List<Enrollment> enrollment;
-    public List<Enrollment> getEnrollment() {
+    // list of currently and previously enrolled subjects
+    private Set<Enrollment> enrollment = new HashSet<>();
+    Set<Enrollment> getEnrollment() {
         return enrollment;
     }
-    public void setEnrollment(List<Enrollment> enrollment) {
-        this.enrollment = enrollment;
+    void setEnrollment(Set<Enrollment> enrollment) {
+        this.enrollment.addAll(enrollment);
     }
-
-    private List<Enrollment> waivers;
-    public List<Enrollment> getWaivers() {
+    // list of mandatory pre-requisites waivers
+    private Set<Course> waivers = new HashSet<>();
+    Set<Course> getWaivers() {
         return waivers;
     }
-    public void setWaivers(List<Enrollment> waivers) {
+    public void setWaivers(Set<Course> waivers) {
         this.waivers = waivers;
     }
 
-    private int currentCourseLoad;
-    public int getCurrentCourseLoad() {
-        return currentCourseLoad;
+    private int maxCurrentCourseLoad;
+    public int getMaxCurrentCourseLoad() {
+        return maxCurrentCourseLoad;
     }
-    public void setCurrentCourseLoad(int currentCourseLoad) {
-        this.currentCourseLoad = currentCourseLoad;
+    public void setMaxCurrentCourseLoad(int maxCurrentCourseLoad) {
+        this.maxCurrentCourseLoad = maxCurrentCourseLoad;
     }
 
     // constructor
@@ -44,18 +48,35 @@ class Student extends User {
         super(name, username);
     }
 
-    public void viewMyResults() {
-        // TODO - implement model.Student.viewMyResults
-        throw new UnsupportedOperationException();
+    /**
+     * I think student result should be a struct-class of some description
+     * Not 100% on the idea, so converting to string
+     */
+    public String viewMyResults() throws IllegalStateException {
+        // check if has eny result
+        if (enrollment.isEmpty()) throw new IllegalStateException("Student not enrolled in any class");
+        StringBuilder results = new StringBuilder();
+        for (Enrollment item : enrollment){
+            // course offering name
+            results.append(String.format("%s,%s,%s",
+                    item.courseOffering.name,
+                    degree.currentSemester != item.courseOffering.offerSemester ? item.result.getDescription() : "Currently Enrolled",
+                    item.passed ? "Passed" : "Failed")
+            );
+            // append carriage return
+            results.append("\r\n");
+        }
+        return results.toString();
     }
 
-    public boolean enrol() {
-        // TODO - implement model.Student.enrol
-        throw new UnsupportedOperationException();
+    public void enrol(Enrollment enrollment) throws IndexOutOfBoundsException {
+        // can enroll?
+        // have met all pre-requisites or have waivers
+        // have passed it already
+          this.enrollment.add(enrollment);
     }
 
-    public boolean withdraw() {
-        // TODO - implement model.Student.withdraw
+    public void withdraw() {
         throw new UnsupportedOperationException();
     }
 

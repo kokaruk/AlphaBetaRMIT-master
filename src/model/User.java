@@ -1,12 +1,11 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Created by dimz on 5/4/17.
- * Abstract implementation of user class
+ * Abstract declaration of user class
  */
 abstract class User {
 

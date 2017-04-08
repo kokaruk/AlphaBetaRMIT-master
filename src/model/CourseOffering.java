@@ -1,7 +1,9 @@
 package model;
 
-public class CourseOffering {
+class CourseOffering {
 	// Define a Course Offering
+
+        Semester offerSemester;
 
 		// Declare and initialize the class variables
 		public String name = "Software Engineering Fundamentals";

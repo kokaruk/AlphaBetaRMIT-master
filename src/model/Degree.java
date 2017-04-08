@@ -4,8 +4,9 @@ import java.util.List;
 
 class Degree {
 
-    private String name;
-    private List<Course> courses;
-    private int maxLoad;
+    String degreeName;
+    List<Course> courses;
+    int maxLoad;
+    Semester currentSemester;
 
 }

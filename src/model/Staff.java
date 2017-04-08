@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 abstract class Staff extends User {
 
@@ -11,13 +12,13 @@ abstract class Staff extends User {
 
     public List viewAllResults(Student student) {
         // TODO - implement model.Staff.viewAllResults
-    	List<Enrollment> list = student.getEnrollment();
+    	Set<Enrollment> list = student.getEnrollment();
     	List<String> forPrint = new ArrayList<String>();
     	for (Enrollment enrol : list)
     	{
-    		CourseOffering courseOffering = enrol.getCourseOffering();
+    		CourseOffering courseOffering = enrol.courseOffering;
     		String name = courseOffering.getName();
-    		String result = enrol.getResult();
+    		String result = enrol.result.getDescription();
     		String fullResult = "Course: " + name + ", Result: " + result;
     		System.out.println(fullResult);
     		forPrint.add(fullResult);

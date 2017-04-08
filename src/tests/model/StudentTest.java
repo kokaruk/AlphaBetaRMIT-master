@@ -1,53 +1,53 @@
 package model;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.util.List;
+import java.util.Set;
+
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by dimz on 7/4/17.
+ * Test Class. Testing Public Methods for Student Class
  */
 public class StudentTest {
-
-    // comment
-    // comment 2
 
     @Mock
     Degree myDegree;
     @Mock
-    List<Enrollment> course;
+    Set<Enrollment> course;
+    @Mock
+    Enrollment enrollment;
     @InjectMocks
     Student student;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
+        student.setDegree(myDegree);
     }
 
     @Test
-    public void testViewMyResults() throws Exception {
-        student.viewMyResults();
+    public void ViewMyResults_NotEnrolledInAnyCourses_ThrowsIllegalStateException() {
+        try {
+            System.out.print(student.viewMyResults());
+        } catch (Exception e) {
+            assertTrue(e instanceof IllegalStateException);
+        }
+
     }
 
     @Test
-    public void testEnrol() throws Exception {
-        boolean result = student.enrol();
-        Assert.assertEquals(true, result);
+    public void ViewMyResults_EnrolledInMock_ExpectAString() {
+        enrollment.student = student;
+        System.out.println(enrollment.student.getName());
+        course.add(enrollment);
+        System.out.print(course.size());
+        student.setEnrollment(course);
     }
 
-    @Test
-    public void testWithdraw() throws Exception {
-        boolean result = student.withdraw();
-        Assert.assertEquals(true, result);
-    }
-
-    @Test
-    public void testViewCourseOffereings() throws Exception {
-        student.viewCourseOffereings();
-    }
 }
