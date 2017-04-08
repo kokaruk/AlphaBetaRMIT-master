@@ -3,6 +3,8 @@ package model;
 // A new comment to push and pull
 // Another comment to push and pull
 
+//KS comment to push
+
 class Admin extends Staff {
 
     public Admin(String name, String password) {
