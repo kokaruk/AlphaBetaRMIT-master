@@ -1,5 +1,10 @@
 package model;
 
+/**
+ * Created by Bill Thompson on 9/4/17.
+ * Course Offering Class
+ */
+
 class CourseOffering {
 	// Define a Course Offering
 
@@ -14,12 +19,12 @@ class CourseOffering {
 		// Declare and initialise the static variables
 		public static int numberOfCourseOfferings = 0;
 		
-		// Construct a Course Offering
+		// Construct a default Course Offering
 		public CourseOffering(){
 			numberOfCourseOfferings++;
 		}
 		
-		// Construct a Course Offering
+		// Construct a Course Offering with specific variables
 		public CourseOffering(String name, int semester, int maxStudents, String lecturer){
 			numberOfCourseOfferings++;
 		}
@@ -31,7 +36,7 @@ class CourseOffering {
 		
 		// Set the name of the Course Offering
 		public void setName(String newName){
-			name = newName;
+			this.name = newName;
 		}
 		
 		// Get the number of the semester
@@ -41,7 +46,7 @@ class CourseOffering {
 		
 		// Set the semester of the Course Offering
 		public void setSemester(int newSemester){
-			semester = newSemester;
+			this.semester = newSemester;
 		}
 		
 		// Get the maximum number of student
@@ -51,7 +56,7 @@ class CourseOffering {
 		
 		// Set the maximum number of students
 		public void setMaxStudents(int maxNoStudents){
-			maxStudents = maxNoStudents;
+			this.maxStudents = maxNoStudents;
 		}
 		
 		// Get the name of the Lecturer
@@ -61,7 +66,7 @@ class CourseOffering {
 		
 		// Assign the Lecturer
 		public void assignLecturerCourse(String assignedLecturer){
-			lecturer = assignedLecturer;
+			this.lecturer = assignedLecturer;
 		}
 
 		public String getName() {
