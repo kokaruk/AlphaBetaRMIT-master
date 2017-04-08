@@ -59,7 +59,7 @@ final class Student extends User {
         for (Enrollment item : enrollment){
             // course offering name
             results.append(String.format("%s,%s,%s",
-                    item.courseOffering.name,
+                    item.courseOffering.getNameOfCourseOffering(),
                     degree.currentSemester != item.courseOffering.offerSemester ? item.result.getDescription() : "Currently Enrolled",
                     item.passed ? "Passed" : "Failed")
             );
