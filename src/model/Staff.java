@@ -1,14 +1,28 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 abstract class Staff extends User {
 
     public Staff(String name, String password) {
         super(name, password);
     }
 
-    public void viewAllResults() {
+    public List viewAllResults(Student student) {
         // TODO - implement model.Staff.viewAllResults
-        throw new UnsupportedOperationException();
+    	List<Enrollment> list = student.getEnrollment();
+    	List<String> forPrint = new ArrayList<String>();
+    	for (Enrollment enrol : list)
+    	{
+    		CourseOffering courseOffering = enrol.getCourseOffering();
+    		String name = courseOffering.getName();
+    		String result = enrol.getResult();
+    		String fullResult = "Course: " + name + ", Result: " + result;
+    		System.out.println(fullResult);
+    		forPrint.add(fullResult);
+    	}
+    	return forPrint;
     }
 
 }

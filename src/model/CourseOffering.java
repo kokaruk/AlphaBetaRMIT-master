@@ -41,4 +41,8 @@ public class CourseOffering {
 		public void assignLecturerCourse(String assignedLecturer){
 			lecturer = assignedLecturer;
 		}
+
+		public String getName() {
+			return name;
+		}
 }

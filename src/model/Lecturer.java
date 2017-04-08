@@ -12,7 +12,8 @@ class Lecturer extends Staff {
 
     public void upLoadResults() {
         // TODO - implement model.Lecturer.upLoadResults
-        throw new UnsupportedOperationException();
+        //throw new UnsupportedOperationException();
     }
+    
 
 }
