@@ -7,6 +7,10 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Created by Bill Thompson on 9/4/17.
+ * Course Offering JUnit Test Class
+ */
 
 public class CourseOfferingTest {
 
