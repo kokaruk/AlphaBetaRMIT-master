@@ -15,6 +15,7 @@ import java.util.List;
 public class StudentTest {
 
     // comment
+    // comment 2
 
     @Mock
     Degree myDegree;
