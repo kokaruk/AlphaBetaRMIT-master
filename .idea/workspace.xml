@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="18514e96-02ff-4dcb-835d-23084ee6d377" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Admin.java" afterPath="$PROJECT_DIR$/src/model/Admin.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -797,7 +795,7 @@
       <workItem from="1491492163884" duration="4551000" />
       <workItem from="1491568731423" duration="208000" />
       <workItem from="1491570574487" duration="1366000" />
-      <workItem from="1491580167877" duration="1166000" />
+      <workItem from="1491580167877" duration="1173000" />
     </task>
     <task id="LOCAL-00001" summary="update package">
       <created>1491304830733</created>
@@ -848,7 +846,14 @@
       <option name="project" value="LOCAL" />
       <updated>1491580346878</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="update package">
+      <created>1491611720466</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1491611720466</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -884,7 +889,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21475000" />
+    <option name="totallyTimeSpent" value="21482000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1280" y="22" width="1280" height="1414" extended-state="0" />
