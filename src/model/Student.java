@@ -7,22 +7,29 @@ import java.util.List;
  */
 class Student extends User {
 
-    private Degree myDegree;
-    public Degree getMyDegree() {
-        return myDegree;
+    private Degree degree;
+    public Degree getDegree() {
+        return degree;
     }
-    public void setMyDegree(Degree myDegree) {
-        this.myDegree = myDegree;
-    }
-
-    private List<Enrollment> myEnrollment;
-    public List<Enrollment> getMyEnrollment() {
-        return myEnrollment;
-    }
-    public void setMyEnrollment(List<Enrollment> myEnrollment) {
-        this.myEnrollment = myEnrollment;
+    public void setDegree(Degree degree) {
+        this.degree = degree;
     }
 
+    private List<Enrollment> enrollment;
+    public List<Enrollment> getEnrollment() {
+        return enrollment;
+    }
+    public void setEnrollment(List<Enrollment> enrollment) {
+        this.enrollment = enrollment;
+    }
+
+    private List<Enrollment> waivers;
+    public List<Enrollment> getWaivers() {
+        return waivers;
+    }
+    public void setWaivers(List<Enrollment> waivers) {
+        this.waivers = waivers;
+    }
 
     private int currentCourseLoad;
     public int getCurrentCourseLoad() {
@@ -32,6 +39,7 @@ class Student extends User {
         this.currentCourseLoad = currentCourseLoad;
     }
 
+    // constructor
     public Student(String name, String username) {
         super(name, username);
     }

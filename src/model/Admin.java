@@ -1,7 +1,13 @@
 package model;
 
+<<<<<<< HEAD
 // A small comment
+=======
+// A new comment to push and pull
+// Another comment to push and pull
+>>>>>>> origin/master
 
+//KS comment to push
 
 class Admin extends Staff {
 
