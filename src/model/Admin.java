@@ -1,5 +1,6 @@
 package model;
 
+// A small comment
 
 
 class Admin extends Staff {
