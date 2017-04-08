@@ -4,41 +4,41 @@ public class CourseOffering {
 	// Define a Course Offering
 
 		// Declare and initialize the class variables
-		String name = "Software Engineering Fundamentals";
-		int semester = 2017;
-		int maxStudents = 30;
-		String lecturer = "Sam";
+		public String name = "Software Engineering Fundamentals";
+		public int semester = 2017;
+		public int maxStudents = 30;
+		public String lecturer = "Sam";
 		
 		// Declare and initialise the static variables
-		static int numberOfCourseOfferings = 0;
+		public static int numberOfCourseOfferings = 0;
 		
 		// Construct a Course Offering
-		CourseOffering(){
+		public CourseOffering(){
 			numberOfCourseOfferings++;
 		}
 		
 		// Construct a Course Offering
-		CourseOffering(String name, int semester, int maxStudents, String lecturer){
+		public CourseOffering(String name, int semester, int maxStudents, String lecturer){
 			numberOfCourseOfferings++;
 		}
 
 		// Set the namer of the Course Offering
-		void setName(String newName){
+		public void setName(String newName){
 			name = newName;
 		}
 		
 		// Set the semester of the Course Offering
-		void setSemester(int newSemester){
+		public void setSemester(int newSemester){
 			semester = newSemester;
 		}
 		
 		// Set the maximum number of students
-		void setMaxStudents(int maxNoStudents){
+		public void setMaxStudents(int maxNoStudents){
 			maxStudents = maxNoStudents;
 		}
 		
 		// Assign the Lecturer
-		void assignLecturerCourse(String assignedLecturer){
+		public void assignLecturerCourse(String assignedLecturer){
 			lecturer = assignedLecturer;
 		}
 }
