@@ -1,7 +1,6 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
 abstract class Staff extends User {
@@ -10,16 +9,16 @@ abstract class Staff extends User {
         super(name, password);
     }
 
-    public List viewAllResults(Student student) {
+    public Set<String> viewAllResults(Student student) {
         // TODO - implement model.Staff.viewAllResults
     	Set<Enrollment> list = student.getEnrollment();
-    	List<String> forPrint = new ArrayList<String>();
+    	Set<String> forPrint = new HashSet<String>();
     	for (Enrollment enrol : list)
     	{
     		CourseOffering courseOffering = enrol.courseOffering;
     		String name = courseOffering.getName();
     		String result = enrol.result.getDescription();
-    		String fullResult = "Course: " + name + ", Result: " + result;
+    		String fullResult = "Course: " + name + ", Result: " + result.toString();
     		System.out.println(fullResult);
     		forPrint.add(fullResult);
     	}

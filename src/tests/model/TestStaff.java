@@ -4,7 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import static org.junit.Assert.assertTrue;
@@ -33,7 +32,7 @@ public class TestStaff {
 		enrolList.add(enrollment);
 		Student student = new Student("Test Name", "testname1");
 		student.setEnrollment(enrolList);
-		List<String> results = lecturer.viewAllResults(student);
+		Set<String> results = lecturer.viewAllResults(student);
 		assertTrue(testList.equals(results));
 	}
 
