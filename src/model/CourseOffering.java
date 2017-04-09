@@ -11,11 +11,11 @@ class CourseOffering {
         Semester offerSemester;
 
 		// Declare and initialize the class variables
-		private String name = "Software Engineering Fundamentals";
-		private int semester = 2017;
-		private int maxStudents = 30;
-		private String lecturer = "Sam";
-		
+		private String name;
+		private int semester;
+		private int maxStudents;
+		private String lecturer;
+
 		// Declare and initialise the static variables
 		public static int numberOfCourseOfferings = 0;
 		
@@ -26,6 +26,10 @@ class CourseOffering {
 		
 		// Construct a Course Offering with specific variables
 		public CourseOffering(String name, int semester, int maxStudents, String lecturer){
+			this.name = name;
+			this.semester = semester;
+			this.maxStudents = maxStudents;
+			this.lecturer = lecturer;
 			numberOfCourseOfferings++;
 		}
 
