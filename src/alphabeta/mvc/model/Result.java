@@ -1,4 +1,4 @@
-package model;
+package alphabeta.mvc.model;
 
 /**
  * Created by dimz on 9/4/17.

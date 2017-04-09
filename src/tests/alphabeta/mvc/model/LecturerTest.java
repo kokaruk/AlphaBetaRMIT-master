@@ -1,4 +1,4 @@
-package model;
+package alphabeta.mvc.model;
 
 
 import org.junit.Before;
