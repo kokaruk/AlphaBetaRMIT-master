@@ -2,30 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="18514e96-02ff-4dcb-835d-23084ee6d377" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Main.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/alphabeta/mvc/controller/demoController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/alphabeta/mvc/view/demoView.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/model/Admin.java" afterPath="$PROJECT_DIR$/src/alphabeta/mvc/model/Admin.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/model/Course.java" afterPath="$PROJECT_DIR$/src/alphabeta/mvc/model/Course.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/model/CourseOffering.java" afterPath="$PROJECT_DIR$/src/alphabeta/mvc/model/CourseOffering.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/model/Degree.java" afterPath="$PROJECT_DIR$/src/alphabeta/mvc/model/Degree.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/model/Enrollment.java" afterPath="$PROJECT_DIR$/src/alphabeta/mvc/model/Enrollment.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/model/Lecturer.java" afterPath="$PROJECT_DIR$/src/alphabeta/mvc/model/Lecturer.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/model/ProgramCoordinator.java" afterPath="$PROJECT_DIR$/src/alphabeta/mvc/model/ProgramCoordinator.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/model/Result.java" afterPath="$PROJECT_DIR$/src/alphabeta/mvc/model/Result.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/model/Semester.java" afterPath="$PROJECT_DIR$/src/alphabeta/mvc/model/Semester.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/model/Staff.java" afterPath="$PROJECT_DIR$/src/alphabeta/mvc/model/Staff.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/model/Student.java" afterPath="$PROJECT_DIR$/src/alphabeta/mvc/model/Student.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/model/Topic.java" afterPath="$PROJECT_DIR$/src/alphabeta/mvc/model/Topic.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/model/User.java" afterPath="$PROJECT_DIR$/src/alphabeta/mvc/model/User.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/tests/model/CourseOfferingTest.java" afterPath="$PROJECT_DIR$/src/tests/alphabeta/mvc/model/CourseOfferingTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/tests/model/LecturerTest.java" afterPath="$PROJECT_DIR$/src/tests/alphabeta/mvc/model/LecturerTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/tests/model/StudentTest.java" afterPath="$PROJECT_DIR$/src/tests/alphabeta/mvc/model/StudentTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/tests/model/TestStaff.java" afterPath="$PROJECT_DIR$/src/tests/alphabeta/mvc/model/TestStaff.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/tests/model/TopicTest.java" afterPath="$PROJECT_DIR$/src/tests/alphabeta/mvc/model/TopicTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.project" afterPath="$PROJECT_DIR$/.project" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/alphabeta/mvc/model/Staff.java" afterPath="$PROJECT_DIR$/src/alphabeta/mvc/model/Staff.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -67,11 +45,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="demoController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="demoController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/alphabeta/mvc/controller/demoController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="8" lean-forward="true" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
+            <state relative-caret-position="732">
+              <caret line="61" column="47" lean-forward="true" selection-start-line="61" selection-start-column="47" selection-end-line="61" selection-end-column="47" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Staff.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/alphabeta/mvc/model/Staff.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="20" column="85" lean-forward="false" selection-start-line="20" selection-start-column="85" selection-end-line="20" selection-end-column="85" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -170,12 +160,12 @@
         <option value="$PROJECT_DIR$/src/tests/model/StudentTest.java" />
         <option value="$PROJECT_DIR$/src/controller/demoController.java" />
         <option value="$PROJECT_DIR$/src/alphabeta/mvc/model/Student.java" />
-        <option value="$PROJECT_DIR$/src/alphabeta/mvc/model/Staff.java" />
         <option value="$PROJECT_DIR$/src/alphabeta/mvc/model/Lecturer.java" />
         <option value="$PROJECT_DIR$/src/alphabeta/mvc/Main.java" />
         <option value="$PROJECT_DIR$/src/alphabeta/mvc/view/demoView.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/alphabeta/mvc/controller/demoController.java" />
+        <option value="$PROJECT_DIR$/src/alphabeta/mvc/model/Staff.java" />
       </list>
     </option>
   </component>
@@ -986,7 +976,7 @@
       <workItem from="1491672351290" duration="3408000" />
       <workItem from="1491720843718" duration="3640000" />
       <workItem from="1491728671371" duration="841000" />
-      <workItem from="1491730032194" duration="3470000" />
+      <workItem from="1491730032194" duration="3999000" />
     </task>
     <task id="LOCAL-00001" summary="update package">
       <created>1491304830733</created>
@@ -1101,7 +1091,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49418000" />
+    <option name="totallyTimeSpent" value="49947000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1114,6 +1104,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1135,7 +1126,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32886904" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32886904" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32738096" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1938046" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1938046" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3169643" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -1569,16 +1560,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/alphabeta/mvc/model/Staff.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="7" lean-forward="false" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/alphabeta/mvc/view.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1607,8 +1588,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/alphabeta/mvc/controller/demoController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="8" lean-forward="true" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
+        <state relative-caret-position="732">
+          <caret line="61" column="47" lean-forward="true" selection-start-line="61" selection-start-column="47" selection-end-line="61" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/alphabeta/mvc/model/Staff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="20" column="85" lean-forward="false" selection-start-line="20" selection-start-column="85" selection-end-line="20" selection-end-column="85" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

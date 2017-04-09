@@ -19,7 +19,6 @@ public abstract class Staff extends User {
     		String name = courseOffering.getName();
     		String result = enrol.result.getDescription();
     		String fullResult = "Course: " + name + ", Result: " + result.toString();
-    		System.out.println(fullResult);
     		forPrint.add(fullResult);
     	}
     	return forPrint;
