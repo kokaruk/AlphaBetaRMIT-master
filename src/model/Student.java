@@ -58,10 +58,11 @@ final class Student extends User {
         StringBuilder results = new StringBuilder();
         for (Enrollment item : enrollment){
             // course offering name
-            results.append(String.format("%s,%s,%s",
+            results.append(String.format("%s,%s",
                     item.courseOffering.getNameOfCourseOffering(),
-                    degree.currentSemester != item.courseOffering.offerSemester ? item.result.getDescription() : "Currently Enrolled",
-                    item.passed ? "Passed" : "Failed")
+                    degree.currentSemester != item.courseOffering.offerSemester ? item.result.getDescription() + (item.passed ? " : Passed" : ": Failed")
+                            : "In Progress"
+                    )
             );
             // append carriage return
             results.append("\r\n");
