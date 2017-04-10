@@ -9,6 +9,8 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.List;
 
+import static org.junit.Assert.assertTrue;
+
 public class LecturerTest {
 
 	 @Mock
@@ -23,7 +25,7 @@ public class LecturerTest {
 
 	@Test
 	public void testUploadResults() {
-		lecturer.upLoadResults();
+		assertTrue(lecturer.upLoadResults());
 	}
 
 }

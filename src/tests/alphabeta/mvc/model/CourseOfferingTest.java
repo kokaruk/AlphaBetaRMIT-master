@@ -36,17 +36,17 @@ public class CourseOfferingTest {
 	@Test
 	public void testNewCourseOffering() {
 		CourseOffering sef2017 = new CourseOffering("Software Engineering Fundamentals", 2017, 30, "Joe");
-		System.out.println("The name of the course offering is " + sef2017.getNameOfCourseOffering());
-		assertEquals("Software Engineering Fundamentals", sef2017.getNameOfCourseOffering());
+		System.out.println("The name of the course offering is " + sef2017.getName());
+		assertEquals("Software Engineering Fundamentals", sef2017.getName());
 	}
 	
 	@Test
 	public void testCourseOffering() {
 		CourseOffering sef2017 = new CourseOffering();
-		System.out.println("The name for the new Course Offering is " + sef2017.getNameOfCourseOffering());
+		System.out.println("The name for the new Course Offering is " + sef2017.getName());
 		sef2017.setName("Database Concepts");
-		System.out.println("The new name for the new Course Offering is " + sef2017.getNameOfCourseOffering());
-		assertEquals("Database Concepts", sef2017.getNameOfCourseOffering());
+		System.out.println("The new name for the new Course Offering is " + sef2017.getName());
+		assertEquals("Database Concepts", sef2017.getName());
 	}
 
 	@Test

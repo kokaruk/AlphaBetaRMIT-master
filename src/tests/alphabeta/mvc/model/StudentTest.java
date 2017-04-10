@@ -31,7 +31,7 @@ public class StudentTest {
     @Mock
     Semester semester2;
     @InjectMocks
-    Student studentMock;
+    Student myStudent;
 
     CourseOffering offering1;
     CourseOffering offering2;
@@ -39,37 +39,42 @@ public class StudentTest {
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
+        myStudent = getStudent();
         offering1 = new CourseOffering();
-        offering1.setName("Offering 1");
+        offering1.name = "Offering 1";
         offering1.offerSemester = semester1;
 
         offering2 = new CourseOffering();
-        offering2.setName("Offering 2");
+        offering2.name = "Offering 2";
         offering2.offerSemester = semester2;
         myDegreeMock.currentSemester = semester1;
-        studentMock.setDegree(myDegreeMock);
+        myStudent.setDegree(myDegreeMock);
 
     }
 
     @Test
-    public void ViewMyResults_NotEnrolledInAnyCourses_ThrowsIllegalStateException() {
+    public void viewMyResults_NotEnrolledInAnyCourses_ThrowsIllegalStateException() {
+        Exception myException = null;
         try {
-            System.out.print(studentMock.viewMyResults());
+            System.out.print(myStudent.viewMyResults());
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            assertTrue(e instanceof IllegalStateException);
+            myException = e;
+            System.out.println(myException.getMessage());
+        }
+        finally {
+            assertTrue(myException instanceof IllegalStateException);
         }
 
     }
 
     @Test
-    public void ViewMyResults_EnrolledInMock_ExpectAString() {
+    public void viewMyResults_EnrolledInMockEnrollment_ExpectAString() {
 
-        enrollmentMock1.student = studentMock;
+        enrollmentMock1.student = myStudent;
         enrollmentMock1.courseOffering = offering1;
 
 
-        enrollmentMock2.student = studentMock;
+        enrollmentMock2.student = myStudent;
         enrollmentMock2.courseOffering = offering2;
         enrollmentMock2.result = Result.d;
         enrollmentMock2.passed = true;
@@ -78,11 +83,33 @@ public class StudentTest {
         course.add(enrollmentMock1);
         course.add(enrollmentMock2);
 
-        System.out.println(enrollmentMock1.student.getName());
-        System.out.println(course.size());
-        studentMock.setEnrollment(course);
-        System.out.println(studentMock.viewMyResults());
-        assertTrue(studentMock.viewMyResults().getClass().equals(String.class)) ;
+        System.out.println("Student Name = " + enrollmentMock1.student.getName());
+        System.out.println("Enrolled Count = " + course.size());
+        myStudent.setEnrollment(course);
+        System.out.println(myStudent.viewMyResults());
+        assertTrue(myStudent.viewMyResults().getClass().equals(String.class)) ;
     }
+
+    @Test
+    public void enrol_reachedMaximumLoading_ThrowsIndexOutOfBoundsException() {
+        Exception myException = null;
+        try {
+            myStudent.enrol(enrollmentMock1);
+            myStudent.enrol(enrollmentMock2);
+        } catch (Exception e) {
+            myException = e;
+
+        } finally {
+            System.out.println(myException.getClass().toString());
+            System.out.println(myException.getMessage());
+            assertTrue(myException instanceof IndexOutOfBoundsException);
+        }
+    }
+
+    private Student getStudent(){
+        myStudent.setMaxCurrentCourseLoad(1);
+        return myStudent;
+    }
+
 
 }

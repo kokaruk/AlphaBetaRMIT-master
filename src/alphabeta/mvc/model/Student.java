@@ -59,7 +59,7 @@ public final class Student extends User {
         for (Enrollment item : enrollment){
             // course offering name
             results.append(String.format("%s,%s",
-                    item.courseOffering.getNameOfCourseOffering(),
+                    item.courseOffering.getName(),
                     degree.currentSemester != item.courseOffering.offerSemester ? item.result.getDescription() + (item.passed ? " : Passed" : ": Failed")
                             : "In Progress"
                     )
@@ -70,10 +70,14 @@ public final class Student extends User {
         return results.toString();
     }
 
-    public void enrol(Enrollment enrollment) throws IndexOutOfBoundsException {
+    public void enrol(Enrollment enrollment) throws IndexOutOfBoundsException, PrerequisitesNotMetException {
         // can enroll?
+        if (!(this.enrollment.size() < maxCurrentCourseLoad)) throw new IndexOutOfBoundsException("can't enroll" +
+                " reached maximum allowed course loading");
         // have met all pre-requisites or have waivers
         // have passed it already
+        // TODO implement checker and throw error if fails
+
           this.enrollment.add(enrollment);
     }
 
