@@ -2,6 +2,7 @@ package alphabeta.mvc.model;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Created by dimz on 8/4/17.
@@ -74,10 +75,30 @@ public final class Student extends User {
         // can enroll?
         if (!(this.enrollment.size() < maxCurrentCourseLoad)) throw new IndexOutOfBoundsException("can't enroll" +
                 " reached maximum allowed course loading");
-        // have met all pre-requisites or have waivers
-        // have passed it already
-        // TODO implement checker and throw error if fails
 
+        // TODO implement checker and throw error if fails
+        // see if new enrollment has prerequisites
+        if (enrollment.courseOffering.getCourse().prerequisiteList != null &&
+                enrollment.courseOffering.getCourse().prerequisiteList.size() > 0) {
+            // build new collection of previously passed courses
+            Set<Course>passedCourses = this.enrollment
+                    .stream()
+                    .filter(en -> en.passed)
+                    .map(en -> en.courseOffering.getCourse())
+                    .collect(Collectors.toCollection(HashSet::new));
+
+            // build collection of missing required courses
+            Set<Course> requiredCourse = enrollment.courseOffering
+                    .getCourse()
+                    .prerequisiteList
+                    .stream()
+                    .filter(c -> !this.waivers.contains(c))
+                    .filter( c -> !passedCourses.contains(c))
+                    .collect(Collectors.toCollection(HashSet::new));
+            if (requiredCourse.size() > 0) {
+                throw new PrerequisitesNotMetException(requiredCourse);
+            }
+        }
           this.enrollment.add(enrollment);
     }
 

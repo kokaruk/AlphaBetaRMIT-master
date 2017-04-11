@@ -8,6 +8,8 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import javax.swing.text.html.parser.Entity;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,6 +21,8 @@ import static org.junit.Assert.assertTrue;
  */
 @RunWith(MockitoJUnitRunner.class)
 public class StudentTest {
+
+    private final Integer MAX_CURRENT_COURSE_LOAD = 1;
 
     @Mock
     Degree myDegreeMock;
@@ -69,11 +73,8 @@ public class StudentTest {
 
     @Test
     public void viewMyResults_EnrolledInMockEnrollment_ExpectAString() {
-
         enrollmentMock1.student = myStudent;
         enrollmentMock1.courseOffering = offering1;
-
-
         enrollmentMock2.student = myStudent;
         enrollmentMock2.courseOffering = offering2;
         enrollmentMock2.result = Result.d;
@@ -94,11 +95,12 @@ public class StudentTest {
     public void enrol_reachedMaximumLoading_ThrowsIndexOutOfBoundsException() {
         Exception myException = null;
         try {
+            Student myStudent = getStudent();
+            myStudent.setMaxCurrentCourseLoad(0);
             myStudent.enrol(enrollmentMock1);
             myStudent.enrol(enrollmentMock2);
         } catch (Exception e) {
             myException = e;
-
         } finally {
             System.out.println(myException.getClass().toString());
             System.out.println(myException.getMessage());
@@ -106,9 +108,46 @@ public class StudentTest {
         }
     }
 
+    @Test
+    public void enrol_reachedMaximumLoading_ThrowsPrerequisitesNotMetException() {
+
+        Exception myException = null;
+        try {
+            myStudent.enrol(getEnrollment());
+        } catch (Exception e) {
+            myException = e;
+        } finally {
+            System.out.println(myException.getClass().toString());
+            System.out.println(myException.getMessage());
+            assertTrue(myException instanceof PrerequisitesNotMetException);
+        }
+    }
+
+    // create a student instance
     private Student getStudent(){
-        myStudent.setMaxCurrentCourseLoad(1);
+        Student myStudent = new Student("Alex Foo", "alexfoo");
+        myStudent.setMaxCurrentCourseLoad(MAX_CURRENT_COURSE_LOAD);
         return myStudent;
+    }
+
+    // create an enrollment instance
+    private Enrollment getEnrollment() {
+
+        Course myCourse = new Course();
+        myCourse.name = "Course 1";
+        myCourse.topics = new ArrayList<>();
+        myCourse.topics.add(new Topic("Topic 1"));
+
+        Course myPrerequisiteCourse = new Course();
+        myPrerequisiteCourse.name = "Course 2 prerequisite to 1";
+        myPrerequisiteCourse.topics = new ArrayList<>();
+        myCourse.prerequisiteList = new ArrayList<>();
+        myCourse.prerequisiteList.add(myPrerequisiteCourse);
+
+        Enrollment myEnrollment = new Enrollment();
+        myEnrollment.courseOffering = new CourseOffering("Offering Name", 1, 4, "Peter", myCourse);
+
+        return myEnrollment;
     }
 
 
