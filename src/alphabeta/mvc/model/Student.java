@@ -61,7 +61,7 @@ public final class Student extends User {
             // course offering name
             results.append(String.format("%s,%s",
                     item.courseOffering.getName(),
-                    degree.currentSemester != item.courseOffering.offerSemester ? item.result.getDescription() + (item.passed ? " : Passed" : ": Failed")
+                    degree.currentSemester != item.courseOffering.offerSemester ? item.result.getDescription() + (item.passed() ? " : Passed" : ": Failed")
                             : "In Progress"
                     )
             );
@@ -83,7 +83,7 @@ public final class Student extends User {
             // build new collection of previously passed courses
             Set<Course>passedCourses = this.enrollment
                     .stream()
-                    .filter(en -> en.passed)
+                    .filter(en -> en.passed())
                     .map(en -> en.courseOffering.getCourse())
                     .collect(Collectors.toCollection(HashSet::new));
 

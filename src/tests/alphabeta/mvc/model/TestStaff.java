@@ -33,6 +33,7 @@ public class TestStaff {
 		Student student = new Student("Test Name", "testname1");
 		student.setEnrollment(enrolList);
 		Set<String> results = lecturer.viewAllResults(student);
+		System.out.println(results);
 		assertTrue(testList.equals(results));
 	}
 

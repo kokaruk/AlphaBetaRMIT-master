@@ -4,6 +4,6 @@ public class Enrollment {
 
     Student student;
     public Result result;
-    boolean passed;
     public CourseOffering courseOffering;
+    boolean passed(){return !result.equals(Result.f);}
 }

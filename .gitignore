@@ -20,3 +20,8 @@ local.properties
 
 # Eclipse Core
 .project
+
+
+### IntelliJ ###
+
+workspace.xml

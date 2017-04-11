@@ -78,7 +78,6 @@ public class StudentTest {
         enrollmentMock2.student = myStudent;
         enrollmentMock2.courseOffering = offering2;
         enrollmentMock2.result = Result.d;
-        enrollmentMock2.passed = true;
 
         Set<Enrollment> course = new HashSet<>();
         course.add(enrollmentMock1);
