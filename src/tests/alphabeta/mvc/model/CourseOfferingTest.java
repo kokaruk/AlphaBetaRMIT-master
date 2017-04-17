@@ -39,7 +39,7 @@ public class CourseOfferingTest {
 	
 	@Test
 	public void testNewCourseOffering() {
-		CourseOffering sef2017 = testFactoryHelperClass.getCourseOffering();
+		CourseOffering sef2017 = FactoryHelperClass.getCourseOffering();
 		System.out.println("The name of the course offering is " + sef2017.getName());
 		// assertion
 		assertEquals("2017 1 Test Course", sef2017.getName());
@@ -48,7 +48,7 @@ public class CourseOfferingTest {
 
 	@Test
 	public void testSetSemester() {
-		CourseOffering sef2017 = testFactoryHelperClass.getCourseOffering();
+		CourseOffering sef2017 = FactoryHelperClass.getCourseOffering();
 
         System.out.println("The semester for the new Course Offering is " + sef2017.getMySemester().year);
         Semester mySemester = new Semester();
@@ -63,7 +63,7 @@ public class CourseOfferingTest {
 
 	@Test
 	public void testSetMaxStudents() {
-		CourseOffering sef2017 = testFactoryHelperClass.getCourseOffering();
+		CourseOffering sef2017 = FactoryHelperClass.getCourseOffering();
 		System.out.println("The maximum number of students for the new Course Offering is " + sef2017.getMaxStudents());
 		sef2017.setMaxStudents(10);
 		System.out.println("The maximum number of students for the new Course Offering is " + sef2017.getMaxStudents());
@@ -73,7 +73,7 @@ public class CourseOfferingTest {
 
 	@Test
 	public void testAssignLecturerCourse() {
-		CourseOffering sef2017 = testFactoryHelperClass.getCourseOffering();
+		CourseOffering sef2017 = FactoryHelperClass.getCourseOffering();
 		System.out.println("The Lecturer for the new Course Offering is " + sef2017.getMyLecturer().getName());
         String lecturerName = "Bill T";
 		Staff myLecturer = new Lecturer(lecturerName, "billt");

@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 import java.util.Set;
@@ -41,12 +42,12 @@ public class StudentTest {
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        myStudent = testFactoryHelperClass.getStudent();
-        offering1 = testFactoryHelperClass.getCourseOffering();
+        myStudent = FactoryHelperClass.getStudent();
+        offering1 = FactoryHelperClass.getCourseOffering();
         offering1.name = "Offering 1";
         offering1.mySemester = semester1;
 
-        offering2 = testFactoryHelperClass.getCourseOffering();
+        offering2 = FactoryHelperClass.getCourseOffering();
         offering2.name = "Offering 2";
         offering2.mySemester = semester2;
         myDegreeMock.currentSemester = semester1;
@@ -69,12 +70,12 @@ public class StudentTest {
     }
 
     @Test
-    public void viewMyResults_EnrolledInMockEnrollment_ExpectAString() {
+    public void viewMyResults_EnrolledInMockEnrollment_ExpectAStringOfResults() {
         enrollmentMock1.student = myStudent;
         enrollmentMock1.courseOffering = offering1;
         enrollmentMock2.student = myStudent;
         enrollmentMock2.courseOffering = offering2;
-        enrollmentMock2.result = Result.d;
+        enrollmentMock2.result = Result.f;
 
         Set<Enrollment> course = new HashSet<>();
         course.add(enrollmentMock1);
@@ -91,9 +92,8 @@ public class StudentTest {
     public void enrol_reachedMaximumLoading_ThrowsIndexOutOfBoundsException() {
         Exception myException = null;
         try {
-            Student myStudent = testFactoryHelperClass.getStudent();
+            Student myStudent = FactoryHelperClass.getStudent();
             myStudent.setMaxCurrentCourseLoad(0);
-            myStudent.enrol(enrollmentMock1);
             myStudent.enrol(enrollmentMock2);
         } catch (Exception e) {
             myException = e;
@@ -106,11 +106,11 @@ public class StudentTest {
     }
 
     @Test
-    public void enrol_reachedMaximumLoading_ThrowsPrerequisitesNotMetException() {
+    public void enrol_OfferingHasRequiredPrerequisiteWithoutWaiver_ThrowsPrerequisitesNotMetException() {
 
         Exception myException = null;
         try {
-            myStudent.enrol(testFactoryHelperClass.getEnrollmentWithPrerequisite());
+            myStudent.enrol(FactoryHelperClass.getEnrollmentWithPrerequisite());
         } catch (Exception e) {
             myException = e;
         } finally {
@@ -119,6 +119,68 @@ public class StudentTest {
 
             assertTrue(myException instanceof PrerequisitesNotMetException);
         }
+    }
+
+    @Test
+    public void enrol_OfferingHasRequiredPrerequisiteHaveWaiver_enrolsInOffering(){
+        Course myPrerequisiteCourse = new Course();
+        myPrerequisiteCourse.name = "Course 2 prerequisite to 1";
+        myPrerequisiteCourse.topics = new ArrayList<>();
+        myStudent.setWaivers(myPrerequisiteCourse);
+        try {
+            myStudent.enrol(FactoryHelperClass.getEnrollmentWithPrerequisite());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        assertTrue(myStudent.getEnrollment().size() == 1);
+    }
+
+    @Test
+    public void enrol_enrolInOfferingWithFailedPreRequisite_ThrowsPrerequisitesNotMetException(){
+        Exception myException = null;
+        // set max load to 2
+        myStudent.setMaxCurrentCourseLoad(2);
+        // enroll in no pre-requisites enrollment
+        Enrollment basicEnrollment = FactoryHelperClass.getEnrollment();
+        try {
+            myStudent.enrol(basicEnrollment);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        // set mark for enrollment
+        basicEnrollment.result = Result.f;
+        try {
+            myStudent.enrol(FactoryHelperClass.getEnrollmentWithPrerequisite());
+            System.out.println("enrolled");
+        } catch (Exception e) {
+            myException = e;
+            System.out.println(myException.getMessage());
+        }
+
+        assertTrue(myException instanceof PrerequisitesNotMetException);
+    }
+
+    @Test
+    public void enrol_enrolInOfferingWithPassedPreRequisite_enrolsInOffering(){
+        // set max load to 2
+        myStudent.setMaxCurrentCourseLoad(2);
+        // enroll in no pre-requisites enrollment
+        Enrollment basicEnrollment = FactoryHelperClass.getEnrollment();
+        try {
+            myStudent.enrol(basicEnrollment);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        // set mark for enrollment
+        basicEnrollment.result = Result.p;
+        try {
+            myStudent.enrol(FactoryHelperClass.getEnrollmentWithPrerequisite());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        assertTrue(myStudent.getEnrollment().size() == 2);
     }
 
 

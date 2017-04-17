@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by dimz on 17/4/17.
  */
-class testFactoryHelperClass {
+public class FactoryHelperClass {
 
     private static final Integer MAX_CURRENT_COURSE_LOAD = 1;
 
@@ -18,7 +18,7 @@ class testFactoryHelperClass {
     }
 
     // create an enrollment instance
-    static Enrollment getEnrollmentWithPrerequisite() {
+    public static Enrollment getEnrollmentWithPrerequisite() {
 
         Course myCourse = new Course();
         myCourse.name = "Course 1";
@@ -28,6 +28,7 @@ class testFactoryHelperClass {
         Course myPrerequisiteCourse = new Course();
         myPrerequisiteCourse.name = "Course 2 prerequisite to 1";
         myPrerequisiteCourse.topics = new ArrayList<>();
+
         myCourse.prerequisiteList = new ArrayList<>();
         myCourse.prerequisiteList.add(myPrerequisiteCourse);
 
@@ -38,8 +39,18 @@ class testFactoryHelperClass {
         return myEnrollment;
     }
 
+    public static Enrollment getEnrollment() {
+        Course myPrerequisiteCourse = new Course();
+        myPrerequisiteCourse.name = "Course 2 prerequisite to 1";
+        myPrerequisiteCourse.topics = new ArrayList<>();
+        Enrollment myEnrollment = new Enrollment();
+        myEnrollment.courseOffering = getCourseOffering();
+        myEnrollment.courseOffering.setMyCourse(myPrerequisiteCourse);
+        return myEnrollment;
+    }
+
     // make fake course offering
-    static CourseOffering getCourseOffering(){
+    public static CourseOffering getCourseOffering(){
         Semester mySemester = new Semester();
         mySemester.semesterNumber = 1;
         mySemester.year = 2017;
