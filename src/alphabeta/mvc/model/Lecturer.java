@@ -1,14 +1,12 @@
 package alphabeta.mvc.model;
 
-import java.util.List;
 
 public class Lecturer extends Staff {
 
-    public Lecturer(String name, String password) {
-        super(name, password);
+    public Lecturer(String name, String username) {
+        super(name, username);
     }
 
-    private List<CourseOffering> courses;
 
     public boolean upLoadResults() {
         // TODO - implement alphabeta.mvc.model.Lecturer.upLoadResults

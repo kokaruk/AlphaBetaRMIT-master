@@ -12,34 +12,43 @@ public final class Student extends User {
 
     // degree. OK to be null. Student can exist without enrollment
     private Degree degree;
+
     public Degree getDegree() {
         return degree;
     }
+
     public void setDegree(Degree degree) {
         this.degree = degree;
     }
 
     // list of currently and previously enrolled subjects
     private Set<Enrollment> enrollment = new HashSet<>();
+
     Set<Enrollment> getEnrollment() {
         return enrollment;
     }
+
     public void setEnrollment(Set<Enrollment> enrollment) {
         this.enrollment.addAll(enrollment);
     }
+
     // list of mandatory pre-requisites waivers
     private Set<Course> waivers = new HashSet<>();
+
     Set<Course> getWaivers() {
         return waivers;
     }
+
     public void setWaivers(Set<Course> waivers) {
         this.waivers = waivers;
     }
 
     private int maxCurrentCourseLoad;
+
     public int getMaxCurrentCourseLoad() {
         return maxCurrentCourseLoad;
     }
+
     public void setMaxCurrentCourseLoad(int maxCurrentCourseLoad) {
         this.maxCurrentCourseLoad = maxCurrentCourseLoad;
     }
@@ -57,11 +66,11 @@ public final class Student extends User {
         // check if has eny result
         if (enrollment.isEmpty()) throw new IllegalStateException("Student not enrolled in any class");
         StringBuilder results = new StringBuilder();
-        for (Enrollment item : enrollment){
+        for (Enrollment item : enrollment) {
             // course offering name
             results.append(String.format("%s,%s",
                     item.courseOffering.getName(),
-                    degree.currentSemester != item.courseOffering.offerSemester ? item.result.getDescription() + (item.passed() ? " : Passed" : ": Failed")
+                    degree.currentSemester != item.courseOffering.mySemester ? item.result.getDescription() + (item.passed() ? " : Passed" : ": Failed")
                             : "In Progress"
                     )
             );
@@ -76,30 +85,28 @@ public final class Student extends User {
         if (!(this.enrollment.size() < maxCurrentCourseLoad)) throw new IndexOutOfBoundsException("can't enroll" +
                 " reached maximum allowed course loading");
 
-        // TODO implement checker and throw error if fails
-        // see if new enrollment has prerequisites
-        if (enrollment.courseOffering.getCourse().prerequisiteList != null &&
-                enrollment.courseOffering.getCourse().prerequisiteList.size() > 0) {
+        if (enrollment.courseOffering.getMyCourse().prerequisiteList != null &&
+                enrollment.courseOffering.getMyCourse().prerequisiteList.size() > 0) {
             // build new collection of previously passed courses
-            Set<Course>passedCourses = this.enrollment
+            Set<Course> passedCourses = this.enrollment
                     .stream()
-                    .filter(en -> en.passed())
-                    .map(en -> en.courseOffering.getCourse())
+                    .filter(Enrollment::passed)
+                    .map(en -> en.courseOffering.getMyCourse())
                     .collect(Collectors.toCollection(HashSet::new));
 
             // build collection of missing required courses
             Set<Course> requiredCourse = enrollment.courseOffering
-                    .getCourse()
+                    .getMyCourse()
                     .prerequisiteList
                     .stream()
                     .filter(c -> !this.waivers.contains(c))
-                    .filter( c -> !passedCourses.contains(c))
+                    .filter(c -> !passedCourses.contains(c))
                     .collect(Collectors.toCollection(HashSet::new));
             if (requiredCourse.size() > 0) {
                 throw new PrerequisitesNotMetException(requiredCourse);
             }
         }
-          this.enrollment.add(enrollment);
+        this.enrollment.add(enrollment);
     }
 
     public void withdraw() {

@@ -5,14 +5,13 @@ import java.util.Set;
 
 public abstract class Staff extends User {
 
-    public Staff(String name, String password) {
-        super(name, password);
+    public Staff(String name, String username) {
+        super(name, username);
     }
 
     public Set<String> viewAllResults(Student student) {
-        // TODO - implement alphabeta.mvc.model.Staff.viewAllResults
     	Set<Enrollment> list = student.getEnrollment();
-    	Set<String> forPrint = new HashSet<String>();
+    	Set<String> forPrint = new HashSet<>();
     	for (Enrollment enrol : list)
     	{
     		CourseOffering courseOffering = enrol.courseOffering;

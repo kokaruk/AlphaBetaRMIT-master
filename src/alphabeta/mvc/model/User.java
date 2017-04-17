@@ -12,20 +12,21 @@ abstract class User {
     // readonly properties
     // name
     private String name;
+    // username
+    private String username;
+
+    //constructor
+    User(String name, String username) {
+        this.name = name;
+        this.username = username;
+    }
+
     public String getName() {
         return name;
     }
 
-    // username
-    private String username;
     public String getUsername() {
         return username;
-    }
-
-    //constructor
-    User(String name, String username){
-        this.name = name;
-        this.username = username;
     }
 
     public List<CourseOffering> viewCourseOffereings() {

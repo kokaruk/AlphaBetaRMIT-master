@@ -8,9 +8,8 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import javax.swing.text.html.parser.Entity;
-import java.util.ArrayList;
 import java.util.HashSet;
+
 import java.util.Set;
 
 import static org.junit.Assert.assertTrue;
@@ -19,10 +18,9 @@ import static org.junit.Assert.assertTrue;
  * Created by dimz on 7/4/17.
  * Test Class. Testing Public Methods for Student Class
  */
+
 @RunWith(MockitoJUnitRunner.class)
 public class StudentTest {
-
-    private final Integer MAX_CURRENT_COURSE_LOAD = 1;
 
     @Mock
     Degree myDegreeMock;
@@ -43,14 +41,14 @@ public class StudentTest {
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        myStudent = getStudent();
-        offering1 = new CourseOffering();
+        myStudent = testFactoryHelperClass.getStudent();
+        offering1 = testFactoryHelperClass.getCourseOffering();
         offering1.name = "Offering 1";
-        offering1.offerSemester = semester1;
+        offering1.mySemester = semester1;
 
-        offering2 = new CourseOffering();
+        offering2 = testFactoryHelperClass.getCourseOffering();
         offering2.name = "Offering 2";
-        offering2.offerSemester = semester2;
+        offering2.mySemester = semester2;
         myDegreeMock.currentSemester = semester1;
         myStudent.setDegree(myDegreeMock);
 
@@ -64,8 +62,7 @@ public class StudentTest {
         } catch (Exception e) {
             myException = e;
             System.out.println(myException.getMessage());
-        }
-        finally {
+        } finally {
             assertTrue(myException instanceof IllegalStateException);
         }
 
@@ -87,14 +84,14 @@ public class StudentTest {
         System.out.println("Enrolled Count = " + course.size());
         myStudent.setEnrollment(course);
         System.out.println(myStudent.viewMyResults());
-        assertTrue(myStudent.viewMyResults().getClass().equals(String.class)) ;
+        assertTrue(myStudent.viewMyResults().getClass().equals(String.class));
     }
 
     @Test
     public void enrol_reachedMaximumLoading_ThrowsIndexOutOfBoundsException() {
         Exception myException = null;
         try {
-            Student myStudent = getStudent();
+            Student myStudent = testFactoryHelperClass.getStudent();
             myStudent.setMaxCurrentCourseLoad(0);
             myStudent.enrol(enrollmentMock1);
             myStudent.enrol(enrollmentMock2);
@@ -104,6 +101,7 @@ public class StudentTest {
             System.out.println(myException.getClass().toString());
             System.out.println(myException.getMessage());
             assertTrue(myException instanceof IndexOutOfBoundsException);
+
         }
     }
 
@@ -112,42 +110,17 @@ public class StudentTest {
 
         Exception myException = null;
         try {
-            myStudent.enrol(getEnrollment());
+            myStudent.enrol(testFactoryHelperClass.getEnrollmentWithPrerequisite());
         } catch (Exception e) {
             myException = e;
         } finally {
             System.out.println(myException.getClass().toString());
             System.out.println(myException.getMessage());
+
             assertTrue(myException instanceof PrerequisitesNotMetException);
         }
     }
 
-    // create a student instance
-    private Student getStudent(){
-        Student myStudent = new Student("Alex Foo", "alexfoo");
-        myStudent.setMaxCurrentCourseLoad(MAX_CURRENT_COURSE_LOAD);
-        return myStudent;
-    }
-
-    // create an enrollment instance
-    private Enrollment getEnrollment() {
-
-        Course myCourse = new Course();
-        myCourse.name = "Course 1";
-        myCourse.topics = new ArrayList<>();
-        myCourse.topics.add(new Topic("Topic 1"));
-
-        Course myPrerequisiteCourse = new Course();
-        myPrerequisiteCourse.name = "Course 2 prerequisite to 1";
-        myPrerequisiteCourse.topics = new ArrayList<>();
-        myCourse.prerequisiteList = new ArrayList<>();
-        myCourse.prerequisiteList.add(myPrerequisiteCourse);
-
-        Enrollment myEnrollment = new Enrollment();
-        myEnrollment.courseOffering = new CourseOffering("Offering Name", 1, 4, "Peter", myCourse);
-
-        return myEnrollment;
-    }
 
 
 }

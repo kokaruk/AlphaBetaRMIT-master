@@ -48,18 +48,24 @@ public class demoController {
 
     public static void printResults(Student student) {
         //Prints hard coded results for a student for the purpose of demonstration
-        Staff lecturer = new Lecturer("Test Name", "testname2");
-        List<String> testList = new ArrayList<>();
-        testList.add("Course: Test Course, Result: High Distinction");
-        CourseOffering courseOffering = new CourseOffering();
-        courseOffering.setName("Test Course");
+        Semester mySemester = new Semester();
+        mySemester.semesterNumber = 1;
+        mySemester.year = 2017;
+        mySemester.week = 1;
+        Staff myLecturer = new Lecturer("Test Name", "testname2");
+        List<Topic> myTopics = new ArrayList<>();
+        myTopics.add( new Topic("Topic Name"));
+        Course myCourse = new Course();
+        myCourse.name = "Test Course";
+        myCourse.topics = myTopics;
+        CourseOffering courseOffering = new CourseOffering(mySemester, 28, (Lecturer)myLecturer, myCourse);
         Enrollment enrollment = new Enrollment();
         enrollment.result = Result.hd;
         enrollment.courseOffering = courseOffering;
         Set<Enrollment> enrolList = new HashSet<>();
         enrolList.add(enrollment);
         student.setEnrollment(enrolList);
-        Set<String> results = lecturer.viewAllResults(student);
+        Set<String> results = myLecturer.viewAllResults(student);
         System.out.println("Student: " + student.getName());
         results.forEach(System.out::println);
     }
