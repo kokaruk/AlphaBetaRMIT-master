@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="18514e96-02ff-4dcb-835d-23084ee6d377" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/tests/alphabeta/mvc/model/testFactoryHelperClass.java" afterPath="$PROJECT_DIR$/src/alphabeta/mvc/model/FactoryHelperClass.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/alphabeta/mvc/model/Enrollment.java" afterPath="$PROJECT_DIR$/src/alphabeta/mvc/model/Enrollment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/alphabeta/mvc/model/Student.java" afterPath="$PROJECT_DIR$/src/alphabeta/mvc/model/Student.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tests/alphabeta/mvc/model/CourseOfferingTest.java" afterPath="$PROJECT_DIR$/src/tests/alphabeta/mvc/model/CourseOfferingTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tests/alphabeta/mvc/model/StudentTest.java" afterPath="$PROJECT_DIR$/src/tests/alphabeta/mvc/model/StudentTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -41,12 +37,11 @@
       <file leaf-file-name="StudentTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/tests/alphabeta/mvc/model/StudentTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="164" column="23" lean-forward="false" selection-start-line="164" selection-start-column="23" selection-end-line="164" selection-end-column="23" />
+            <state relative-caret-position="543">
+              <caret line="146" column="5" lean-forward="true" selection-start-line="146" selection-start-column="5" selection-end-line="146" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#setUp#0;class#StudentTest#0" expanded="false" />
-                <element signature="method#viewMyResults_NotEnrolledInAnyCourses_ThrowsIllegalStateException#0;class#StudentTest#0" expanded="false" />
                 <element signature="method#viewMyResults_EnrolledInMockEnrollment_ExpectAStringOfResults#0;class#StudentTest#0" expanded="false" />
                 <element signature="method#enrol_reachedMaximumLoading_ThrowsIndexOutOfBoundsException#0;class#StudentTest#0" expanded="false" />
               </folding>
@@ -57,12 +52,9 @@
       <file leaf-file-name="Student.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/alphabeta/mvc/model/Student.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="102" column="94" lean-forward="false" selection-start-line="102" selection-start-column="94" selection-end-line="102" selection-end-column="94" />
-              <folding>
-                <element signature="e#1098#1099#0" expanded="true" />
-                <element signature="e#1139#1140#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="453">
+              <caret line="93" column="80" lean-forward="true" selection-start-line="93" selection-start-column="80" selection-end-line="93" selection-end-column="80" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -162,8 +154,8 @@
         <option value="$PROJECT_DIR$/src/alphabeta/mvc/model/testFactoryHelperClass.java" />
         <option value="$PROJECT_DIR$/src/alphabeta/mvc/model/FactoryHelperClass.java" />
         <option value="$PROJECT_DIR$/src/alphabeta/mvc/model/Enrollment.java" />
-        <option value="$PROJECT_DIR$/src/tests/alphabeta/mvc/model/StudentTest.java" />
         <option value="$PROJECT_DIR$/src/alphabeta/mvc/model/Student.java" />
+        <option value="$PROJECT_DIR$/src/tests/alphabeta/mvc/model/StudentTest.java" />
       </list>
     </option>
   </component>
@@ -180,9 +172,9 @@
     <option name="jreName" value="1.8" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="11" />
+    <option name="x" value="1280" />
     <option name="y" value="22" />
-    <option name="width" value="2560" />
+    <option name="width" value="1280" />
     <option name="height" value="1414" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -203,20 +195,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AlphaBetaRMIT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-          </PATH>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="AlphaBetaRMIT" />
@@ -359,6 +340,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -407,84 +389,6 @@
     </option>
   </component>
   <component name="RunManager" selected="JUnit.All Tests">
-    <configuration default="false" name="StudentTest.enrol_enrolInOfferingWithRequiredPrerequisiteWaiver_enrolsInOffering" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="alphabeta.mvc.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="AlphaBetaRMIT" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="alphabeta.mvc.model" />
-      <option name="MAIN_CLASS_NAME" value="alphabeta.mvc.model.StudentTest" />
-      <option name="METHOD_NAME" value="enrol_enrolInOfferingWithRequiredPrerequisiteWaiver_enrolsInOffering" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="StudentTest.enrol_OfferingHasRequiredPrerequisiteWithoutWaiver_ThrowsPrerequisitesNotMetException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="alphabeta.mvc.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="AlphaBetaRMIT" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="alphabeta.mvc.model" />
-      <option name="MAIN_CLASS_NAME" value="alphabeta.mvc.model.StudentTest" />
-      <option name="METHOD_NAME" value="enrol_OfferingHasRequiredPrerequisiteWithoutWaiver_ThrowsPrerequisitesNotMetException" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="StudentTest.enrol_OfferingHasRequiredPrerequisiteHaveWaiver_enrolsInOffering" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="alphabeta.mvc.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="AlphaBetaRMIT" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="alphabeta.mvc.model" />
-      <option name="MAIN_CLASS_NAME" value="alphabeta.mvc.model.StudentTest" />
-      <option name="METHOD_NAME" value="enrol_OfferingHasRequiredPrerequisiteHaveWaiver_enrolsInOffering" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
     <configuration default="false" name="StudentTest.enrol_enrolInOfferingWithFailedPreRequisite_ThrowsPrerequisitesNotMetException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -524,6 +428,84 @@
       <option name="PACKAGE_NAME" value="alphabeta.mvc.model" />
       <option name="MAIN_CLASS_NAME" value="alphabeta.mvc.model.StudentTest" />
       <option name="METHOD_NAME" value="enrol_enrolInOfferingWithPassedPreRequisite_enrolsInOffering" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="StudentTest.viewMyResults_NotEnrolledInAnyCourses_ThrowsIllegalStateException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="alphabeta.mvc.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="AlphaBetaRMIT" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="alphabeta.mvc.model" />
+      <option name="MAIN_CLASS_NAME" value="alphabeta.mvc.model.StudentTest" />
+      <option name="METHOD_NAME" value="viewMyResults_NotEnrolledInAnyCourses_ThrowsIllegalStateException" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="StudentTest.enrol_reachedMaximumLoading_ThrowsIndexOutOfBoundsException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="alphabeta.mvc.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="AlphaBetaRMIT" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="alphabeta.mvc.model" />
+      <option name="MAIN_CLASS_NAME" value="alphabeta.mvc.model.StudentTest" />
+      <option name="METHOD_NAME" value="enrol_reachedMaximumLoading_ThrowsIndexOutOfBoundsException" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="StudentTest.enrol_OfferingHasRequiredPrerequisiteWithoutWaiver_ThrowsPrerequisitesNotMetException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="alphabeta.mvc.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="AlphaBetaRMIT" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="alphabeta.mvc.model" />
+      <option name="MAIN_CLASS_NAME" value="alphabeta.mvc.model.StudentTest" />
+      <option name="METHOD_NAME" value="enrol_OfferingHasRequiredPrerequisiteWithoutWaiver_ThrowsPrerequisitesNotMetException" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" value="" />
@@ -947,19 +929,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="JUnit.All Tests" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.StudentTest.enrol_enrolInOfferingWithRequiredPrerequisiteWaiver_enrolsInOffering" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.StudentTest.enrol_OfferingHasRequiredPrerequisiteWithoutWaiver_ThrowsPrerequisitesNotMetException" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.StudentTest.enrol_OfferingHasRequiredPrerequisiteHaveWaiver_enrolsInOffering" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.StudentTest.enrol_enrolInOfferingWithFailedPreRequisite_ThrowsPrerequisitesNotMetException" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.StudentTest.enrol_enrolInOfferingWithPassedPreRequisite_enrolsInOffering" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.StudentTest.enrol_enrolInOfferingWithFailedPreRequisite_ThrowsPrerequisitesNotMetException" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.StudentTest.enrol_enrolInOfferingWithPassedPreRequisite_enrolsInOffering" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.StudentTest.viewMyResults_NotEnrolledInAnyCourses_ThrowsIllegalStateException" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.StudentTest.enrol_reachedMaximumLoading_ThrowsIndexOutOfBoundsException" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.StudentTest.enrol_OfferingHasRequiredPrerequisiteWithoutWaiver_ThrowsPrerequisitesNotMetException" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.StudentTest.enrol_enrolInOfferingWithPassedPreRequisite_enrolsInOffering" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.StudentTest.enrol_enrolInOfferingWithFailedPreRequisite_ThrowsPrerequisitesNotMetException" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.StudentTest.enrol_OfferingHasRequiredPrerequisiteHaveWaiver_enrolsInOffering" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.StudentTest.enrol_OfferingHasRequiredPrerequisiteWithoutWaiver_ThrowsPrerequisitesNotMetException" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.StudentTest.enrol_enrolInOfferingWithRequiredPrerequisiteWaiver_enrolsInOffering" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.StudentTest.enrol_enrolInOfferingWithFailedPreRequisite_ThrowsPrerequisitesNotMetException" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.StudentTest.enrol_OfferingHasRequiredPrerequisiteWithoutWaiver_ThrowsPrerequisitesNotMetException" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.StudentTest.enrol_reachedMaximumLoading_ThrowsIndexOutOfBoundsException" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.StudentTest.viewMyResults_NotEnrolledInAnyCourses_ThrowsIllegalStateException" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.StudentTest.enrol_enrolInOfferingWithPassedPreRequisite_enrolsInOffering" />
       </list>
     </recent_temporary>
   </component>
@@ -1011,7 +993,9 @@
       <workItem from="1492397952110" duration="8267000" />
       <workItem from="1492412894471" duration="5193000" />
       <workItem from="1492424482502" duration="2542000" />
-      <workItem from="1492431902973" duration="9767000" />
+      <workItem from="1492431902973" duration="10083000" />
+      <workItem from="1492442520178" duration="7000" />
+      <workItem from="1492616456649" duration="1386000" />
     </task>
     <task id="LOCAL-00001" summary="update package">
       <created>1491304830733</created>
@@ -1094,18 +1078,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="StudentTest_enrol_OfferingHasRequiredPrerequisiteHaveWaiver_enrolsInOffering - 2017.04.18 at 00h 48m 05s.xml">
-      <configuration name="StudentTest.enrol_OfferingHasRequiredPrerequisiteHaveWaiver_enrolsInOffering" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="StudentTest_enrol_OfferingHasRequiredPrerequisiteHaveWaiver_enrolsInOffering - 2017.04.18 at 00h 48m 54s.xml">
-      <configuration name="StudentTest.enrol_OfferingHasRequiredPrerequisiteHaveWaiver_enrolsInOffering" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="StudentTest_enrol_OfferingHasRequiredPrerequisiteHaveWaiver_enrolsInOffering - 2017.04.18 at 00h 56m 35s.xml">
-      <configuration name="StudentTest.enrol_OfferingHasRequiredPrerequisiteHaveWaiver_enrolsInOffering" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="StudentTest_enrol_OfferingHasRequiredPrerequisiteWithoutWaiver_ThrowsPrerequisitesNotMetException - 2017.04.18 at 00h 47m 58s.xml">
-      <configuration name="StudentTest.enrol_OfferingHasRequiredPrerequisiteWithoutWaiver_ThrowsPrerequisitesNotMetException" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="StudentTest_enrol_OfferingHasRequiredPrerequisiteWithoutWaiver_ThrowsPrerequisitesNotMetException - 2017.04.18 at 00h 51m 24s.xml">
       <configuration name="StudentTest.enrol_OfferingHasRequiredPrerequisiteWithoutWaiver_ThrowsPrerequisitesNotMetException" configurationId="JUnit" />
     </history-entry>
@@ -1115,18 +1087,30 @@
     <history-entry file="StudentTest_enrol_OfferingHasRequiredPrerequisiteWithoutWaiver_ThrowsPrerequisitesNotMetException - 2017.04.18 at 00h 56m 25s.xml">
       <configuration name="StudentTest.enrol_OfferingHasRequiredPrerequisiteWithoutWaiver_ThrowsPrerequisitesNotMetException" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="StudentTest_enrol_OfferingHasRequiredPrerequisiteWithoutWaiver_ThrowsPrerequisitesNotMetException - 2017.04.20 at 02h 03m 53s.xml">
+      <configuration name="StudentTest.enrol_OfferingHasRequiredPrerequisiteWithoutWaiver_ThrowsPrerequisitesNotMetException" configurationId="JUnit" />
+    </history-entry>
     <history-entry file="StudentTest_enrol_enrolInOfferingWithFailedPreRequisite_ThrowsPrerequisitesNotMetException - 2017.04.18 at 01h 04m 03s.xml">
       <configuration name="StudentTest.enrol_enrolInOfferingWithFailedPreRequisite_ThrowsPrerequisitesNotMetException" configurationId="JUnit" />
     </history-entry>
     <history-entry file="StudentTest_enrol_enrolInOfferingWithFailedPreRequisite_ThrowsPrerequisitesNotMetException - 2017.04.18 at 01h 11m 01s.xml">
       <configuration name="StudentTest.enrol_enrolInOfferingWithFailedPreRequisite_ThrowsPrerequisitesNotMetException" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="StudentTest_enrol_enrolInOfferingWithFailedPreRequisite_ThrowsPrerequisitesNotMetException - 2017.04.20 at 02h 07m 45s.xml">
+      <configuration name="StudentTest.enrol_enrolInOfferingWithFailedPreRequisite_ThrowsPrerequisitesNotMetException" configurationId="JUnit" />
+    </history-entry>
     <history-entry file="StudentTest_enrol_enrolInOfferingWithPassedPreRequisite_enrolsInOffering - 2017.04.18 at 01h 11m 18s.xml">
       <configuration name="StudentTest.enrol_enrolInOfferingWithPassedPreRequisite_enrolsInOffering" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="StudentTest_enrol_reachedMaximumLoading_ThrowsIndexOutOfBoundsException - 2017.04.20 at 02h 01m 26s.xml">
+      <configuration name="StudentTest.enrol_reachedMaximumLoading_ThrowsIndexOutOfBoundsException" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="StudentTest_viewMyResults_NotEnrolledInAnyCourses_ThrowsIllegalStateException - 2017.04.20 at 01h 51m 43s.xml">
+      <configuration name="StudentTest.viewMyResults_NotEnrolledInAnyCourses_ThrowsIllegalStateException" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92050000" />
+    <option name="totallyTimeSpent" value="93759000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1138,34 +1122,33 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="11" y="22" width="2560" height="1414" extended-state="0" />
+    <frame x="1280" y="22" width="1280" height="1414" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32904148" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962668" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17553614" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28317901" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32895753" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3271605" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32253087" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32904148" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32771084" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32407406" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1350278" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32253087" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32330248" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16397415" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31635803" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3271605" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962668" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17553614" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28317901" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1174,6 +1157,7 @@
       <window_info id="DSM" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="100" y="122" width="2360" height="1214" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32962668" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3271605" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1222,7 +1206,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/tests/alphabeta/mvc/model/StudentTest.java</url>
-          <line>87</line>
+          <line>84</line>
           <properties />
           <option name="timeStamp" value="39" />
         </line-breakpoint>
@@ -1567,23 +1551,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/alphabeta/mvc/model/Student.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="102" column="94" lean-forward="false" selection-start-line="102" selection-start-column="94" selection-end-line="102" selection-end-column="94" />
-          <folding>
-            <element signature="e#1098#1099#0" expanded="true" />
-            <element signature="e#1139#1140#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="453">
+          <caret line="93" column="80" lean-forward="true" selection-start-line="93" selection-start-column="80" selection-end-line="93" selection-end-column="80" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tests/alphabeta/mvc/model/StudentTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="164" column="23" lean-forward="false" selection-start-line="164" selection-start-column="23" selection-end-line="164" selection-end-column="23" />
+        <state relative-caret-position="543">
+          <caret line="146" column="5" lean-forward="true" selection-start-line="146" selection-start-column="5" selection-end-line="146" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#setUp#0;class#StudentTest#0" expanded="false" />
-            <element signature="method#viewMyResults_NotEnrolledInAnyCourses_ThrowsIllegalStateException#0;class#StudentTest#0" expanded="false" />
             <element signature="method#viewMyResults_EnrolledInMockEnrollment_ExpectAStringOfResults#0;class#StudentTest#0" expanded="false" />
             <element signature="method#enrol_reachedMaximumLoading_ThrowsIndexOutOfBoundsException#0;class#StudentTest#0" expanded="false" />
           </folding>

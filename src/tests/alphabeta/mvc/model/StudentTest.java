@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.lang.invoke.WrongMethodTypeException;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -55,18 +56,14 @@ public class StudentTest {
 
     }
 
-    @Test
+    @Test(expected=IllegalStateException.class)
     public void viewMyResults_NotEnrolledInAnyCourses_ThrowsIllegalStateException() {
-        Exception myException = null;
         try {
             System.out.print(myStudent.viewMyResults());
         } catch (Exception e) {
-            myException = e;
-            System.out.println(myException.getMessage());
-        } finally {
-            assertTrue(myException instanceof IllegalStateException);
+            System.out.println(e.getMessage());
+            throw e;
         }
-
     }
 
     @Test
@@ -88,36 +85,27 @@ public class StudentTest {
         assertTrue(myStudent.viewMyResults().getClass().equals(String.class));
     }
 
-    @Test
-    public void enrol_reachedMaximumLoading_ThrowsIndexOutOfBoundsException() {
-        Exception myException = null;
+    @Test(expected=IndexOutOfBoundsException.class)
+    public void enrol_reachedMaximumLoading_ThrowsIndexOutOfBoundsException() throws PrerequisitesNotMetException {
+        Student myStudent = FactoryHelperClass.getStudent();
+        myStudent.setMaxCurrentCourseLoad(0);
         try {
-            Student myStudent = FactoryHelperClass.getStudent();
-            myStudent.setMaxCurrentCourseLoad(0);
+
             myStudent.enrol(enrollmentMock2);
         } catch (Exception e) {
-            myException = e;
-        } finally {
-            System.out.println(myException.getClass().toString());
-            System.out.println(myException.getMessage());
-            assertTrue(myException instanceof IndexOutOfBoundsException);
-
+            System.out.println(e.getMessage());
+            throw e;
         }
     }
 
-    @Test
-    public void enrol_OfferingHasRequiredPrerequisiteWithoutWaiver_ThrowsPrerequisitesNotMetException() {
-
-        Exception myException = null;
+    @Test(expected = PrerequisitesNotMetException.class)
+    public void enrol_OfferingHasRequiredPrerequisiteWithoutWaiver_ThrowsPrerequisitesNotMetException() throws PrerequisitesNotMetException {
         try {
             myStudent.enrol(FactoryHelperClass.getEnrollmentWithPrerequisite());
         } catch (Exception e) {
-            myException = e;
-        } finally {
-            System.out.println(myException.getClass().toString());
-            System.out.println(myException.getMessage());
-
-            assertTrue(myException instanceof PrerequisitesNotMetException);
+            System.out.println(e.getClass().toString());
+            System.out.println(e.getMessage());
+            throw e;
         }
     }
 
@@ -136,9 +124,8 @@ public class StudentTest {
         assertTrue(myStudent.getEnrollment().size() == 1);
     }
 
-    @Test
-    public void enrol_enrolInOfferingWithFailedPreRequisite_ThrowsPrerequisitesNotMetException(){
-        Exception myException = null;
+    @Test(expected = PrerequisitesNotMetException.class)
+    public void enrol_enrolInOfferingWithFailedPreRequisite_ThrowsPrerequisitesNotMetException() throws PrerequisitesNotMetException{
         // set max load to 2
         myStudent.setMaxCurrentCourseLoad(2);
         // enroll in no pre-requisites enrollment
@@ -146,7 +133,7 @@ public class StudentTest {
         try {
             myStudent.enrol(basicEnrollment);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            throw new IllegalArgumentException();
         }
         // set mark for enrollment
         basicEnrollment.result = Result.f;
@@ -154,11 +141,9 @@ public class StudentTest {
             myStudent.enrol(FactoryHelperClass.getEnrollmentWithPrerequisite());
             System.out.println("enrolled");
         } catch (Exception e) {
-            myException = e;
-            System.out.println(myException.getMessage());
+            System.out.println(e.getMessage());
+            throw e;
         }
-
-        assertTrue(myException instanceof PrerequisitesNotMetException);
     }
 
     @Test
