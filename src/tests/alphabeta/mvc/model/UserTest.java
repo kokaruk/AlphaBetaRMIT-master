@@ -8,16 +8,13 @@ import org.mockito.*;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
-
 import static org.mockito.Mockito.*;
-
 import static org.junit.Assert.*;
 
 /**
  * @author dimz
  * @since 8/5/17.
  */
-@RunWith(MockitoJUnitRunner.class)
 public class UserTest {
 
     private ConcreteUser testUser;

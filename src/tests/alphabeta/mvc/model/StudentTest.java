@@ -14,14 +14,12 @@ import java.util.HashSet;
 
 import java.util.Set;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Created by dimz on 7/4/17.
  * Test Class. Testing Public Methods for Student Class
  */
-
-@RunWith(MockitoJUnitRunner.class)
 public class StudentTest {
 
     @Mock
@@ -53,15 +51,13 @@ public class StudentTest {
         offering2.mySemester = semester2;
         myDegreeMock.currentSemester = semester1;
         myStudent.setDegree(myDegreeMock);
-
     }
 
     @Test(expected=IllegalStateException.class)
     public void viewMyResults_NotEnrolledInAnyCourses_ThrowsIllegalStateException() {
         try {
-            System.out.print(myStudent.viewMyResults());
+           String results = myStudent.viewMyResults();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             throw e;
         }
     }
@@ -73,15 +69,12 @@ public class StudentTest {
         enrollmentMock2.student = myStudent;
         enrollmentMock2.courseOffering = offering2;
         enrollmentMock2.result = Result.f;
-
         Set<Enrollment> course = new HashSet<>();
         course.add(enrollmentMock1);
         course.add(enrollmentMock2);
-
-        System.out.println("Student Name = " + enrollmentMock1.student.getName());
-        System.out.println("Enrolled Count = " + course.size());
         myStudent.setEnrollment(course);
-        System.out.println(myStudent.viewMyResults());
+        String results = myStudent.viewMyResults();
+
         assertTrue(myStudent.viewMyResults().getClass().equals(String.class));
     }
 
@@ -93,7 +86,6 @@ public class StudentTest {
 
             myStudent.enrol(enrollmentMock2);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             throw e;
         }
     }
@@ -103,23 +95,17 @@ public class StudentTest {
         try {
             myStudent.enrol(FactoryHelperClass.getEnrollmentWithPrerequisite());
         } catch (Exception e) {
-            System.out.println(e.getClass().toString());
-            System.out.println(e.getMessage());
             throw e;
         }
     }
 
     @Test
-    public void enrol_OfferingHasRequiredPrerequisiteHaveWaiver_enrolsInOffering(){
+    public void enrol_OfferingHasRequiredPrerequisiteHaveWaiver_enrolsInOffering() throws PrerequisitesNotMetException{
         Course myPrerequisiteCourse = new Course();
         myPrerequisiteCourse.name = "Course 2 prerequisite to 1";
         myPrerequisiteCourse.topics = new ArrayList<>();
         myStudent.setWaivers(myPrerequisiteCourse);
-        try {
-            myStudent.enrol(FactoryHelperClass.getEnrollmentWithPrerequisite());
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        myStudent.enrol(FactoryHelperClass.getEnrollmentWithPrerequisite());
 
         assertTrue(myStudent.getEnrollment().size() == 1);
     }
@@ -130,40 +116,23 @@ public class StudentTest {
         myStudent.setMaxCurrentCourseLoad(2);
         // enroll in no pre-requisites enrollment
         Enrollment basicEnrollment = FactoryHelperClass.getEnrollment();
-        try {
-            myStudent.enrol(basicEnrollment);
-        } catch (Exception e) {
-            throw new IllegalArgumentException();
-        }
+        myStudent.enrol(basicEnrollment);
+
         // set mark for enrollment
         basicEnrollment.result = Result.f;
-        try {
-            myStudent.enrol(FactoryHelperClass.getEnrollmentWithPrerequisite());
-            System.out.println("enrolled");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            throw e;
-        }
+        myStudent.enrol(FactoryHelperClass.getEnrollmentWithPrerequisite());
     }
 
     @Test
-    public void enrol_enrolInOfferingWithPassedPreRequisite_enrolsInOffering(){
+    public void enrol_enrolInOfferingWithPassedPreRequisite_enrolsInOffering() throws PrerequisitesNotMetException{
         // set max load to 2
         myStudent.setMaxCurrentCourseLoad(2);
         // enroll in no pre-requisites enrollment
         Enrollment basicEnrollment = FactoryHelperClass.getEnrollment();
-        try {
-            myStudent.enrol(basicEnrollment);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        myStudent.enrol(basicEnrollment);
         // set mark for enrollment
         basicEnrollment.result = Result.p;
-        try {
-            myStudent.enrol(FactoryHelperClass.getEnrollmentWithPrerequisite());
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        myStudent.enrol(FactoryHelperClass.getEnrollmentWithPrerequisite());
 
         assertTrue(myStudent.getEnrollment().size() == 2);
     }
