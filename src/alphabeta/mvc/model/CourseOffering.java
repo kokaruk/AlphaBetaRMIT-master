@@ -24,13 +24,15 @@ public class CourseOffering {
     }
 
     public String getName() {
-        if (this.name == null) this.name = String.format("%d %d %s", mySemester.year, mySemester.semesterNumber, myCourse.name );
+        if (this.name == null)
+            this.name = String.format("%d %d %s", mySemester.year, mySemester.semesterNumber, myCourse.name);
         return name;
     }
 
     Course getMyCourse() {
         return myCourse;
     }
+
     public void setMyCourse(Course myCourse) {
         this.myCourse = myCourse;
     }

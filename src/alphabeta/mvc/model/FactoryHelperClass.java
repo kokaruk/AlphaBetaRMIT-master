@@ -50,18 +50,18 @@ public class FactoryHelperClass {
     }
 
     // make fake course offering
-    public static CourseOffering getCourseOffering(){
+    public static CourseOffering getCourseOffering() {
         Semester mySemester = new Semester();
         mySemester.semesterNumber = 1;
         mySemester.year = 2017;
         mySemester.week = 1;
         Staff myLecturer = new Lecturer("Test Name", "testname2");
         List<Topic> myTopics = new ArrayList<>();
-        myTopics.add( new Topic("Topic Name"));
+        myTopics.add(new Topic("Topic Name"));
         Course myCourse = new Course();
         myCourse.name = "Test Course";
         myCourse.topics = myTopics;
-        return new CourseOffering(mySemester, 28, (Lecturer)myLecturer, myCourse);
+        return new CourseOffering(mySemester, 28, (Lecturer) myLecturer, myCourse);
     }
 
 }

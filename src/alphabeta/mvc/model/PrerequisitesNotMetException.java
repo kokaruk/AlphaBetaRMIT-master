@@ -1,7 +1,5 @@
 package alphabeta.mvc.model;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -12,8 +10,9 @@ import java.util.stream.Collectors;
 public class PrerequisitesNotMetException extends Exception {
 
     Set<Course> requiredCourse;
-        //constructor
-    PrerequisitesNotMetException(Set<Course> requiredCourse){
+
+    //constructor
+    PrerequisitesNotMetException(Set<Course> requiredCourse) {
         this.requiredCourse = requiredCourse;
     }
 

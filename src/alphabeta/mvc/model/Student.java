@@ -44,7 +44,7 @@ public final class Student extends User {
     }
 
     public void setWaivers(Course waiver) {
-        this.waivers.add( waiver);
+        this.waivers.add(waiver);
     }
 
     public int getMaxCurrentCourseLoad() {
@@ -98,7 +98,7 @@ public final class Student extends User {
                                     .stream()
                                     .filter(en -> !en.result.equals(Result.f))
                                     .map(en -> en.courseOffering.getMyCourse())
-                                    .anyMatch(passedCourse -> passedCourse.name.equals(requiredCourse.name) ))
+                                    .anyMatch(passedCourse -> passedCourse.name.equals(requiredCourse.name)))
                     .collect(Collectors.toCollection(HashSet::new));
             if (requiredCourses.size() > 0) { // if collection has pre-requisites, throw error
                 throw new PrerequisitesNotMetException(requiredCourses);
