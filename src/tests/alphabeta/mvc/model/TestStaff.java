@@ -14,11 +14,6 @@ import static org.junit.Assert.assertTrue;
 
 public class TestStaff {
 
-	
-	@Before
-	public void setUp() throws Exception {
-		
-	}
 
 	@Test
 	public void testViewAllResults() {

@@ -29,7 +29,8 @@ abstract class User {
         return username;
     }
 
-    public List<CourseOffering> viewCourseOffereings() {
+    public List<CourseOffering> viewCourseOfferings() {
+        // TODO method to get course offering
         return new LinkedList<>();
     }
 
