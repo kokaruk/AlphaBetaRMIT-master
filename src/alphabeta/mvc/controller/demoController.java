@@ -8,10 +8,21 @@ import java.util.*;
 
 /**
  * Created by dimz on 9/4/17.
+ * Last edited by kristin on 9/5/17 
  */
 public class demoController {
 
     static Scanner input = new Scanner(System.in);
+    static Semester semester = new Semester();
+    //static Set<Course> courses = new HashSet<>();
+    static demoView view = new demoView();
+    //just inventing a coordinator for now
+    static ProgramCoordinator progCoord = new ProgramCoordinator("Bob", "bob123");
+    static CourseDirectory courseDirectory = new CourseDirectory();
+    
+    //static Course testCourse = new Course(SEF, )
+  
+    
 
     public void startSystem(demoView view) {
 
@@ -19,9 +30,14 @@ public class demoController {
         //Print main menu
         view.outputMainMenu();
 
+        //hard code Semester;
+        semester.setSemesterNumber(1);
+        semester.setWeek(1);
+        semester.setYear(17);
+        
         // get user input
-
-        int option = getUserIntInput(2);
+        
+        int option = getUserIntInput(3);
         switch (option) {
             case 1:
                 System.out.println("Enter the student's name: ");
@@ -31,6 +47,9 @@ public class demoController {
             case 2:
                 System.out.println("Not yet developed!");
                 break;
+            case 3:
+            	createCourse();
+            	break;
             case 0:
                 System.out.println("Good bye!");
                 System.exit(0);
@@ -70,6 +89,38 @@ public class demoController {
         results.forEach(System.out::println);
     }
 
+     
+     
+    public static void createCourse() {
+    	//hardcode some topics and courses to test
+        Topic testTopic1 = new Topic("TestTopic1");
+        Topic testTopic2 = new Topic("TestTopic2");
+        Course testCourse1 = new Course("TestCourse");
+        Course testCourse2 = new Course("TestCourse2");
+    	
+    	try {
+    		//get input from view and create the course
+    		Course newCourse = progCoord.addNewCourse(view.getCourseName(), view.getPrereq(), view.getTopics(), semester.getWeek());
+    		System.out.println("New course " + newCourse.getName() + " created.");
+    		//test topics are ok
+    		System.out.print("New course topics are: ");
+    		for (Topic t : newCourse.getTopics()) {
+    			System.out.print(t.getNameOfTopic());
+    			System.out.println();
+    		}
+    		//test prereqs are ok
+    		System.out.print("New course prerequisites are: ");
+    		for (Course c : newCourse.getPrerequisiteList()) {
+    			System.out.print(c.getName());
+    			System.out.println();
+    		}
+    	}
+    	catch (CourseException e) {
+    		System.out.println(e.getReason());
+    	}
+    	
+    }
+    
 
     int getUserIntInput(int maxInputInt) {
         System.out.println("");
