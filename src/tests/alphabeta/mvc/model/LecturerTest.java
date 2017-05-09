@@ -3,11 +3,9 @@ package alphabeta.mvc.model;
 
 import org.junit.*;
 import org.mockito.*;
-
-import static org.mockito.Mockito.*;
 import java.util.NoSuchElementException;
 import java.util.Set;
-
+import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 
 /**
@@ -58,8 +56,5 @@ public class LecturerTest {
         }
 
     }
-
-
-
 
 }

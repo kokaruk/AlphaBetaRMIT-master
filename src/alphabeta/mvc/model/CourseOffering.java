@@ -7,8 +7,6 @@ package alphabeta.mvc.model;
 public class CourseOffering {
 
     Semester mySemester;
-    // TODO value of name should be a derived value of:
-    // TODO Semester.Year + Semester.number + Course name
     String name;
     private int maxStudents;
     private Lecturer myLecturer;

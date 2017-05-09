@@ -1,17 +1,10 @@
 package alphabeta.mvc.model;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.*;
+import org.mockito.*;
 
-import java.lang.invoke.WrongMethodTypeException;
 import java.util.ArrayList;
 import java.util.HashSet;
-
 import java.util.Set;
 
 import static org.junit.Assert.*;
@@ -136,7 +129,4 @@ public class StudentTest {
 
         assertTrue(myStudent.getEnrollment().size() == 2);
     }
-
-
-
 }

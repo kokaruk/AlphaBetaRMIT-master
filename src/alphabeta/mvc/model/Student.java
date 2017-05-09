@@ -59,9 +59,9 @@ public final class Student extends User {
      * I think student result should be a struct-class of some description
      * Not 100% on the idea, so converting to string
      */
-    public String viewMyResults() throws IllegalStateException {
+    public String viewMyResults() throws IllegalArgumentException {
         // check if has eny result
-        if (enrollment.isEmpty()) throw new IllegalStateException("Student not enrolled in any class");
+        if (enrollment.isEmpty()) throw new IllegalArgumentException("Student not enrolled in any class");
         StringBuilder results = new StringBuilder();
         for (Enrollment item : enrollment) {
             // course offering name
