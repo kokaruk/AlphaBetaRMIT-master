@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 /**
  * Created by dimz on 9/4/17.
+ * Edited by Kristin 10/5/17.
  */
 public class demoView {
 
@@ -33,35 +34,37 @@ public class demoView {
     
     public String getCourseName() {
     	String course;
-    	System.out.println("Enter course name: ");
+    	System.out.print("Enter course name: ");
     	course = input.nextLine();
     	return course;
     }
     
     public List<String> getPrereq() {
     	List<String> preReq = new ArrayList<String>();
-    	System.out.println("Enter number of prerequisites");
+    	System.out.print("How many prerequisites? ");
     	try {
     		int preReqNum = input.nextInt();
+    		input.nextLine();
         	for (int i=1; i<=preReqNum; i++) {
-        		System.out.println("Enter prerequisite " + i + " course name: ");
-        		preReq.add(input.next());
+        		System.out.print("Enter prerequisite " + i + " course name: ");
+        		preReq.add(input.nextLine());
         	}
     	}
     	catch (InputMismatchException e) {
-    		System.out.println("Please enter a number.");
+    		System.out.println("Please enter an integer number.");
     	}
     	return preReq;
     }
     
     public List<String> getTopics() {
     	List<String> topics = new ArrayList<String>();
-    	System.out.println("Enter number of topics");
+    	System.out.print("How many topics? ");
     	try {
     		int topicNum = input.nextInt();
-        	for (int i=1; i<=topicNum; i++) {
-        		System.out.println("Enter topic " + i + " name: ");
-        		topics.add(input.next());
+    		input.nextLine();
+    		for (int i=1; i<=topicNum; i++) {
+        		System.out.print("Enter topic " + i + " name: ");
+        		topics.add(input.nextLine());
         	}
     	}
     	catch (InputMismatchException e) {

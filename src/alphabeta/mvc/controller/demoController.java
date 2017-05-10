@@ -8,7 +8,7 @@ import java.util.*;
 
 /**
  * Created by dimz on 9/4/17.
- * Last edited by kristin on 9/5/17 
+ * Last edited by kristin on 10/5/17
  */
 public class demoController {
 
@@ -93,26 +93,29 @@ public class demoController {
      
     public static void createCourse() {
     	//hardcode some topics and courses to test
-        Topic testTopic1 = new Topic("TestTopic1");
-        Topic testTopic2 = new Topic("TestTopic2");
-        Course testCourse1 = new Course("TestCourse");
-        Course testCourse2 = new Course("TestCourse2");
+        Topic testTopic1 = new Topic("Agile");
+        Topic testTopic2 = new Topic("UML");
+        Course testCourse1 = new Course("Programming 1");
+        Course testCourse2 = new Course("Database Concepts");
     	
     	try {
     		//get input from view and create the course
     		Course newCourse = progCoord.addNewCourse(view.getCourseName(), view.getPrereq(), view.getTopics(), semester.getWeek());
     		System.out.println("New course " + newCourse.getName() + " created.");
-    		//test topics are ok
-    		System.out.print("New course topics are: ");
-    		for (Topic t : newCourse.getTopics()) {
-    			System.out.print(t.getNameOfTopic());
-    			System.out.println();
-    		}
-    		//test prereqs are ok
-    		System.out.print("New course prerequisites are: ");
-    		for (Course c : newCourse.getPrerequisiteList()) {
-    			System.out.print(c.getName());
-    			System.out.println();
+            //feedback prereqs
+            System.out.println();
+    		if (newCourse.getPrerequisiteList().size()>0) {
+                System.out.print(newCourse.getName() + " prerequisites are: ");
+                for (Course c : newCourse.getPrerequisiteList()) {
+                    System.out.print(c.getName() +  " ,");
+                }
+            }
+            //feedback topics
+            if (newCourse.getTopics().size()>0) {
+                System.out.print(newCourse.getName() + " topics are: ");
+    		    for (Topic t : newCourse.getTopics()) {
+                    System.out.print(t.getNameOfTopic() + ", ");
+                }
     		}
     	}
     	catch (CourseException e) {
