@@ -2,7 +2,7 @@ package alphabeta.mvc.model;
 
 /**
  *
- * Last edited by Kristin on 10/5/17
+ * Last edited by Kristin on 12/5/17
  *
  */
 
@@ -19,8 +19,7 @@ public class ProgramCoordinator extends Staff {
         public Course addNewCourse(String name, List<String> prerequisites, List<String> topics, int week ) throws CourseException {
             Set<Course> allCourses = CourseDirectory.getCourseSet();
             Set<Topic> allTopics = CourseDirectory.getTopicSet();
-            List<Course> temp = new ArrayList<>();
-            List<String> temp2 = new ArrayList<>();
+            List<Course> courseList = new ArrayList<>();
             List<Topic> topicsConvert = new ArrayList<>();
             List<String> stringTopics = new ArrayList<>();
             //test for time limit to create courses
@@ -32,42 +31,34 @@ public class ProgramCoordinator extends Staff {
                 for (String preReq : prerequisites) {
                     for (Course course : allCourses) {
                             if (preReq.equals(course.getName())) {
-                                temp.add(course);
+                                courseList.add(course);
                             }
                     }
                 }
-                if (!(prerequisites.size() == temp.size())) {
+                if (!(prerequisites.size() == courseList.size())) {
                     throw new CourseException("Prerequisite error - cannot create course. " +
                             "Prerequisites must be existing courses. Please try again.");
                 }
                 for (Topic z : allTopics) {
                     stringTopics.add(z.getNameOfTopic());
                 }
-                List<String> common = new ArrayList<>(stringTopics);
-                List<String> notCommon = new ArrayList<>(prerequisites);
-
-                common.retainAll(prerequisites);
-                for (String k : common) {
-                    System.out.println(common);
+                stringTopics.retainAll(topics);
+                for (String f : stringTopics) {
+                    Topic exists = CourseDirectory.lookUpTopic(f);
+                    topicsConvert.add(exists);
                 }
-                notCommon.removeAll(stringTopics);
-                for (String x : notCommon) {
-                    Topic newTopic = new Topic(x);
-                    System.out.println("New topic " + newTopic.getNameOfTopic() + " created.");
-                    topicsConvert.add(newTopic);
+                topics.removeAll(stringTopics);
+                System.out.println();
+                for (String w : topics) {
+                    Topic t = new Topic(w);
+                    System.out.println(t.getNameOfTopic() + " topic not found in directory - new topic " +
+                            t.getNameOfTopic() + " created.");
+                    topicsConvert.add(t);
                 }
-                //this is broken
-                for (String y: common) {
-                    for (Topic t : allTopics) {
-                        if (y.equals(t.getNameOfTopic())) {
-                            topicsConvert.add(t);
-                        }
-                    }
-                }
-                }
-                Course newCourse = new Course(name, temp, topicsConvert);
-                return newCourse;
             }
+            Course newCourse = new Course(name, courseList, topicsConvert);
+            return newCourse;
+        }
 
 
 

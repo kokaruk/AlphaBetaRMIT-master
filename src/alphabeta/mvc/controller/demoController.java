@@ -8,7 +8,7 @@ import java.util.*;
 
 /**
  * Created by dimz on 9/4/17.
- * Last edited by kristin on 10/5/17
+ * Last edited by kristin on 12/5/17
  */
 public class demoController {
 
@@ -36,8 +36,8 @@ public class demoController {
         semester.setYear(17);
         
         // get user input
-        
         int option = getUserIntInput(3);
+
         switch (option) {
             case 1:
                 System.out.println("Enter the student's name: ");
@@ -57,6 +57,8 @@ public class demoController {
             default:
                 System.out.println("Invalid Option");
         }
+
+
     }
 
     public static void createStudent(String studentName) {
@@ -101,20 +103,22 @@ public class demoController {
     	try {
     		//get input from view and create the course
     		Course newCourse = progCoord.addNewCourse(view.getCourseName(), view.getPrereq(), view.getTopics(), semester.getWeek());
+    		System.out.println();
     		System.out.println("New course " + newCourse.getName() + " created.");
             //feedback prereqs
             System.out.println();
     		if (newCourse.getPrerequisiteList().size()>0) {
                 System.out.print(newCourse.getName() + " prerequisites are: ");
                 for (Course c : newCourse.getPrerequisiteList()) {
-                    System.out.print(c.getName() +  " ,");
+                    System.out.print(c.getName() +  " ");
                 }
+                System.out.println();
             }
             //feedback topics
             if (newCourse.getTopics().size()>0) {
                 System.out.print(newCourse.getName() + " topics are: ");
     		    for (Topic t : newCourse.getTopics()) {
-                    System.out.print(t.getNameOfTopic() + ", ");
+                    System.out.print(t.getNameOfTopic() + " ");
                 }
     		}
     	}
@@ -123,9 +127,7 @@ public class demoController {
     	}
     	
     }
-    
-
-    int getUserIntInput(int maxInputInt) {
+        int getUserIntInput(int maxInputInt) {
         System.out.println("");
         System.out.println("");
         System.out.print("\033[32mMake a choice: "); //green
