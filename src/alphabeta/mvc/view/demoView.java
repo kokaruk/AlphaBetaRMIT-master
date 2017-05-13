@@ -8,18 +8,22 @@ import java.util.Scanner;
 
 /**
  * Created by dimz on 9/4/17.
- * Edited by Kristin 10/5/17.
+ * Edited by Kristin 13/5/17.
  */
 public class demoView {
 
     private Scanner input = new Scanner(System.in);
 
 	public void outputMainMenu() {
-        System.out.println( "Welcome to the Course Management System" + "\r\n" +
+        System.out.println();
+		System.out.println( "Welcome to the Course Management System" + "\r\n" +
                 "Select an option:" + "\r\n" +
                 "1. View a student's courses and results" + "\r\n" +
                 "2. View upcoming course offerings" + "\r\n" +
                 "3. Add a course" + "\r\n" +
+				"4. Change a student's course load" + "\r\n" +
+				"5. Create student" + "\r\n" +
+				"6. Add a waiver for a student" + "\r\n" +
                 "0. Quit"
         );
     }
@@ -72,6 +76,22 @@ public class demoView {
     	}
     	return topics;
     }
+
+    public int getStudentID() {
+		System.out.println();
+		System.out.print("Enter student number: ");
+		int studentID = input.nextInt();
+		input.nextLine();
+		return studentID;
+	}
+
+	public int getNewCourseLoad() {
+		System.out.println();
+		System.out.print("Enter new course load: ");
+		int courseLoad = input.nextInt();
+		input.nextLine();
+		return courseLoad;
+	}
     	
 
 }

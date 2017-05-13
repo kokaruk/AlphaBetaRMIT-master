@@ -1,5 +1,6 @@
 package alphabeta.mvc.model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -7,6 +8,7 @@ import java.util.stream.Collectors;
 /**
  * Created by dimz on 8/4/17.
  * Student Class
+ * Edited by kristin 13/05/17
  */
 public final class Student extends User {
 
@@ -17,11 +19,30 @@ public final class Student extends User {
     // list of mandatory pre-requisites waivers
     private Set<Course> waivers = new HashSet<>();
     private int maxCurrentCourseLoad;
+    private int studentID;
+    private static ArrayList<Integer> studIDs = new ArrayList<>();
+
+    public static void generateStudIDs() {
+        for (int i = 1000; i < 2000; i++) {
+            studIDs.add(i);
+        }
+    }
+
+    public int getStudentID() {
+
+        return studentID;
+    }
 
     // constructor
     public Student(String name, String username) {
         super(name, username);
+        //auto generate a Student ID
+        studentID = studIDs.get(0);
+        studIDs.remove(0);
+        //add Student to list of students in Directory
+        CourseDirectory.addStudent(this);
     }
+
 
     public Degree getDegree() {
         return degree;

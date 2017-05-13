@@ -8,56 +8,67 @@ import java.util.*;
 
 /**
  * Created by dimz on 9/4/17.
- * Last edited by kristin on 12/5/17
+ * Last edited by kristin on 13/5/17
  */
 public class demoController {
 
-    static Scanner input = new Scanner(System.in);
-    static Semester semester = new Semester();
-    //static Set<Course> courses = new HashSet<>();
-    static demoView view = new demoView();
+    private static Scanner input = new Scanner(System.in);
+    private static Semester semester = new Semester();
+    private static demoView view = new demoView();
     //just inventing a coordinator for now
-    static ProgramCoordinator progCoord = new ProgramCoordinator("Bob", "bob123");
-    static CourseDirectory courseDirectory = new CourseDirectory();
-    
-    //static Course testCourse = new Course(SEF, )
-  
+    private static ProgramCoordinator progCoord = new ProgramCoordinator("Bob", "bob123");
+
     
 
     public void startSystem(demoView view) {
 
         // view.clearScreen();
-        //Print main menu
-        view.outputMainMenu();
+
 
         //hard code Semester;
         semester.setSemesterNumber(1);
         semester.setWeek(1);
         semester.setYear(17);
-        
-        // get user input
-        int option = getUserIntInput(3);
 
-        switch (option) {
-            case 1:
-                System.out.println("Enter the student's name: ");
-                String name = input.nextLine().replaceAll(" +", "");
-                createStudent(name);
-                break;
-            case 2:
-                System.out.println("Not yet developed!");
-                break;
-            case 3:
-            	createCourse();
-            	break;
-            case 0:
-                System.out.println("Good bye!");
-                System.exit(0);
-                break;
-            default:
-                System.out.println("Invalid Option");
+        //create studentIDs list
+        Student.generateStudIDs();
+        int option = 0;
+        do {
+            //Print main menu
+            view.outputMainMenu();
+            // get user input
+            option = getUserIntInput(7);
+
+            switch (option) {
+                case 1:
+                    System.out.println("Enter the student's name: ");
+                    String name = input.nextLine().replaceAll(" +", "");
+                    createStudent(name);
+                    break;
+                case 2:
+                    System.out.println("Not yet developed!");
+                    break;
+                case 3:
+                    createCourse();
+                    break;
+                case 4:
+                    newCourseLoad();
+                    break;
+                case 5:
+                    createStudent("K Stenland");
+                    break;
+                case 6:
+                    addWaiver();
+                    break;
+                case 0:
+                    System.out.println("Good bye!");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid Option");
+            }
         }
-
+        while (option != 0);
 
     }
 
@@ -65,14 +76,12 @@ public class demoController {
         //Creates a new Student object for the purposes of demonstration
         Student student = new Student(studentName, "DemoUsername");
         printResults(student);
+        System.out.println(student.getStudentID());
     }
 
     public static void printResults(Student student) {
         //Prints hard coded results for a student for the purpose of demonstration
         Semester mySemester = new Semester();
-        mySemester.semesterNumber = 1;
-        mySemester.year = 2017;
-        mySemester.week = 1;
         Staff myLecturer = new Lecturer("Test Name", "testname2");
         List<Topic> myTopics = new ArrayList<>();
         myTopics.add( new Topic("Topic Name"));
@@ -91,7 +100,6 @@ public class demoController {
         results.forEach(System.out::println);
     }
 
-     
      
     public static void createCourse() {
     	//hardcode some topics and courses to test
@@ -127,6 +135,19 @@ public class demoController {
     	}
     	
     }
+
+    public void newCourseLoad() {
+        int studentID = view.getStudentID();
+        int courseLoad = view.getNewCourseLoad();
+        System.out.println();
+        progCoord.increaseLoad(studentID, courseLoad);
+    }
+
+    public void addWaiver() {
+        Course testCourse1 = new Course("Programming 1");
+        progCoord.grantWaivers(view.getStudentID(), view.getCourseName());
+    }
+
         int getUserIntInput(int maxInputInt) {
         System.out.println("");
         System.out.println("");
