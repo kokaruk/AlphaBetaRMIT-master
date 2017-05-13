@@ -8,6 +8,7 @@ public class Lecturer extends Staff {
 
     public Lecturer(String name, String username) {
         super(name, username);
+        CourseDirectory.addLecturer(this);
     }
 
     Set<Course> myCourse;

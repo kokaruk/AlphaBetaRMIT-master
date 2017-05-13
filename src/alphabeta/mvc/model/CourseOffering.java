@@ -3,6 +3,7 @@ package alphabeta.mvc.model;
 /**
  * Created by Bill Thompson on 9/4/17.
  * Course Offering Class
+ * Last edited by kristin on 13/5/17
  */
 public class CourseOffering {
 
@@ -19,6 +20,7 @@ public class CourseOffering {
         this.maxStudents = maxStudents;
         this.myLecturer = myLecturer;
         this.myCourse = myCourse;
+        CourseDirectory.addCourseOffering(this);
     }
 
     public String getName() {

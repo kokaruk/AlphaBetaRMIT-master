@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 /**
  * Created by dimz on 9/4/17.
- * Edited by Kristin 13/5/17.
+ * last edit by Kristin 13/5/17.
  */
 public class demoView {
 
@@ -24,6 +24,9 @@ public class demoView {
 				"4. Change a student's course load" + "\r\n" +
 				"5. Create student" + "\r\n" +
 				"6. Add a waiver for a student" + "\r\n" +
+				"7. Create a Course Offering" + "\r\n" +
+				"8. Change maximum number of students in a course offering" + "\r\n" +
+				"9. Advance the semester" + "\r\n" +
                 "0. Quit"
         );
     }
@@ -91,6 +94,21 @@ public class demoView {
 		int courseLoad = input.nextInt();
 		input.nextLine();
 		return courseLoad;
+	}
+
+	public int getMaxStudents() {
+		System.out.println();
+		System.out.println("Enter maximum number of students: " );
+		int maxStudents = input.nextInt();
+		input.nextLine();
+		return maxStudents;
+	}
+
+	public String getLecturer() {
+		System.out.println();
+		System.out.println("Enter Lecturer's name: ");
+		String lecturer = input.nextLine();
+		return lecturer;
 	}
     	
 

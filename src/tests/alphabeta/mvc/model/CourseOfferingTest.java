@@ -11,6 +11,7 @@ import static org.junit.Assert.assertEquals;
  * Created by Bill Thompson on 9/4/17.
  * Refactoring by DK 17/04/17
  * Course Offering JUnit Test Class
+ * last edit by kristin 13/05/17
  */
 
 public class CourseOfferingTest {
@@ -21,10 +22,10 @@ public class CourseOfferingTest {
     @Before
     public void setup(){
         sef2017 = FactoryHelperClass.getCourseOffering();
-        mySemester  = new Semester();
-        mySemester.semesterNumber = 1;
-        mySemester.year = 2018;
-        mySemester.week = 1;
+        mySemester  = new Semester(01,2018,01);
+        //mySemester.semesterNumber = 1;
+        //mySemester.year = 2018;
+        //mySemester.week = 1;
         sef2017.setMySemester(mySemester);
     }
 

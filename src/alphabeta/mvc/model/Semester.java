@@ -1,9 +1,18 @@
 package alphabeta.mvc.model;
+/**
+  * Last edited by kristin on 13/5/17
+ */
 
 public class Semester {
     public int semesterNumber;
     public int year;
     public int week;
+
+    public Semester(int semesterNumber, int year, int week) {
+        this.semesterNumber = semesterNumber;
+        this.year = year;
+        this.week = week;
+    }
 
     public int getSemesterNumber() {
         return semesterNumber;

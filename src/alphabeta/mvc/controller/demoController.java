@@ -13,22 +13,19 @@ import java.util.*;
 public class demoController {
 
     private static Scanner input = new Scanner(System.in);
-    private static Semester semester = new Semester();
     private static demoView view = new demoView();
     //just inventing a coordinator for now
     private static ProgramCoordinator progCoord = new ProgramCoordinator("Bob", "bob123");
+    //just inventing an admin for now
+    private static Admin admin = new Admin("Mary", "mary123");
+    //just inventing a lecturer for now
+    private static Lecturer lecturer = new Lecturer("Jane", "jane123");
+
 
     
 
     public void startSystem(demoView view) {
 
-        // view.clearScreen();
-
-
-        //hard code Semester;
-        semester.setSemesterNumber(1);
-        semester.setWeek(1);
-        semester.setYear(17);
 
         //create studentIDs list
         Student.generateStudIDs();
@@ -37,7 +34,7 @@ public class demoController {
             //Print main menu
             view.outputMainMenu();
             // get user input
-            option = getUserIntInput(7);
+            option = getUserIntInput(10);
 
             switch (option) {
                 case 1:
@@ -60,6 +57,15 @@ public class demoController {
                 case 6:
                     addWaiver();
                     break;
+                case 7:
+                    createCourseOffering();
+                    break;
+                case 8:
+                    changeMaxStudents();
+                    break;
+                case 9:
+                    advanceSystem();
+                    break;
                 case 0:
                     System.out.println("Good bye!");
                     System.exit(0);
@@ -75,13 +81,13 @@ public class demoController {
     public static void createStudent(String studentName) {
         //Creates a new Student object for the purposes of demonstration
         Student student = new Student(studentName, "DemoUsername");
-        printResults(student);
-        System.out.println(student.getStudentID());
+        System.out.println("New student created: " + student.getName() + ", student ID: " + student.getStudentID());
     }
 
+    /**
     public static void printResults(Student student) {
         //Prints hard coded results for a student for the purpose of demonstration
-        Semester mySemester = new Semester();
+        Semester mySemester = CourseDirectory.getSemester();
         Staff myLecturer = new Lecturer("Test Name", "testname2");
         List<Topic> myTopics = new ArrayList<>();
         myTopics.add( new Topic("Topic Name"));
@@ -99,6 +105,7 @@ public class demoController {
         System.out.println("Student: " + student.getName());
         results.forEach(System.out::println);
     }
+     */
 
      
     public static void createCourse() {
@@ -110,7 +117,8 @@ public class demoController {
     	
     	try {
     		//get input from view and create the course
-    		Course newCourse = progCoord.addNewCourse(view.getCourseName(), view.getPrereq(), view.getTopics(), semester.getWeek());
+    		Course newCourse = progCoord.addNewCourse(view.getCourseName(), view.getPrereq(), view.getTopics(),
+                    CourseDirectory.getSemester().getWeek());
     		System.out.println();
     		System.out.println("New course " + newCourse.getName() + " created.");
             //feedback prereqs
@@ -133,7 +141,6 @@ public class demoController {
     	catch (CourseException e) {
     		System.out.println(e.getReason());
     	}
-    	
     }
 
     public void newCourseLoad() {
@@ -146,6 +153,20 @@ public class demoController {
     public void addWaiver() {
         Course testCourse1 = new Course("Programming 1");
         progCoord.grantWaivers(view.getStudentID(), view.getCourseName());
+    }
+
+    public void createCourseOffering() {
+        Course testCourse1 = new Course("Programming 1");
+        admin.addNewCourseOffering(CourseDirectory.getSemester(), view.getMaxStudents(),
+                view.getLecturer(), view.getCourseName());
+    }
+
+    public void changeMaxStudents() {
+        admin.setMaxStudents(view.getMaxStudents(), view.getCourseName());
+    }
+
+    public void advanceSystem() {
+        admin.advanceSystem();
     }
 
         int getUserIntInput(int maxInputInt) {
