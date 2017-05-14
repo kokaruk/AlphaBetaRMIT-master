@@ -46,8 +46,8 @@ public class StudentTest {
         myStudent.setDegree(myDegreeMock);
     }
 
-    @Test(expected=IllegalStateException.class)
-    public void viewMyResults_NotEnrolledInAnyCourses_ThrowsIllegalStateException() {
+    @Test(expected=IllegalArgumentException.class)
+    public void viewMyResults_NotEnrolledInAnyCourses_IllegalArgumentException() {
         try {
            String results = myStudent.viewMyResults();
         } catch (Exception e) {
