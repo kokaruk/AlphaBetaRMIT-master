@@ -26,9 +26,6 @@ public class demoController {
 
     public void startSystem(demoView view) {
 
-
-        //create studentIDs list
-        Student.generateStudIDs();
         int option = 0;
         do {
             //Print main menu
@@ -144,7 +141,7 @@ public class demoController {
     }
 
     public void newCourseLoad() {
-        int studentID = view.getStudentID();
+        String studentID = view.getStudentID();
         int courseLoad = view.getNewCourseLoad();
         System.out.println();
         progCoord.increaseLoad(studentID, courseLoad);

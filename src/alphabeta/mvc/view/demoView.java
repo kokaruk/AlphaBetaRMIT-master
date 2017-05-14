@@ -80,11 +80,10 @@ public class demoView {
     	return topics;
     }
 
-    public int getStudentID() {
+    public String getStudentID() {
 		System.out.println();
 		System.out.print("Enter student number: ");
-		int studentID = input.nextInt();
-		input.nextLine();
+		String studentID = input.nextLine();
 		return studentID;
 	}
 

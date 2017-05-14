@@ -75,7 +75,7 @@ public class CourseDirectory {
 
     //Find a Student with studentID
     //Probably need to change exception type here
-    public static Student lookupStudent(int s) throws CourseException {
+    public static Student lookupStudent(String s) throws CourseException {
         Student student = null;
         for (Student st : studentSet) {
             if (s == st.getStudentID()) {

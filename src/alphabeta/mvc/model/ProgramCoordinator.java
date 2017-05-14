@@ -58,7 +58,7 @@ public class ProgramCoordinator extends Staff {
         return newCourse;
     }
 
-    public void grantWaivers(int studentID, String waiverString) {
+    public void grantWaivers(String studentID, String waiverString) {
         //lookup Student
         try {
             Student st = CourseDirectory.lookupStudent(studentID);
@@ -79,7 +79,7 @@ public class ProgramCoordinator extends Staff {
     }
 
 
-    public void increaseLoad(int studentID, int load) {
+    public void increaseLoad(String studentID, int load) {
         // Change Student's max course load
         try {
             Student s = CourseDirectory.lookupStudent(studentID);
