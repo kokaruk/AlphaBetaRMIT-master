@@ -1,7 +1,7 @@
 package alphabeta.mvc.model;
 
 /**
- * Last edited by kristin on 13/5/17
+ * Last edited by kristin on 14/5/17
  */
 
 public class Admin extends Staff {
@@ -16,7 +16,8 @@ public class Admin extends Staff {
             Lecturer lecturer = CourseDirectory.lookupLecturer(lecturerString);
             Course course = CourseDirectory.lookupCourse(courseString);
             CourseOffering courseOffering = new CourseOffering(semester, maxStudents, lecturer, course);
-            System.out.println("Course Offering " + courseOffering.getName() + " created.");
+            System.out.println("Course Offering " + courseOffering.getName() + " in semester " + courseOffering.getMySemester().getSemesterNumber()
+                    + " " + courseOffering.getMySemester().getYear() + " created.");
         }
         catch (UnsupportedOperationException e) {
             System.out.println(e.getMessage());

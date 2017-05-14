@@ -8,7 +8,7 @@ import java.util.*;
 
 /**
  * Created by dimz on 9/4/17.
- * Last edited by kristin on 13/5/17
+ * Last edited by kristin on 14/5/17
  */
 public class demoController {
 
@@ -35,12 +35,12 @@ public class demoController {
 
             switch (option) {
                 case 1:
-                    System.out.println("Enter the student's name: ");
-                    String name = input.nextLine().replaceAll(" +", "");
-                    createStudent(name);
+                    //System.out.println("Enter the student's name: ");
+                    //String name = input.nextLine().replaceAll(" +", "");
+                    createStudent();
                     break;
                 case 2:
-                    System.out.println("Not yet developed!");
+                    viewCourseOfferings();
                     break;
                 case 3:
                     createCourse();
@@ -49,19 +49,19 @@ public class demoController {
                     newCourseLoad();
                     break;
                 case 5:
-                    createStudent("K Stenland");
-                    break;
-                case 6:
                     addWaiver();
                     break;
-                case 7:
+                case 6:
                     createCourseOffering();
                     break;
-                case 8:
+                case 7:
                     changeMaxStudents();
                     break;
-                case 9:
+                case 8:
                     advanceSystem();
+                    break;
+                case 9:
+                    viewResults();
                     break;
                 case 0:
                     System.out.println("Good bye!");
@@ -75,9 +75,10 @@ public class demoController {
 
     }
 
-    public static void createStudent(String studentName) {
+    public void createStudent() {
         //Creates a new Student object for the purposes of demonstration
-        Student student = new Student(studentName, "DemoUsername");
+        //needs an edit so that username is unique!
+        Student student = new Student(view.getStudentName(), "DemoUsername");
         System.out.println("New student created: " + student.getName() + ", student ID: " + student.getStudentID());
     }
 
@@ -154,7 +155,8 @@ public class demoController {
 
     public void createCourseOffering() {
         Course testCourse1 = new Course("Programming 1");
-        admin.addNewCourseOffering(CourseDirectory.getSemester(), view.getMaxStudents(),
+        Semester semester = new Semester(view.getSemesterNumber(), view.getYear(), 1);
+        admin.addNewCourseOffering(semester, view.getMaxStudents(),
                 view.getLecturer(), view.getCourseName());
     }
 
@@ -166,27 +168,56 @@ public class demoController {
         admin.advanceSystem();
     }
 
-        int getUserIntInput(int maxInputInt) {
-        System.out.println("");
-        System.out.println("");
-        System.out.print("\033[32mMake a choice: "); //green
-        String menuSelectionString = input.nextLine().replaceAll(" +", "");
-
-        int menuSelection;
-
+    public void viewResults() {
+        String s = view.getStudentID();
         try {
-            menuSelection = Integer.parseInt(menuSelectionString);
-        } catch (NumberFormatException e) {
-            System.out.println("\033[31mInvalid input format.\r\nNumbers Only."); //red
-            return getUserIntInput(maxInputInt);
+            Student st = CourseDirectory.lookupStudent(s);
+            Set<String> results = lecturer.viewAllResults(st);
+            System.out.println("Student: " + st.getName());
+            results.forEach(System.out::println);
         }
-        if (menuSelection > maxInputInt) {
-            System.out.println("\033[31mNo such option."); //red
-            return getUserIntInput(maxInputInt);
-        } else {
-            return menuSelection;
+        catch (CourseException e) {
+            System.out.println(e.getReason());
         }
     }
+
+    public void viewCourseOfferings() {
+        //Prints all course offerings for the current year
+        Set<CourseOffering> courseOffering = admin.viewCourseOfferings();
+        Course testCourse1 = new Course("Programming 1");
+        CourseOffering testOffering = new CourseOffering(CourseDirectory.getSemester(), 50, lecturer,
+                testCourse1);
+        System.out.println("All courses offerings for year " + CourseDirectory.getSemester().getYear() + " are: ");
+        for (CourseOffering co : courseOffering) {
+            if ((co.getMySemester().getYear() == CourseDirectory.getSemester().getYear())) {
+                System.out.println("Course Name: " + co.getName() + ", Semester: " + co.getMySemester().getSemesterNumber());
+            }
+        }
+    }
+
+        int getUserIntInput(int maxInputInt) {
+            System.out.println("");
+            System.out.println("");
+            System.out.print("\033[32mMake a choice: "); //green
+            String menuSelectionString = input.nextLine().replaceAll(" +", "");
+
+            int menuSelection;
+
+            try {
+                menuSelection = Integer.parseInt(menuSelectionString);
+            } catch (NumberFormatException e) {
+                System.out.println("\033[31mInvalid input format.\r\nNumbers Only."); //red
+                return getUserIntInput(maxInputInt);
+            }
+            if (menuSelection > maxInputInt) {
+                System.out.println("\033[31mNo such option."); //red
+                return getUserIntInput(maxInputInt);
+            } else {
+                return menuSelection;
+            }
+
+        }
+
 
 
 }

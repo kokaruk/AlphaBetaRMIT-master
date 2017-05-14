@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
  * Created by Bill Thompson on 9/4/17.
  * Refactoring by DK 17/04/17
  * Course Offering JUnit Test Class
- * last edit by kristin 13/05/17
+ * last edit by kristin 14/05/17
  */
 
 public class CourseOfferingTest {
@@ -31,7 +31,7 @@ public class CourseOfferingTest {
 
 	@Test
 	public void testNewCourseOffering() {
-		assertEquals("2018 1 Test Course", sef2017.getName());
+		assertEquals("Test Course", sef2017.getName());
 	}
 
 

@@ -1,11 +1,13 @@
 package alphabeta.mvc.model;
 
+import java.util.Set;
 import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Created by dimz on 5/4/17.
  * Abstract declaration of user class
+ * last edit by kristin 14/5/17
  */
 abstract class User {
 
@@ -29,9 +31,9 @@ abstract class User {
         return username;
     }
 
-    public List<CourseOffering> viewCourseOfferings() {
-        // TODO method to get course offering
-        return new LinkedList<>();
+    public Set<CourseOffering> viewCourseOfferings() {
+        Set<CourseOffering> courseOfferings = CourseDirectory.getCourseOfferingSet();
+        return courseOfferings;
     }
 
 }

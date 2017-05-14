@@ -1,14 +1,18 @@
 package alphabeta.mvc.view;
 
+import alphabeta.mvc.model.CourseDirectory;
+import alphabeta.mvc.model.CourseOffering;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 
 /**
  * Created by dimz on 9/4/17.
- * last edit by Kristin 13/5/17.
+ * last edit by Kristin 14/5/17.
  */
 public class demoView {
 
@@ -18,16 +22,16 @@ public class demoView {
         System.out.println();
 		System.out.println( "Welcome to the Course Management System" + "\r\n" +
                 "Select an option:" + "\r\n" +
-                "1. View a student's courses and results" + "\r\n" +
+                "1. Create a new Student" + "\r\n" +
                 "2. View upcoming course offerings" + "\r\n" +
                 "3. Add a course" + "\r\n" +
 				"4. Change a student's course load" + "\r\n" +
-				"5. Create student" + "\r\n" +
-				"6. Add a waiver for a student" + "\r\n" +
-				"7. Create a Course Offering" + "\r\n" +
-				"8. Change maximum number of students in a course offering" + "\r\n" +
-				"9. Advance the semester" + "\r\n" +
-                "0. Quit"
+				"5. Add a waiver for a student" + "\r\n" +
+				"6. Create a course offering" + "\r\n" +
+				"7. Change maximum number of students in a course offering" + "\r\n" +
+				"8. Advance the semester" + "\r\n" +
+				"9. View a student's results" + "\r\n" +
+                "10. Quit"
         );
     }
 
@@ -45,6 +49,13 @@ public class demoView {
     	course = input.nextLine();
     	return course;
     }
+
+	public String getStudentName() {
+		String student;
+		System.out.print("Enter student name: ");
+		student = input.nextLine();
+		return student;
+	}
     
     public List<String> getPrereq() {
     	List<String> preReq = new ArrayList<String>();
@@ -109,6 +120,22 @@ public class demoView {
 		String lecturer = input.nextLine();
 		return lecturer;
 	}
-    	
+
+
+	public int getSemesterNumber() {
+		System.out.println();
+		System.out.print("Enter semester number: ");
+		int semesterNumber = input.nextInt();
+		input.nextLine();
+		return semesterNumber;
+	}
+
+	public int getYear() {
+		System.out.println();
+		System.out.print("Enter year: ");
+		int year = input.nextInt();
+		input.nextLine();
+		return year;
+	}
 
 }

@@ -48,6 +48,7 @@ public class CourseDirectory {
 
     public static Semester getSemester() { return semester; }
 
+    public static Set<CourseOffering> getCourseOfferingSet() { return courseOfferingSet; }
 
     //Find a topic with a String
     public static Topic lookUpTopic(String s) {
@@ -78,7 +79,7 @@ public class CourseDirectory {
     public static Student lookupStudent(String s) throws CourseException {
         Student student = null;
         for (Student st : studentSet) {
-            if (s == st.getStudentID()) {
+            if (s.equals(st.getStudentID())) {
                 student = st;
             }
         }

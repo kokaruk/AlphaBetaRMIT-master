@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * Created by dimz on 17/4/17.
- * last edit by kristin 13/5/17 (only due to change in semester constructor)
+ * last edit by kristin 14/5/17 (only due to change in semester constructor)
  */
 public class FactoryHelperClass {
 
@@ -53,13 +53,13 @@ public class FactoryHelperClass {
     // make fake course offering
     public static CourseOffering getCourseOffering() {
         Semester mySemester = new Semester(01, 2017, 1);
-        Staff myLecturer = new Lecturer("Test Name", "testname2");
+        Lecturer myLecturer = new Lecturer("Test Name", "testname2");
         List<Topic> myTopics = new ArrayList<>();
         myTopics.add(new Topic("Topic Name"));
         Course myCourse = new Course();
         myCourse.name = "Test Course";
         myCourse.topics = myTopics;
-        return new CourseOffering(mySemester, 28, (Lecturer) myLecturer, myCourse);
+        return new CourseOffering(mySemester, 28, myLecturer, myCourse);
     }
 
 }

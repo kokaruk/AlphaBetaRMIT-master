@@ -1,11 +1,17 @@
 package alphabeta.mvc.model;
 
 import java.util.List;
+import java.util.Set;
+
+/**
+ * last edit by kristin 14/5/17
+ */
+
 
 class Degree {
 
     String degreeName;
-    List<Course> courses;
+    Set<CourseOffering> courses;
     int maxLoad;
     Semester currentSemester;
 
@@ -17,11 +23,11 @@ class Degree {
         this.degreeName = degreeName;
     }
 
-    public List<Course> getCourses() {
+    public Set<CourseOffering> getCourses() {
         return courses;
     }
 
-    public void setCourses(List<Course> courses) {
+    public void setCourses(Set<CourseOffering> courses) {
         this.courses = courses;
     }
 

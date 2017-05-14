@@ -1,9 +1,11 @@
 package alphabeta.mvc.model;
 
+import java.util.List;
+
 /**
  * Created by Bill Thompson on 9/4/17.
  * Course Offering Class
- * Last edited by kristin on 13/5/17
+ * Last edited by kristin on 14/5/17
  */
 public class CourseOffering {
 
@@ -23,10 +25,12 @@ public class CourseOffering {
         CourseDirectory.addCourseOffering(this);
     }
 
+
     public String getName() {
-        if (this.name == null)
-            this.name = String.format("%d %d %s", mySemester.year, mySemester.semesterNumber, myCourse.name);
+        String name = myCourse.getName();
         return name;
+       // if (this.name == null)
+       //     this.name = String.format("%d %d %s", mySemester.year, mySemester.semesterNumber, myCourse.name);//return name;
     }
 
     Course getMyCourse() {
@@ -37,7 +41,7 @@ public class CourseOffering {
         this.myCourse = myCourse;
     }
 
-    Semester getMySemester() {
+    public Semester getMySemester() {
         return mySemester;
     }
 

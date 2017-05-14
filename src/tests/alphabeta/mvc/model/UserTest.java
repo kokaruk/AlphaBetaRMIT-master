@@ -8,12 +8,15 @@ import org.mockito.*;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
+import java.util.Set;
+
 import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 
 /**
  * @author dimz
  * @since 8/5/17.
+ * last edit by kristin 14/5/17
  */
 public class UserTest {
 
@@ -21,7 +24,7 @@ public class UserTest {
     @Mock
     Degree degreeMock;
     @Mock
-    List<Course> coursesMock;
+    Set<CourseOffering> coursesMock;
 
     @Before
     public void setup(){

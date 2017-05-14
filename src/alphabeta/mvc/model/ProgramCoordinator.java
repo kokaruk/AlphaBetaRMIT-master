@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Last edited by Kristin on 13/5/17
+ * Last edited by Kristin on 14/5/17
  */
 
 public class ProgramCoordinator extends Staff {
@@ -62,11 +62,11 @@ public class ProgramCoordinator extends Staff {
         //lookup Student
         try {
             Student st = CourseDirectory.lookupStudent(studentID);
-            //find waiver in dictory
+            //find waiver in directory
             try {
                 Course c = CourseDirectory.lookupCourse(waiverString);
                 st.setWaivers(c);
-                System.out.println("Waiver " + c.getName() + " added for " + st.getName() + " (student ID: "
+                System.out.println("Waiver for " + c.getName() + " added for " + st.getName() + " (student ID: "
                         + st.getStudentID() + ").");
             }
             catch (UnsupportedOperationException e) {
