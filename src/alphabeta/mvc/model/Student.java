@@ -19,15 +19,16 @@ public final class Student extends User {
     // list of mandatory pre-requisites waivers
     private Set<Course> waivers = new HashSet<>();
     private int maxCurrentCourseLoad;
-    static private int studentID ;
-
+    static private int studentIDcounter ;
+    String studentID;
     public String getStudentID() {
-        return String.format("S%03d", ++studentID);
+        return studentID;
     }
 
     // constructor
     public Student(String name, String username) {
         super(name, username);
+        this.studentID = String.format("S%03d", ++studentIDcounter);
         //add Student to list of students in Directory
         CourseDirectory.addStudent(this);
     }
