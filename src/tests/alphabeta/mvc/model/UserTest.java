@@ -2,16 +2,14 @@ package alphabeta.mvc.model;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.*;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
-import java.util.List;
 import java.util.Set;
 
-import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 /**
  * @author dimz
@@ -20,18 +18,17 @@ import static org.junit.Assert.*;
  */
 public class UserTest {
 
+    @Mock
+    private Degree degreeMock;
+    @Mock
+    private Set<CourseOffering> coursesMock;
     private ConcreteUser testUser;
-    @Mock
-    Degree degreeMock;
-    @Mock
-    Set<CourseOffering> coursesMock;
 
     @Before
     public void setup(){
-        testUser = new ConcreteUser();
         MockitoAnnotations.initMocks(this);
-        when(degreeMock.getCourses()).thenReturn(coursesMock);
-        when(coursesMock.size()).thenReturn(50);
+        testUser = new ConcreteUser();
+
     }
 
     @Test
@@ -46,7 +43,17 @@ public class UserTest {
 
     @Test
     public void viewCourseOfferings_sizeOfPassedMockEqualsToReturnedValueSize() {
-        assertEquals(degreeMock.courses.size(), testUser.viewCourseOfferings().size() );
+        int limit = 10;
+        when(degreeMock.getCourses()).thenReturn(coursesMock);
+        when(coursesMock.size()).thenReturn(limit);
+        int count = 0;
+
+        while (count < limit) {
+            CourseDirectory.addCourseOffering(mock(CourseOffering.class));
+            count++;
+        }
+
+        assertEquals(degreeMock.getCourses().size(), testUser.viewCourseOfferings().size() );
     }
 
     private class ConcreteUser extends User{
