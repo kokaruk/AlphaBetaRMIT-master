@@ -27,6 +27,8 @@ public class UserTest {
     @Before
     public void setup(){
         MockitoAnnotations.initMocks(this);
+        when(degreeMock.getCourses()).thenReturn(coursesMock);
+        when(coursesMock.size()).thenReturn(10);
         testUser = new ConcreteUser();
 
     }
@@ -44,8 +46,6 @@ public class UserTest {
     @Test
     public void viewCourseOfferings_sizeOfPassedMockEqualsToReturnedValueSize() {
         int limit = 10;
-        when(degreeMock.getCourses()).thenReturn(coursesMock);
-        when(coursesMock.size()).thenReturn(limit);
         int count = 0;
 
         while (count < limit) {

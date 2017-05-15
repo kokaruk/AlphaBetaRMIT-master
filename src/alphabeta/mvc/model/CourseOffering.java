@@ -1,7 +1,5 @@
 package alphabeta.mvc.model;
 
-import java.util.List;
-
 /**
  * Created by Bill Thompson on 9/4/17.
  * Course Offering Class
@@ -15,7 +13,7 @@ public class CourseOffering {
     private Lecturer myLecturer;
     private Course myCourse;
 
-
+    // TODO are we sure that constuctor should add itself to global collection and not the constructor caller?
     // Construct a Course Offering with specific variables, same as above plus course
     public CourseOffering(Semester mySemester, int maxStudents, Lecturer myLecturer, Course myCourse) {
         this.mySemester = mySemester;
