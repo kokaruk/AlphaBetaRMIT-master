@@ -1,5 +1,8 @@
 package alphabeta.mvc.model;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -11,7 +14,8 @@ import java.util.stream.Collectors;
  * Edited by kristin 13/05/17
  */
 public final class Student extends User {
-
+    private static Logger logger = LogManager.getLogger();
+    private CourseDirectory courseDirectory = CourseDirectory.getInstance();
     // degree. OK to be null. Student can exist without enrollment
     private Degree degree;
     // list of currently and previously enrolled subjects
@@ -30,7 +34,7 @@ public final class Student extends User {
         super(name, username);
         this.studentID = String.format("S%03d", ++studentIDcounter);
         //add Student to list of students in Directory
-        CourseDirectory.addStudent(this);
+        courseDirectory.addStudent(this);
     }
 
 
@@ -90,6 +94,7 @@ public final class Student extends User {
     }
 
     public void enrol(Enrollment enrollment) throws IndexOutOfBoundsException, PrerequisitesNotMetException {
+        logger.trace("enrollment method testing sequence");
         // can enroll?
         if (!(this.enrollment.size() < maxCurrentCourseLoad)) throw new IndexOutOfBoundsException("can't enroll" +
                 " reached maximum allowed course loading");

@@ -6,9 +6,11 @@ import java.util.Set;
 
 public class Lecturer extends Staff {
 
+    private CourseDirectory courseDirectory = CourseDirectory.getInstance();
+
     public Lecturer(String name, String username) {
         super(name, username);
-        CourseDirectory.addLecturer(this);
+        courseDirectory.addLecturer(this);
     }
 
     Set<Course> myCourse;

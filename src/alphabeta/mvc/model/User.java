@@ -11,6 +11,8 @@ import java.util.List;
  */
 abstract class User {
 
+    private CourseDirectory courseDirectory = CourseDirectory.getInstance();
+
     // readonly properties
     // name
     private String name;
@@ -32,7 +34,7 @@ abstract class User {
     }
 
     public Set<CourseOffering> viewCourseOfferings() {
-        Set<CourseOffering> courseOfferings = CourseDirectory.getCourseOfferingSet();
+        Set<CourseOffering> courseOfferings = courseDirectory.getCourseOfferingSet();
         return courseOfferings;
     }
 

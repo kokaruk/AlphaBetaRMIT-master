@@ -10,13 +10,15 @@ import java.util.Set;
 
 public class ProgramCoordinator extends Staff {
 
+    private CourseDirectory courseDirectory = CourseDirectory.getInstance();
+
     public ProgramCoordinator(String name, String password) {
         super(name, password);
     }
 
     public Course addNewCourse(String name, List<String> prerequisites, List<String> topics, int week) throws CourseException {
-        Set<Course> allCourses = CourseDirectory.getCourseSet();
-        Set<Topic> allTopics = CourseDirectory.getTopicSet();
+        Set<Course> allCourses = courseDirectory.getCourseSet();
+        Set<Topic> allTopics = courseDirectory.getTopicSet();
         List<Course> courseList = new ArrayList<>();
         List<Topic> topicsConvert = new ArrayList<>();
         List<String> stringTopics = new ArrayList<>();
@@ -42,7 +44,7 @@ public class ProgramCoordinator extends Staff {
             }
             stringTopics.retainAll(topics);
             for (String f : stringTopics) {
-                Topic exists = CourseDirectory.lookUpTopic(f);
+                Topic exists = courseDirectory.lookUpTopic(f);
                 topicsConvert.add(exists);
             }
             topics.removeAll(stringTopics);
@@ -61,10 +63,10 @@ public class ProgramCoordinator extends Staff {
     public void grantWaivers(String studentID, String waiverString) {
         //lookup Student
         try {
-            Student st = CourseDirectory.lookupStudent(studentID);
+            Student st = courseDirectory.lookupStudent(studentID);
             //find waiver in directory
             try {
-                Course c = CourseDirectory.lookupCourse(waiverString);
+                Course c = courseDirectory.lookupCourse(waiverString);
                 st.setWaivers(c);
                 System.out.println("Waiver for " + c.getName() + " added for " + st.getName() + " (student ID: "
                         + st.getStudentID() + ").");
@@ -82,7 +84,7 @@ public class ProgramCoordinator extends Staff {
     public void increaseLoad(String studentID, int load) {
         // Change Student's max course load
         try {
-            Student s = CourseDirectory.lookupStudent(studentID);
+            Student s = courseDirectory.lookupStudent(studentID);
             s.setMaxCurrentCourseLoad(load);
             System.out.println("Course load for " + s.getName() + " (student ID: " + s.getStudentID() + ") is "
                     + s.getMaxCurrentCourseLoad());

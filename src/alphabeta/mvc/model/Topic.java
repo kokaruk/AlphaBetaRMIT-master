@@ -7,6 +7,7 @@ package alphabeta.mvc.model;
  * Topic Class
  */
 public class Topic {
+    private CourseDirectory courseDirectory = CourseDirectory.getInstance();
 
     // Define and initialize the class variables
     private String myName;
@@ -14,7 +15,7 @@ public class Topic {
     // Construct a Topic with a particular name
     public Topic(String topicName) {
         this.myName = topicName;
-        CourseDirectory.addTopic(this);
+        courseDirectory.addTopic(this);
     }
 
     // Set the name of the topic

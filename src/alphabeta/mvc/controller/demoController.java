@@ -12,6 +12,8 @@ import java.util.*;
  */
 public class demoController {
 
+    // todo extract hardcoded classes to datalayer
+
     private static Scanner input = new Scanner(System.in);
     private static demoView view = new demoView();
     //just inventing a coordinator for now
@@ -21,7 +23,7 @@ public class demoController {
     //just inventing a lecturer for now
     private static Lecturer lecturer = new Lecturer("Jane", "jane123");
 
-
+    private CourseDirectory courseDirectory = CourseDirectory.getInstance();
     
 
     public void startSystem(demoView view) {
@@ -106,7 +108,8 @@ public class demoController {
      */
 
      
-    public static void createCourse() {
+    public void createCourse() {
+
     	//hardcode some topics and courses to test
         Topic testTopic1 = new Topic("Agile");
         Topic testTopic2 = new Topic("UML");
@@ -116,7 +119,7 @@ public class demoController {
     	try {
     		//get input from view and create the course
     		Course newCourse = progCoord.addNewCourse(view.getCourseName(), view.getPrereq(), view.getTopics(),
-                    CourseDirectory.getSemester().getWeek());
+                    courseDirectory.getSemester().getWeek());
     		System.out.println();
     		System.out.println("New course " + newCourse.getName() + " created.");
             //feedback prereqs
@@ -171,7 +174,7 @@ public class demoController {
     public void viewResults() {
         String s = view.getStudentID();
         try {
-            Student st = CourseDirectory.lookupStudent(s);
+            Student st = courseDirectory.lookupStudent(s);
             Set<String> results = lecturer.viewAllResults(st);
             System.out.println("Student: " + st.getName());
             results.forEach(System.out::println);
@@ -183,13 +186,9 @@ public class demoController {
 
     public void viewCourseOfferings() {
         //Prints all course offerings for the current year
-        Set<CourseOffering> courseOffering = admin.viewCourseOfferings();
-        Course testCourse1 = new Course("Programming 1");
-        CourseOffering testOffering = new CourseOffering(CourseDirectory.getSemester(), 50, lecturer,
-                testCourse1);
-        System.out.println("All courses offerings for year " + CourseDirectory.getSemester().getYear() + " are: ");
-        for (CourseOffering co : courseOffering) {
-            if ((co.getMySemester().getYear() == CourseDirectory.getSemester().getYear())) {
+        System.out.println("All courses offerings for year " + courseDirectory.getSemester().getYear() + " are: ");
+        for (CourseOffering co : admin.viewCourseOfferings()) {
+            if ((co.getMySemester().getYear() == courseDirectory.getSemester().getYear())) {
                 System.out.println("Course Name: " + co.getName() + ", Semester: " + co.getMySemester().getSemesterNumber());
             }
         }

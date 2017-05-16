@@ -20,8 +20,8 @@ public class CourseOffering {
         this.maxStudents = maxStudents;
         this.myLecturer = myLecturer;
         this.myCourse = myCourse;
-        CourseDirectory.addCourseOffering(this);
     }
+
 
 
     public String getName() {

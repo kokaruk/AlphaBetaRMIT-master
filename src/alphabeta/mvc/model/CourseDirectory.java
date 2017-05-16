@@ -1,6 +1,10 @@
 package alphabeta.mvc.model;
 
 
+import systemDAL.CourseOfferingDAO_fake;
+import systemDAL.FactoryDAO;
+import systemDAL.ICourseOfferingDAO;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -8,50 +12,63 @@ import java.util.Set;
  * Last edit by kristin on 13/5/17
  */
 
-public class CourseDirectory {
+public final class CourseDirectory {
 
-    private static Set<Course> courseSet = new HashSet<>();
-    private static Set<Topic> topicSet = new HashSet<>();
-    private static Set<Student> studentSet = new HashSet<>();
-    private static Set<CourseOffering> courseOfferingSet = new HashSet<>();
-    private static Set<Lecturer> lecturerSet = new HashSet<>();
-    private static Semester semester = new Semester(01, 2017, 01);
+    // singleton instance
+    private static CourseDirectory instance;
+    private ICourseOfferingDAO courseOfferingDAO = FactoryDAO.courseOfferingDAO();
+    private Set<Course> courseSet = new HashSet<>();
+    private Set<Topic> topicSet = new HashSet<>();
+    private Set<Student> studentSet = new HashSet<>();
+    private Set<CourseOffering> courseOfferingSet = new HashSet<>();
+    private Set<Lecturer> lecturerSet = new HashSet<>();
+    private Semester semester = new Semester(01, 2017, 01);
+    // private constructor
+    private CourseDirectory(){
+    }
 
+    // lazy instantiation
+    public static CourseDirectory getInstance() {
+        if (instance == null) {
+            instance = new CourseDirectory();
+        }
+        return instance;
+    }
 
-    public static void addCourse(Course course) {
+    void addCourse(Course course) {
         courseSet.add(course);
     }
 
-    public static void addTopic(Topic topic) {
+    void addTopic(Topic topic) {
         topicSet.add(topic);
     }
 
-    public static void addStudent(Student student) {
+    void addStudent(Student student) {
         studentSet.add(student);
     }
 
-    public static void addLecturer(Lecturer lecturer) {
+    void addLecturer(Lecturer lecturer) {
         lecturerSet.add(lecturer);
     }
 
-    public static void addCourseOffering(CourseOffering courseOffering) {
+    void addCourseOffering(CourseOffering courseOffering) {
         courseOfferingSet.add(courseOffering);
     }
 
-    public static Set<Course> getCourseSet() {
+    Set<Course> getCourseSet() {
         return courseSet;
     }
 
-    public static Set<Topic> getTopicSet() {
+    Set<Topic> getTopicSet() {
         return topicSet;
     }
 
-    public static Semester getSemester() { return semester; }
+    public Semester getSemester() { return semester; }
 
-    public static Set<CourseOffering> getCourseOfferingSet() { return courseOfferingSet; }
+    Set<CourseOffering> getCourseOfferingSet() { return courseOfferingSet; }
 
     //Find a topic with a String
-    public static Topic lookUpTopic(String s) {
+    Topic lookUpTopic(String s) {
         Topic topic = null;
         for (Topic t : topicSet) {
             if (s.equals(t.getNameOfTopic())) {
@@ -62,7 +79,7 @@ public class CourseDirectory {
     }
 
     //Find a course with a String
-    public static Course lookupCourse(String s) {
+    Course lookupCourse(String s) {
         Course course = null;
         for (Course c : courseSet) {
             if (s.equals(c.getName())) {
@@ -76,7 +93,7 @@ public class CourseDirectory {
 
     //Find a Student with studentID
     //Probably need to change exception type here
-    public static Student lookupStudent(String s) throws CourseException {
+    public Student lookupStudent(String s) throws CourseException {
         Student student = null;
         for (Student st : studentSet) {
             if (s.equals(st.getStudentID())) {
@@ -89,7 +106,7 @@ public class CourseDirectory {
     }
 
     //Find a CourseOffering with a String
-    public static CourseOffering lookupCourseOffering(String s) throws UnsupportedOperationException {
+    CourseOffering lookupCourseOffering(String s) throws UnsupportedOperationException {
         CourseOffering courseOffering = null;
         for (CourseOffering co : courseOfferingSet) {
             if (s.equals(co.getName())) {
@@ -102,7 +119,7 @@ public class CourseDirectory {
     }
 
     //Find a Lecturer with a String
-    public static Lecturer lookupLecturer(String s) throws UnsupportedOperationException {
+    Lecturer lookupLecturer(String s) throws UnsupportedOperationException {
         Lecturer lecturer = null;
         for (Lecturer l : lecturerSet) {
             if (s.equals(l.getName())) {

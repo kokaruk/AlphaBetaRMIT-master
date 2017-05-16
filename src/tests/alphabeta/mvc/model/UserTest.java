@@ -1,5 +1,7 @@
 package alphabeta.mvc.model;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -18,6 +20,9 @@ import static org.mockito.Mockito.when;
  */
 public class UserTest {
 
+    private static Logger logger = LogManager.getLogger();
+
+    private CourseDirectory courseDirectory = CourseDirectory.getInstance();
     @Mock
     private Degree degreeMock;
     @Mock
@@ -30,7 +35,6 @@ public class UserTest {
         when(degreeMock.getCourses()).thenReturn(coursesMock);
         when(coursesMock.size()).thenReturn(10);
         testUser = new ConcreteUser();
-
     }
 
     @Test
@@ -49,7 +53,7 @@ public class UserTest {
         int count = 0;
 
         while (count < limit) {
-            CourseDirectory.addCourseOffering(mock(CourseOffering.class));
+            courseDirectory.addCourseOffering(mock(CourseOffering.class));
             count++;
         }
 
@@ -61,6 +65,5 @@ public class UserTest {
             super("Foo Bar", "foobar");
         }
     }
-
 
 }

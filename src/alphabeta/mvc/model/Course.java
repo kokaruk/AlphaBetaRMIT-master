@@ -6,24 +6,25 @@ import java.util.List;
  *
  */
 public class Course {
+    private CourseDirectory courseDirectory = CourseDirectory.getInstance();
     public String name;
     public List<Course> prerequisiteList;
     public List<Topic> topics;
 
     public Course(){
-        CourseDirectory.addCourse(this);
+        courseDirectory.addCourse(this);
     }
 
     public Course(String name){
         this.name = name;
-        CourseDirectory.addCourse(this);
+        courseDirectory.addCourse(this);
     }
 
     public Course(String name, List<Course> prerequisiteList, List<Topic> topics) {
         this.name = name;
         this.prerequisiteList = prerequisiteList;
         this.topics = topics;
-        CourseDirectory.addCourse(this);
+        courseDirectory.addCourse(this);
     }
 
     public void addPrerequisite(Course c){
