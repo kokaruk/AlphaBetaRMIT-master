@@ -9,7 +9,7 @@ import java.util.List;
  * Abstract declaration of user class
  * last edit by kristin 14/5/17
  */
-abstract class User {
+public abstract class User {
 
     private CourseDirectory courseDirectory = CourseDirectory.getInstance();
 
@@ -20,7 +20,7 @@ abstract class User {
     private String username;
 
     //constructor
-    User(String name, String username) {
+    public User(String name, String username) {
         this.name = name;
         this.username = username;
     }
@@ -34,8 +34,7 @@ abstract class User {
     }
 
     public Set<CourseOffering> viewCourseOfferings() {
-        Set<CourseOffering> courseOfferings = courseDirectory.getCourseOfferingSet();
-        return courseOfferings;
+        return courseDirectory.getCourseOfferingSet();
     }
 
 }

@@ -1,9 +1,10 @@
 package alphabeta.mvc.model;
 
 
-import systemDAL.CourseOfferingDAO_fake;
-import systemDAL.FactoryDAO;
-import systemDAL.ICourseOfferingDAO;
+import alphabeta.mvc.systemDAL.FactoryDAO;
+import alphabeta.mvc.systemDAL.ICourseOfferingDAO;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -14,8 +15,10 @@ import java.util.Set;
 
 public final class CourseDirectory {
 
+    private static Logger logger = LogManager.getLogger();
+
     // singleton instance
-    private static CourseDirectory instance;
+    private static CourseDirectory instance = new CourseDirectory();
     private ICourseOfferingDAO courseOfferingDAO = FactoryDAO.courseOfferingDAO();
     private Set<Course> courseSet = new HashSet<>();
     private Set<Topic> topicSet = new HashSet<>();
@@ -25,13 +28,9 @@ public final class CourseDirectory {
     private Semester semester = new Semester(01, 2017, 01);
     // private constructor
     private CourseDirectory(){
+        courseOfferingSet.addAll(courseOfferingDAO.getCurrentOfferings(semester));
     }
-
-    // lazy instantiation
     public static CourseDirectory getInstance() {
-        if (instance == null) {
-            instance = new CourseDirectory();
-        }
         return instance;
     }
 

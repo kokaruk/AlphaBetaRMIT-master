@@ -1,13 +1,20 @@
 package alphabeta.mvc.model;
 
-import org.junit.Test;
+import org.junit.*;
 
-import static org.junit.Assert.*;
 
 /**
  * @author dimz
  * @since 8/5/17.
  */
 public class AdminTest {
-    // todo make test
+
+    public static Admin admin;
+
+    @Before
+    public void setUp(){
+        admin = new Admin("Foo Bar", "foo bar");
+    }
+
+
 }

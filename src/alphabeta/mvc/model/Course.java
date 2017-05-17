@@ -24,7 +24,6 @@ public class Course {
         this.name = name;
         this.prerequisiteList = prerequisiteList;
         this.topics = topics;
-        courseDirectory.addCourse(this);
     }
 
     public void addPrerequisite(Course c){

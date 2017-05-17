@@ -1,4 +1,4 @@
-package systemDAL;
+package alphabeta.mvc.systemDAL;
 
 import alphabeta.mvc.model.Course;
 import alphabeta.mvc.model.CourseOffering;

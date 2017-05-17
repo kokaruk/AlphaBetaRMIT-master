@@ -1,4 +1,4 @@
-package systemDAL;
+package alphabeta.mvc.systemDAL;
 
 import alphabeta.mvc.model.*;
 
@@ -11,12 +11,13 @@ import java.util.Set;
  */
 public class CourseOfferingDAO_fake implements ICourseOfferingDAO {
 
-    private Set<CourseOffering> courseOffering = new HashSet<>();
+    private Set<CourseOffering> courseOffering;
 
     // singleton instance
     private static ICourseOfferingDAO instance;
     // private constructor
     private CourseOfferingDAO_fake() {
+        courseOffering = new HashSet<>();
     }
     // lazy instantiation
     public static ICourseOfferingDAO getInstance() {
@@ -29,10 +30,12 @@ public class CourseOfferingDAO_fake implements ICourseOfferingDAO {
     @Override
     public Set<CourseOffering> getCurrentOfferings(Semester currentSemester) {
         Lecturer lecturer = new Lecturer("Foo Bar", "foobar");
-        Course testCourse1 = new Course("Programming 1");
+        return new HashSet<>();
+    /*    Course testCourse1 = new Course("Programming 1");
         CourseOffering testOffering = new CourseOffering(currentSemester, 50, lecturer,testCourse1);
         courseOffering.add(testOffering);
         return courseOffering;
+        */
     }
 
     @Override

@@ -3,6 +3,8 @@ package alphabeta.mvc.model;
 
 import org.junit.*;
 import org.mockito.*;
+
+import java.util.HashSet;
 import java.util.NoSuchElementException;
 import java.util.Set;
 import static org.mockito.Mockito.*;
@@ -20,13 +22,13 @@ public class LecturerTest {
     Enrollment enrollment;
 	@Mock
     CourseOffering courseOffering;
-    Set<Enrollment> enrollmentSet;
+    Set<Enrollment> enrollmentSet = new HashSet<>();
 	Lecturer lecturer;
-	
+
 	@Before
 	public void setUp() {
-        enrollmentSet.add(enrollment);
-		MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.initMocks(this);
+	    enrollmentSet.add(enrollment);
 		lecturer = new Lecturer("Foo Bar", "foobar");
 		when(student.getEnrollment()).thenReturn(enrollmentSet);
 	}

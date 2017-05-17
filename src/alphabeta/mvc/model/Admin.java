@@ -1,7 +1,7 @@
 package alphabeta.mvc.model;
 
-import systemDAL.FactoryDAO;
-import systemDAL.ICourseOfferingDAO;
+import alphabeta.mvc.systemDAL.FactoryDAO;
+import alphabeta.mvc.systemDAL.ICourseOfferingDAO;
 
 /**
  * Last edited by kristin on 14/5/17

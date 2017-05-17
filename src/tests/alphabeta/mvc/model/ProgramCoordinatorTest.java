@@ -9,6 +9,9 @@ import static org.junit.Assert.*;
  * @since 11/5/17.
  */
 public class ProgramCoordinatorTest {
+
+    // todo make tests
+
     @Test
     public void addNewCourse() throws Exception {
     }
