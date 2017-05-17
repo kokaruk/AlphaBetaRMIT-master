@@ -69,6 +69,10 @@ public class demoController {
                     System.out.println("Good bye!");
                     System.exit(0);
                     break;
+                case 10:
+                    System.out.println("Good bye!");
+                    System.exit(0);
+                    break;
                 default:
                     System.out.println("Invalid Option");
             }
