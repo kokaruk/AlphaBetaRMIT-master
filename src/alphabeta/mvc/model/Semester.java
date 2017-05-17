@@ -37,4 +37,23 @@ public class Semester {
     public void setWeek(int week) {
         this.week = week;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Semester)) return false;
+
+        Semester semester = (Semester) o;
+
+        if (getSemesterNumber() != semester.getSemesterNumber()) return false;
+        return (getYear() == semester.getYear());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getSemesterNumber();
+        result = 31 * result + getYear();
+        result = 31 * result + getWeek();
+        return result;
+    }
 }

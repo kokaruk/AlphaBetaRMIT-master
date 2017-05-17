@@ -1,8 +1,5 @@
 package alphabeta.mvc.model;
 
-import alphabeta.mvc.systemDAL.FactoryDAO;
-import alphabeta.mvc.systemDAL.ICourseOfferingDAO;
-
 /**
  * Last edited by kristin on 14/5/17
  */
@@ -21,7 +18,8 @@ public class Admin extends Staff {
             Lecturer lecturer = courseDirectory.lookupLecturer(lecturerString);
             Course course = courseDirectory.lookupCourse(courseString);
             CourseOffering courseOffering = courseDirectory.getCourseOffering(semester, maxStudents, lecturer, course);
-            System.out.println("Course Offering " + courseOffering.getName() + " in semester " + courseOffering.getMySemester().getSemesterNumber()
+            System.out.println("Course Offering " + courseOffering.getName()
+                    + " in semester " + courseOffering.getMySemester().getSemesterNumber()
                     + " " + courseOffering.getMySemester().getYear() + " created.");
         }
         catch (UnsupportedOperationException e) {

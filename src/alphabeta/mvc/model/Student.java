@@ -72,7 +72,7 @@ public final class Student extends User {
             results.append(String.format("%s,%s",
                     item.courseOffering.getName(),
                     // if current semester then in progress
-                    courseDirectory.getSemester() == item.courseOffering.mySemester ? "In Progress"
+                    courseDirectory.getSemester().equals(item.courseOffering.mySemester) ? "In Progress"
                             : item.result.getDescription() + (item.result.equals(Result.f) ? " : Failed" : " : Passed")
                     )
             );
