@@ -19,7 +19,6 @@ public class CourseOfferingDAO_fake implements ICourseOfferingDAO {
     private static ICourseOfferingDAO instance;
     // private constructor
     private CourseOfferingDAO_fake() {
-
     }
     // lazy instantiation
     public static ICourseOfferingDAO getInstance() {

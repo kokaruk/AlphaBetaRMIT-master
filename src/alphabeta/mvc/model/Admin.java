@@ -1,12 +1,17 @@
 package alphabeta.mvc.model;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * Last edited by kristin on 14/5/17
  */
 
 public class Admin extends Staff {
 
-    private CourseDirectory courseDirectory = CourseDirectory.getInstance();
+    private static Logger logger = LogManager.getLogger();
+
+    private CourseDirectory courseDirectory = ModelHelper.getCourseDirectory();
 
     public Admin(String name, String password) {
         super(name, password);
@@ -21,21 +26,20 @@ public class Admin extends Staff {
             System.out.println("Course Offering " + courseOffering.getName()
                     + " in semester " + courseOffering.getMySemester().getSemesterNumber()
                     + " " + courseOffering.getMySemester().getYear() + " created.");
-        }
-        catch (UnsupportedOperationException e) {
-            System.out.println(e.getMessage());
+        } catch (UnsupportedOperationException e) {
+            logger.error(e.getMessage());
         }
     }
 
     public void assignLecturerCourse(String lecturerString, String courseOfferingString) {
-       try {
-           Lecturer lecturer = courseDirectory.lookupLecturer(lecturerString);
-           CourseOffering courseOffering = courseDirectory.lookupCourseOffering(courseOfferingString);
-           courseOffering.setMyLecturer(lecturer);
-       }
-       catch (UnsupportedOperationException e) {
-           System.out.println(e.getMessage());
-       }
+        try {
+            Lecturer lecturer = courseDirectory.lookupLecturer(lecturerString);
+            CourseOffering courseOffering = courseDirectory.lookupCourseOffering(courseOfferingString);
+            courseOffering.setMyLecturer(lecturer);
+            lecturer.addMyCourse(courseOffering.getMyCourse());
+        } catch (UnsupportedOperationException e) {
+            logger.error(e.getMessage());
+        }
     }
 
     public void advanceSystem() {
@@ -45,19 +49,18 @@ public class Admin extends Staff {
         int week = courseDirectory.getSemester().getWeek();
         int semesterNumber = courseDirectory.getSemester().getSemesterNumber();
         //prob need to declare a final for max week in a semester
-        if (week > 11) {
-            if (semesterNumber > 01) {
-                year++;
-                courseDirectory.getSemester().setYear(year);
+        if (week < 12) {
+            courseDirectory.getSemester().setWeek(++week);
+        } else {
+            if (semesterNumber == 1) {
+                courseDirectory.getSemester().setSemesterNumber(++semesterNumber);
+            } else {
+                courseDirectory.getSemester().setYear(++year);
+                // reset semester number
+                courseDirectory.getSemester().setSemesterNumber(1);
             }
-            else {
-                semesterNumber++;
-                courseDirectory.getSemester().setSemesterNumber(semesterNumber);
-            }
-        }
-        else {
-            week++;
-            courseDirectory.getSemester().setWeek(week);
+            // reset week back to 1
+            courseDirectory.getSemester().setWeek(1);
         }
         System.out.println("Semester advanced. It is now week " + courseDirectory.getSemester().getWeek() +
                 " in semester " + courseDirectory.getSemester().getSemesterNumber() + " in " +
@@ -70,8 +73,7 @@ public class Admin extends Staff {
             courseOffering.setMaxStudents(maxStudents);
             System.out.println("Max number of students is: " + courseOffering.getMaxStudents() +
                     " for " + courseOffering.getName());
-        }
-        catch (UnsupportedOperationException e) {
+        } catch (UnsupportedOperationException e) {
             System.out.println(e.getMessage());
         }
     }

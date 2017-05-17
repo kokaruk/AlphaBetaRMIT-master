@@ -1,11 +1,9 @@
 package alphabeta.mvc.model;
 
 
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.*;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Created by Bill Thompson on 9/4/17.
@@ -19,7 +17,7 @@ public class CourseOfferingTest {
     private CourseOffering sef2017;
     private Semester mySemester;
 
-    @Before
+    @BeforeEach
     public void setup(){
         sef2017 = FactoryHelperClass.getCourseOffering();
         mySemester  = new Semester(01,2018,01);

@@ -13,7 +13,7 @@ public class CourseOffering {
     private Lecturer myLecturer;
     private Course myCourse;
 
-    // TODO are we sure that constuctor should add itself to global collection and not the constructor caller?
+    // TODO pointer to semester object. Will change every time system advances which can change name string
     // Construct a Course Offering with specific variables, same as above plus course
     public CourseOffering(Semester mySemester, int maxStudents, Lecturer myLecturer, Course myCourse) {
         this.mySemester = mySemester;

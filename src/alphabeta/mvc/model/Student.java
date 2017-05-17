@@ -3,7 +3,6 @@ package alphabeta.mvc.model;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -15,7 +14,7 @@ import java.util.stream.Collectors;
  */
 public final class Student extends User {
     private static Logger logger = LogManager.getLogger();
-    private CourseDirectory courseDirectory = CourseDirectory.getInstance();
+    private CourseDirectory courseDirectory = ModelHelper.getCourseDirectory();
     // list of currently and previously enrolled subjects
     private Set<Enrollment> enrollment = new HashSet<>();
     // list of mandatory pre-requisites waivers

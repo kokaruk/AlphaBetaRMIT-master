@@ -7,7 +7,7 @@ package alphabeta.mvc.model;
  * Topic Class
  */
 public class Topic {
-    private CourseDirectory courseDirectory = CourseDirectory.getInstance();
+    private CourseDirectory courseDirectory = ModelHelper.getCourseDirectory();
 
     // Define and initialize the class variables
     private String myName;

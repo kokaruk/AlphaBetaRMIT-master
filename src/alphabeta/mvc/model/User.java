@@ -11,7 +11,7 @@ import java.util.List;
  */
 public abstract class User {
 
-    private CourseDirectory courseDirectory = CourseDirectory.getInstance();
+    private CourseDirectory courseDirectory = ModelHelper.getCourseDirectory();
 
     // readonly properties
     // name

@@ -1,6 +1,7 @@
 package alphabeta.mvc.model;
 
 
+import java.util.HashSet;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
@@ -10,15 +11,21 @@ public class Lecturer extends Staff {
         super(name, username);
     }
 
-    Set<Course> myCourse;
+    Set<Course> myCourses = new HashSet<>();
 
-    public boolean upLoadResults(Student student, Result result) throws NoSuchElementException, ItemExistsException{
-        boolean uploaded;
-        // TODO - implement alphabeta.mvc.model.Lecturer.upLoadResults
-        //throw new UnsupportedOperationException();
-        //if student not enrolled in course throw new NoSuchElementException()
-        //if student already has a result saved for the course, throw ItemExistsException();
-        return false;
+    void addMyCourse(Course myCourse) {
+        myCourses.add(myCourse);
+    }
+
+    void upLoadResults(Student student, Result result, Course course) throws NoSuchElementException {
+        if (!myCourses.contains(course)) throw new NoSuchElementException();
+
+        Enrollment enrollment = student.getEnrollment()
+                .stream()
+                .filter( (enr) -> enr.getCourseOffering().getMyCourse().equals(course))
+                .findAny()
+                .orElseThrow(NoSuchElementException::new);
+        enrollment.setResult(result);
     }
 
 

@@ -1,14 +1,20 @@
 package alphabeta.mvc.model;
 
 
-import org.junit.*;
-import org.mockito.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
-import java.util.HashSet;
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Set;
-import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.when;
 
 /**
  * @author komal
@@ -16,47 +22,50 @@ import static org.junit.Assert.*;
  */
 public class LecturerTest {
 
-	@Mock
-	Student student;
-	@Mock
-    Enrollment enrollment;
-	@Mock
-    CourseOffering courseOffering;
-    Set<Enrollment> enrollmentSet = new HashSet<>();
-	Lecturer lecturer;
+    private static Logger logger = LogManager.getLogger();
 
-	@Before
+	@Mock private Student student;
+	@Mock private Enrollment enrollment;
+	@Mock private CourseOffering offering;
+	@Mock private Course course;
+    @Mock private Set<Enrollment> enrollmentSet;
+    @Mock private Iterator<Enrollment> enrollmentIterator;
+	private Lecturer lecturer;
+
+	@BeforeEach
 	public void setUp() {
         MockitoAnnotations.initMocks(this);
-	    enrollmentSet.add(enrollment);
+        when(student.getEnrollment()).thenReturn(enrollmentSet);
+        when(enrollmentIterator.hasNext()).thenReturn(true, false);
+        when(enrollmentIterator.next()).thenReturn(enrollment);
+        when(enrollmentSet.iterator()).thenReturn(enrollmentIterator);
+        when(enrollment.getCourseOffering()).thenReturn(offering);
+        when(offering.getMyCourse()).thenReturn(course);
+        when(course.getName()).thenReturn("blah");
 		lecturer = new Lecturer("Foo Bar", "foobar");
-		when(student.getEnrollment()).thenReturn(enrollmentSet);
+
 	}
 
 	@Test
 	public void testUploadResults_case1() {
-	    lecturer.upLoadResults(student, Result.hd);
+	    lecturer.addMyCourse(course);
+
+        CourseOffering testCO;
+        Course myCourse;
+        Set<Enrollment> setTest = student.getEnrollment();
+        for( Enrollment enrollmentItem : setTest ){
+            myCourse = enrollmentItem.getCourseOffering().getMyCourse();
+            logger.trace(myCourse.equals(course));
+        }
+
+        lecturer.upLoadResults(student, Result.hd, course);
 
 	    assertEquals(Result.hd, student.getEnrollment().iterator().next().result );
 	}
 
-	@Test(expected = NoSuchElementException.class)
+	@Test
     public void testUploadResults_case2_throwsNoSuchElementException() {
-        try {
-            lecturer.upLoadResults(student, Result.hd);
-        } catch (Exception e) {
-            throw e;
-        }
-    }
-
-    @Test(expected = ItemExistsException.class)
-    public void testUploadResults_case4_ThrowsItemExistsException() throws ItemExistsException{
-        try {
-            lecturer.upLoadResults(student, Result.hd);
-        } catch (Exception e) {
-            throw e;
-        }
-
+        assertThrows(NoSuchElementException.class, () -> lecturer.upLoadResults(student, Result.hd, course));
     }
 
 }

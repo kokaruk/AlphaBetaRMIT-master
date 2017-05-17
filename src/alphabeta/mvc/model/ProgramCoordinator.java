@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class ProgramCoordinator extends Staff {
 
-    private CourseDirectory courseDirectory = CourseDirectory.getInstance();
+    private CourseDirectory courseDirectory = ModelHelper.getCourseDirectory();
 
     public ProgramCoordinator(String name, String password) {
         super(name, password);

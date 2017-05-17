@@ -6,7 +6,7 @@ import java.util.List;
  *
  */
 public class Course {
-    private CourseDirectory courseDirectory = CourseDirectory.getInstance();
+    private CourseDirectory courseDirectory = ModelHelper.getCourseDirectory();
     public String name;
     public List<Course> prerequisiteList;
     public List<Topic> topics;

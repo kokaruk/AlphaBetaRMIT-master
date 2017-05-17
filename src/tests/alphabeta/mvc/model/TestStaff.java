@@ -1,25 +1,25 @@
 package alphabeta.mvc.model;
 
-import org.junit.*;
+import org.junit.jupiter.api.*;
 import org.mockito.*;
 
 import java.util.*;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 
 public class TestStaff {
 
-    StuffConcrete stuffTest;
-    Set<String> testList;
-    @Mock Student student;
-    @Mock Enrollment enrollment;
-    @Mock Set<Enrollment> enrollmentSet;
-    @Mock Iterator<Enrollment> enrollmentIterator;
-    @Mock CourseOffering offering;
+    private StuffConcrete stuffTest;
+    private Set<String> testList;
+    @Mock private Student student;
+    @Mock private Enrollment enrollment;
+    @Mock private Set<Enrollment> enrollmentSet;
+    @Mock private Iterator<Enrollment> enrollmentIterator;
+    @Mock private CourseOffering offering;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         stuffTest = new StuffConcrete();
         testList = new HashSet<>();

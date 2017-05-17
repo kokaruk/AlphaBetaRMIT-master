@@ -1,15 +1,15 @@
 package alphabeta.mvc.model;
 
-import org.junit.*;
+import org.junit.jupiter.api.*;
 import org.mockito.*;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 /**
  * Created by dimz on 7/4/17.
@@ -28,7 +28,7 @@ public class StudentTest {
     CourseOffering offering1;
     CourseOffering offering2;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         myStudent = FactoryHelperClass.getStudent();
@@ -41,13 +41,9 @@ public class StudentTest {
         offering2.mySemester = semester2;
     }
 
-    @Test(expected=IllegalArgumentException.class)
+    @Test
     public void viewMyResults_NotEnrolledInAnyCourses_IllegalArgumentException() {
-        try {
-           String results = myStudent.viewMyResults();
-        } catch (Exception e) {
-            throw e;
-        }
+        assertThrows(IllegalArgumentException.class, () -> myStudent.viewMyResults());
     }
 
     @Test
@@ -65,25 +61,17 @@ public class StudentTest {
         assertTrue(myStudent.viewMyResults().getClass().equals(String.class));
     }
 
-    @Test(expected=IndexOutOfBoundsException.class)
+    @Test
     public void enrol_reachedMaximumLoading_ThrowsIndexOutOfBoundsException() throws PrerequisitesNotMetException {
         Student myStudent = FactoryHelperClass.getStudent();
         myStudent.setMaxCurrentCourseLoad(0);
-        try {
 
-            myStudent.enrol(enrollmentMock2);
-        } catch (Exception e) {
-            throw e;
-        }
+        assertThrows(IndexOutOfBoundsException.class, () -> myStudent.enrol(enrollmentMock2));
     }
 
-    @Test(expected = PrerequisitesNotMetException.class)
+    @Test
     public void enrol_OfferingHasRequiredPrerequisiteWithoutWaiver_ThrowsPrerequisitesNotMetException() throws PrerequisitesNotMetException {
-        try {
-            myStudent.enrol(FactoryHelperClass.getEnrollmentWithPrerequisite());
-        } catch (Exception e) {
-            throw e;
-        }
+        assertThrows(PrerequisitesNotMetException.class, () -> myStudent.enrol(FactoryHelperClass.getEnrollmentWithPrerequisite()));
     }
 
     @Test
@@ -97,7 +85,7 @@ public class StudentTest {
         assertTrue(myStudent.getEnrollment().size() == 1);
     }
 
-    @Test(expected = PrerequisitesNotMetException.class)
+    @Test
     public void enrol_enrolInOfferingWithFailedPreRequisite_ThrowsPrerequisitesNotMetException() throws PrerequisitesNotMetException{
         // set max load to 2
         myStudent.setMaxCurrentCourseLoad(2);
@@ -107,7 +95,7 @@ public class StudentTest {
 
         // set mark for enrollment
         basicEnrollment.result = Result.f;
-        myStudent.enrol(FactoryHelperClass.getEnrollmentWithPrerequisite());
+        assertThrows(PrerequisitesNotMetException.class, () -> myStudent.enrol(FactoryHelperClass.getEnrollmentWithPrerequisite()));
     }
 
     @Test

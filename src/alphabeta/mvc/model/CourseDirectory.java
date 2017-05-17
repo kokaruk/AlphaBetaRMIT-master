@@ -44,6 +44,10 @@ public final class CourseDirectory {
         studentSet.add(student);
     }
 
+    public Set<Student> getStudentSet() {
+        return studentSet;
+    }
+
     void addLecturer(Lecturer lecturer) {
         lecturerSet.add(lecturer);
     }
