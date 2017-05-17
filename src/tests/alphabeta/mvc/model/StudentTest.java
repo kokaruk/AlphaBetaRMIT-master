@@ -8,6 +8,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by dimz on 7/4/17.
@@ -15,18 +17,13 @@ import static org.junit.Assert.*;
  */
 public class StudentTest {
 
-    @Mock
-    Degree myDegreeMock;
-    @Mock
-    Enrollment enrollmentMock1;
-    @Mock
-    Enrollment enrollmentMock2;
-    @Mock
-    Semester semester1;
-    @Mock
-    Semester semester2;
-    @InjectMocks
-    Student myStudent;
+
+    CourseDirectory courseDirectory = CourseDirectory.getInstance();
+    @Mock Enrollment enrollmentMock1;
+    @Mock Enrollment enrollmentMock2;
+    @Mock Semester semester1;
+    @Mock Semester semester2;
+    @InjectMocks Student myStudent;
 
     CourseOffering offering1;
     CourseOffering offering2;
@@ -37,13 +34,11 @@ public class StudentTest {
         myStudent = FactoryHelperClass.getStudent();
         offering1 = FactoryHelperClass.getCourseOffering();
         offering1.name = "Offering 1";
-        offering1.mySemester = semester1;
+        offering1.mySemester = courseDirectory.getSemester();
 
         offering2 = FactoryHelperClass.getCourseOffering();
         offering2.name = "Offering 2";
         offering2.mySemester = semester2;
-        myDegreeMock.currentSemester = semester1;
-        myStudent.setDegree(myDegreeMock);
     }
 
     @Test(expected=IllegalArgumentException.class)
@@ -66,7 +61,6 @@ public class StudentTest {
         course.add(enrollmentMock1);
         course.add(enrollmentMock2);
         myStudent.setEnrollment(course);
-        String results = myStudent.viewMyResults();
 
         assertTrue(myStudent.viewMyResults().getClass().equals(String.class));
     }

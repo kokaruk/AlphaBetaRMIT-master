@@ -11,7 +11,7 @@ import java.util.Set;
 class Degree {
 
     String degreeName;
-    Set<CourseOffering> courses;
+/*    Set<CourseOffering> courses;
     int maxLoad;
     Semester currentSemester;
 
@@ -46,4 +46,6 @@ class Degree {
     public void setCurrentSemester(Semester currentSemester) {
         this.currentSemester = currentSemester;
     }
+
+    */
 }

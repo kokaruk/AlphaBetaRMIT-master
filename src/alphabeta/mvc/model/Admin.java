@@ -9,7 +9,6 @@ import alphabeta.mvc.systemDAL.ICourseOfferingDAO;
 
 public class Admin extends Staff {
 
-    private ICourseOfferingDAO courseOfferingDAO = FactoryDAO.courseOfferingDAO();
     private CourseDirectory courseDirectory = CourseDirectory.getInstance();
 
     public Admin(String name, String password) {
@@ -21,7 +20,7 @@ public class Admin extends Staff {
         try {
             Lecturer lecturer = courseDirectory.lookupLecturer(lecturerString);
             Course course = courseDirectory.lookupCourse(courseString);
-            CourseOffering courseOffering = courseOfferingDAO.getNewCourseOffering(semester, maxStudents, lecturer, course);
+            CourseOffering courseOffering = courseDirectory.getCourseOffering(semester, maxStudents, lecturer, course);
             System.out.println("Course Offering " + courseOffering.getName() + " in semester " + courseOffering.getMySemester().getSemesterNumber()
                     + " " + courseOffering.getMySemester().getYear() + " created.");
         }

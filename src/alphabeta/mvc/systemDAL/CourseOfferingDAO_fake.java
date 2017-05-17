@@ -3,6 +3,7 @@ package alphabeta.mvc.systemDAL;
 import alphabeta.mvc.model.*;
 
 import java.util.HashSet;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 /**
@@ -11,13 +12,14 @@ import java.util.Set;
  */
 public class CourseOfferingDAO_fake implements ICourseOfferingDAO {
 
-    private Set<CourseOffering> courseOffering;
+    private Set<CourseOffering> courseOfferingSet = new HashSet<>();
+
 
     // singleton instance
     private static ICourseOfferingDAO instance;
     // private constructor
     private CourseOfferingDAO_fake() {
-        courseOffering = new HashSet<>();
+
     }
     // lazy instantiation
     public static ICourseOfferingDAO getInstance() {
@@ -39,9 +41,18 @@ public class CourseOfferingDAO_fake implements ICourseOfferingDAO {
     }
 
     @Override
-    public CourseOffering getNewCourseOffering(Semester semester, int maxStudents, Lecturer lecturer, Course course) {
+    public CourseOffering getCourseOffering(Semester semester, int maxStudents, Lecturer lecturer, Course course) {
         CourseOffering offering = new CourseOffering(semester, maxStudents, lecturer, course);
         offering.setMyLecturer(lecturer);
+        courseOfferingSet.add(offering);
         return offering;
+    }
+
+    @Override
+    public CourseOffering lookupCourseOffering(String name) throws NoSuchElementException {
+        return courseOfferingSet.stream()
+                .filter(co -> co.getName().contains(name))
+                .findAny()
+                .orElseThrow(NoSuchElementException::new);
     }
 }

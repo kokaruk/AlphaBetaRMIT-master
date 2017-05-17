@@ -5,6 +5,7 @@ import alphabeta.mvc.model.CourseOffering;
 import alphabeta.mvc.model.Lecturer;
 import alphabeta.mvc.model.Semester;
 
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 /**
@@ -13,6 +14,7 @@ import java.util.Set;
  */
 public interface ICourseOfferingDAO {
     Set<CourseOffering> getCurrentOfferings(Semester currentSemester);
-    CourseOffering getNewCourseOffering(Semester semester, int maxStudents, Lecturer lecturer,  Course course);
+    CourseOffering getCourseOffering(Semester semester, int maxStudents, Lecturer lecturer,  Course course);
+    CourseOffering lookupCourseOffering(String name) throws NoSuchElementException;
 
 }

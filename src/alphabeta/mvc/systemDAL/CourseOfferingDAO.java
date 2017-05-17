@@ -5,6 +5,7 @@ import alphabeta.mvc.model.CourseOffering;
 import alphabeta.mvc.model.Lecturer;
 import alphabeta.mvc.model.Semester;
 
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 /**
@@ -32,7 +33,12 @@ public class CourseOfferingDAO implements ICourseOfferingDAO {
     }
 
     @Override
-    public CourseOffering getNewCourseOffering(Semester semester, int maxStudents, Lecturer lecturer, Course course) {
+    public CourseOffering getCourseOffering(Semester semester, int maxStudents, Lecturer lecturer, Course course) {
+        return null;
+    }
+
+    @Override
+    public CourseOffering lookupCourseOffering(String name) throws NoSuchElementException {
         return null;
     }
 }

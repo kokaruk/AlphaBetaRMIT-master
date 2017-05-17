@@ -16,8 +16,6 @@ import java.util.stream.Collectors;
 public final class Student extends User {
     private static Logger logger = LogManager.getLogger();
     private CourseDirectory courseDirectory = CourseDirectory.getInstance();
-    // degree. OK to be null. Student can exist without enrollment
-    private Degree degree;
     // list of currently and previously enrolled subjects
     private Set<Enrollment> enrollment = new HashSet<>();
     // list of mandatory pre-requisites waivers
@@ -34,17 +32,8 @@ public final class Student extends User {
         super(name, username);
         this.studentID = String.format("S%03d", ++studentIDcounter);
         //add Student to list of students in Directory
-        courseDirectory.addStudent(this);
     }
 
-
-    public Degree getDegree() {
-        return degree;
-    }
-
-    public void setDegree(Degree degree) {
-        this.degree = degree;
-    }
 
     Set<Enrollment> getEnrollment() {
         return enrollment;
@@ -83,7 +72,7 @@ public final class Student extends User {
             results.append(String.format("%s,%s",
                     item.courseOffering.getName(),
                     // if current semester then in progress
-                    degree.currentSemester == item.courseOffering.mySemester ? "In Progress"
+                    courseDirectory.getSemester() == item.courseOffering.mySemester ? "In Progress"
                             : item.result.getDescription() + (item.result.equals(Result.f) ? " : Failed" : " : Passed")
                     )
             );

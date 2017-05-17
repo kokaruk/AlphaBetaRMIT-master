@@ -7,6 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.HashSet;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 /**
@@ -23,13 +24,10 @@ public final class CourseDirectory {
     private Set<Course> courseSet = new HashSet<>();
     private Set<Topic> topicSet = new HashSet<>();
     private Set<Student> studentSet = new HashSet<>();
-    private Set<CourseOffering> courseOfferingSet = new HashSet<>();
     private Set<Lecturer> lecturerSet = new HashSet<>();
     private Semester semester = new Semester(01, 2017, 01);
     // private constructor
-    private CourseDirectory(){
-        courseOfferingSet.addAll(courseOfferingDAO.getCurrentOfferings(semester));
-    }
+    private CourseDirectory(){}
     public static CourseDirectory getInstance() {
         return instance;
     }
@@ -50,8 +48,8 @@ public final class CourseDirectory {
         lecturerSet.add(lecturer);
     }
 
-    void addCourseOffering(CourseOffering courseOffering) {
-        courseOfferingSet.add(courseOffering);
+    CourseOffering getCourseOffering(Semester semester, int maxStudents, Lecturer lecturer, Course course) {
+        return courseOfferingDAO.getCourseOffering(semester, maxStudents, lecturer, course);
     }
 
     Set<Course> getCourseSet() {
@@ -64,7 +62,7 @@ public final class CourseDirectory {
 
     public Semester getSemester() { return semester; }
 
-    Set<CourseOffering> getCourseOfferingSet() { return courseOfferingSet; }
+    Set<CourseOffering> getCourseOfferingSet() { return courseOfferingDAO.getCurrentOfferings(semester); }
 
     //Find a topic with a String
     Topic lookUpTopic(String s) {
@@ -105,16 +103,8 @@ public final class CourseDirectory {
     }
 
     //Find a CourseOffering with a String
-    CourseOffering lookupCourseOffering(String s) throws UnsupportedOperationException {
-        CourseOffering courseOffering = null;
-        for (CourseOffering co : courseOfferingSet) {
-            if (s.equals(co.getName())) {
-                courseOffering = co;
-            }
-        }
-        if (courseOffering == null)
-            throw new UnsupportedOperationException("Course Offering could not be found. Please try again");
-        return courseOffering;
+    CourseOffering lookupCourseOffering(String name) throws NoSuchElementException {
+        return courseOfferingDAO.lookupCourseOffering(name);
     }
 
     //Find a Lecturer with a String

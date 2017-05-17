@@ -23,17 +23,13 @@ public class UserTest {
     private static Logger logger = LogManager.getLogger();
 
     private CourseDirectory courseDirectory = CourseDirectory.getInstance();
-    @Mock
-    private Degree degreeMock;
-    @Mock
-    private Set<CourseOffering> coursesMock;
+    @Mock Semester semester;
+
     private ConcreteUser testUser;
 
     @Before
     public void setup(){
         MockitoAnnotations.initMocks(this);
-        when(degreeMock.getCourses()).thenReturn(coursesMock);
-        when(coursesMock.size()).thenReturn(10);
         testUser = new ConcreteUser();
     }
 
@@ -49,15 +45,17 @@ public class UserTest {
 
     @Test
     public void viewCourseOfferings_sizeOfPassedMockEqualsToReturnedValueSize() {
+        Integer maxStudents = 50;
+
         int limit = 10;
         int count = 0;
 
         while (count < limit) {
-            courseDirectory.addCourseOffering(mock(CourseOffering.class));
+            courseDirectory.getCourseOffering(semester, maxStudents, mock(Lecturer.class), mock(Course.class));
             count++;
         }
 
-        assertEquals(degreeMock.getCourses().size(), testUser.viewCourseOfferings().size() );
+        assertEquals(courseDirectory.getCourseOfferingSet().size(), testUser.viewCourseOfferings().size() );
     }
 
     private class ConcreteUser extends User{
