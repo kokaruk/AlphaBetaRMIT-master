@@ -57,7 +57,7 @@ public final class ABConfigRead {
      * @return string of property value
      * @throws IOException if passed URI doesn't exist
      */
-    public String getConfigString(String myPropertyName, String myPropFile) throws IOException {
+    String getConfigString(String myPropertyName, String myPropFile) throws IOException {
         Properties myProp = new Properties();
 
         String myPropertyString;
@@ -72,5 +72,16 @@ public final class ABConfigRead {
         }
         return myPropertyString;
     }
+
+    Properties getProperties(String myPropFile) throws IOException {
+        Properties myProp = new Properties();
+
+        try (InputStream in = getClass().getResourceAsStream(myPropFile) ){
+            myProp.load(in);
+        }
+        return myProp;
+    }
+
+
 
 }

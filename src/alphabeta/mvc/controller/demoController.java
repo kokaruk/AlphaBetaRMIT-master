@@ -2,8 +2,12 @@ package alphabeta.mvc.controller;
 
 import alphabeta.mvc.model.*;
 import alphabeta.mvc.view.demoView;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import java.util.*;
+import java.sql.SQLException;
+import java.util.Scanner;
+import java.util.Set;
 
 
 /**
@@ -11,9 +15,7 @@ import java.util.*;
  * Last edited by kristin on 14/5/17
  */
 public class demoController {
-
-    // todo extract hardcoded classes to datalayer
-
+    private static Logger logger = LogManager.getLogger();
     private static Scanner input = new Scanner(System.in);
     private static demoView view = new demoView();
     //just inventing a coordinator for now
@@ -78,14 +80,18 @@ public class demoController {
             }
         }
         while (option != 0);
-
-    }
+   }
 
     public void createStudent() {
         //Creates a new Student object for the purposes of demonstration
         //needs an edit so that username is unique!
-        Student student =  courseDirectory.getNewStudent(view.getStudentName(), "DemoUsername");
-        System.out.println("New student created: " + student.getName() + ", student ID: " + student.getId());
+        try {
+            Student student = courseDirectory.getNewStudent(view.getStudentName(), "DemoUsername");
+            System.out.println("New student created: " + student.getName() + ", student ID: " + student.getId());
+        } catch (SQLException e) {
+            logger.error("Database Connection Error");
+        }
+
     }
 
     /**
@@ -183,8 +189,8 @@ public class demoController {
             System.out.println("Student: " + st.getName());
             results.forEach(System.out::println);
         }
-        catch (CourseException e) {
-            System.out.println(e.getMessage());
+        catch (SQLException | NumberFormatException e) {
+            logger.debug(e.getMessage());
         }
     }
 

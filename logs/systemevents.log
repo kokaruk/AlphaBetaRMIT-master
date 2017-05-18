@@ -1,0 +1,19 @@
+[ERROR] 2017-05-19 03:05:49.979 [main] postgreConnection - ERROR: duplicate key value violates unique constraint "table_name_username_uindex"
+  Detail: Key (username)=(sticks) already exists.
+[ERROR] 2017-05-19 03:05:50.168 [main] StudentDAO - can't write new student to database. Will throw
+[WARN ] 2017-05-19 03:05:50.168 [main] IntegrationTestRunner - Cannot commit when autoCommit is enabled.
+[WARN ] 2017-05-19 03:35:32.580 [main] IntegrationTestRunner - This ResultSet is closed.
+[ERROR] 2017-05-19 03:55:34.636 [main] postgreConnection - ERROR: duplicate key value violates unique constraint "table_name_username_uindex"
+  Detail: Key (username)=(lorenebates) already exists.
+[ERROR] 2017-05-19 03:55:34.824 [main] StudentDAO - can't write new student to database. Will throw
+[WARN ] 2017-05-19 03:55:34.824 [main] IntegrationTestRunner - Cannot commit when autoCommit is enabled.
+[ERROR] 2017-05-19 04:27:06.674 [main] postgreConnection - ERROR: relation "system_user_view" does not exist
+  Position: 15
+[ERROR] 2017-05-19 04:30:40.978 [main] postgreConnection - ERROR: column "id" does not exist
+  Position: 38
+[ERROR] 2017-05-19 04:31:40.795 [main] postgreConnection - ERROR: column "id" does not exist
+  Position: 38
+[ERROR] 2017-05-19 04:45:06.225 [main] postgreConnection - ERROR: relation "system_uses" does not exist
+  Position: 15
+[ERROR] 2017-05-19 04:45:45.630 [main] postgreConnection - ERROR: relation "system_uses" does not exist
+  Position: 15

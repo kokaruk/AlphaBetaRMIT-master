@@ -4,6 +4,9 @@ package alphabeta.mvc.model;
 import org.junit.jupiter.api.*;
 import org.mockito.ArgumentCaptor;
 import org.mockito.*;
+
+import java.sql.SQLException;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -24,7 +27,7 @@ class ProgramCoordinatorTest {
     ArgumentCaptor<Course> courseArgumentCaptor;
 
     @BeforeEach
-    void setup() throws CourseException {
+    void setup() throws CourseException, SQLException {
         MockitoAnnotations.initMocks(this);
         courseArgumentCaptor = ArgumentCaptor.forClass(Course.class);
         when(courseDirectoryMock.lookupStudentByID(fakeStudentID)).thenReturn(studentMock);

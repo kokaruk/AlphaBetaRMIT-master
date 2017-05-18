@@ -53,7 +53,7 @@ public class CourseOfferingDAO_fake implements ICourseOfferingDAO {
     private void makeTestOffering(){
         Lecturer lecturer = lecturerDAO.getNewLecturer("Foo Bar", "foobar");
         Course testCourse1 = new Course("Programming 1");
-        CourseOffering testOffering = new CourseOffering(semesterDAO.getCurrentSemester(), 50, lecturer,testCourse1);
+        CourseOffering testOffering = new CourseOffering(semesterDAO.getCurrentSemester(), 50, lecturer, testCourse1);
         courseOfferingSet.add(testOffering);
     }
 }

@@ -1,5 +1,6 @@
 package alphabeta.mvc.model;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -75,7 +76,7 @@ public class ProgramCoordinator extends Staff {
                 System.out.println(e.getMessage());
             }
         }
-        catch (CourseException e) {
+        catch (CourseException | SQLException | NumberFormatException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -89,7 +90,7 @@ public class ProgramCoordinator extends Staff {
             System.out.println("Course load for " + s.getName() + " (student ID: " + s.getId() + ") is "
                     + s.getMaxCurrentCourseLoad());
         }
-        catch (CourseException e) {
+        catch (CourseException | SQLException | NumberFormatException e) {
             System.out.println(e.getMessage());
         }
     }

@@ -5,6 +5,7 @@ import alphabeta.mvc.systemDAL.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.sql.SQLException;
 import java.util.*;
 
 /**
@@ -63,11 +64,11 @@ public final class CourseDirectory {
         topicDAO.addTopic(topic);
     }
 
-    public Set getStudentSet() {
+    public Set getStudentSet() throws SQLException {
         return studentDAO.getStudentSet();
     }
 
-    public Student getNewStudent(String name, String username) {
+    public Student getNewStudent(String name, String username) throws SQLException {
         return studentDAO.getNewStudent(name, username);
     }
 
@@ -114,9 +115,12 @@ public final class CourseDirectory {
     }
 
     //Find a Student with studentID
-    //Probably need to change exception type here
-    public Student lookupStudentByID(String s) throws CourseException {
+    public Student lookupStudentByID(String s) throws SQLException, NumberFormatException {
         return studentDAO.lookupStudentByID(s);
+    }
+
+    public Student lookupStudentByName(String s) throws SQLException, NumberFormatException {
+        return studentDAO.lookupStudentByName(s);
     }
 
     //Find a CourseOffering with a String

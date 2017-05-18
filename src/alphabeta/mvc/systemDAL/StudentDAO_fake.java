@@ -3,6 +3,7 @@ package alphabeta.mvc.systemDAL;
 import alphabeta.mvc.model.CourseException;
 import alphabeta.mvc.model.Student;
 
+import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,18 +26,19 @@ public class StudentDAO_fake implements IStudentDAO {
         return instance;
     }
     @Override
-    public Set<Student> getStudentSet() {
+    public Set<Student> getStudentSet()throws SQLException {
         return userSet;
     }
+
     @Override
-    public Student getNewStudent(String name, String username) {
+    public Student getNewStudent(String name, String username) throws SQLException {
         Student student = new Student(name, username, 123);
         userSet.add(student);
         return student;
     }
 
     @Override
-    public Student lookupStudentByID(String s) throws CourseException {
+    public Student lookupStudentByID(String s) throws SQLException, NumberFormatException {
         return userSet.stream()
                 .filter(usr -> usr.getId().equals(s))
                 .findAny()
@@ -45,7 +47,7 @@ public class StudentDAO_fake implements IStudentDAO {
 
 
     @Override //Find a Student with a String
-    public Student lookupStudentByName(String s) throws CourseException {
+    public Student lookupStudentByName(String s) throws SQLException {
         return userSet.stream()
                 .filter(usr -> usr.getName().equals(s))
                 .findAny()

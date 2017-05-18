@@ -11,8 +11,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 
@@ -59,6 +58,11 @@ public class StudentTest {
     void terDown(){
         //nullify injected seam
         ModelHelper.setCDMock(null);
+    }
+
+    @Test
+    void getIdString_builder(){
+        assertEquals("ST123",myStudent.getId());
     }
 
     @Test

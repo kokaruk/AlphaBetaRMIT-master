@@ -1,8 +1,8 @@
 package alphabeta.mvc.systemDAL;
 
-import alphabeta.mvc.model.CourseException;
 import alphabeta.mvc.model.Student;
 
+import java.sql.SQLException;
 import java.util.Set;
 
 /**
@@ -10,8 +10,8 @@ import java.util.Set;
  * @since 18/5/17.
  */
 public interface IStudentDAO {
-    Set<Student> getStudentSet();
-    Student getNewStudent(String name, String username);
-    Student lookupStudentByID(String s) throws CourseException;
-    Student lookupStudentByName(String s) throws CourseException;
+    Set<Student> getStudentSet() throws SQLException;
+    Student getNewStudent(String name, String username) throws SQLException;
+    Student lookupStudentByID(String s) throws SQLException, NumberFormatException ;
+    Student lookupStudentByName(String s) throws SQLException ;
 }

@@ -9,7 +9,7 @@ import java.util.Set;
  */
 public abstract class User {
 
-    private Integer ID;
+    private int ID;
     private CourseDirectory courseDirectory = ModelHelper.getCourseDirectory();
 
     // readonly properties
@@ -24,11 +24,12 @@ public abstract class User {
         this.username = username;
         this.ID = ID;
     }
-
+    // database connection working
+   // ID = String.format("%sS%04d", idNum);
 
     public String getId(){
-        String.format("%s%03d", this.getClass().getName().charAt(0), ID);
-        return ID.toString();
+
+        return String.format("%s%04d", this.getClass().getSimpleName().substring(0,2).toUpperCase(), ID);
     }
 
     public String getName() {
