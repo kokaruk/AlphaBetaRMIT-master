@@ -99,7 +99,7 @@ public final class CourseDirectory {
     }
 
 
-    Set<CourseOffering> getCourseOfferingSet() {
+    public Set<CourseOffering> getCourseOfferingSet() {
         return courseOfferingDAO.getCurrentOfferings(semester);
     }
 
