@@ -3,9 +3,7 @@ package alphabeta.mvc.model;
 
 import org.junit.jupiter.api.*;
 import org.mockito.ArgumentCaptor;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-
+import org.mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -13,15 +11,15 @@ import static org.mockito.Mockito.*;
  * @author dimz
  * @since 11/5/17.
  */
-public class ProgramCoordinatorTest {
+class ProgramCoordinatorTest {
 
     private ProgramCoordinator programCoordinator;
     private String fakeStudentID = "232323";
     private String fakeWaiverString = "fake waiver";
 
     @Mock private CourseDirectory courseDirectoryMock;
-    @Mock Student studentMock;
-    @Mock Course courseMock;
+    @Mock private Student studentMock;
+    @Mock private Course courseMock;
 
     ArgumentCaptor<Course> courseArgumentCaptor;
 
@@ -46,12 +44,20 @@ public class ProgramCoordinatorTest {
 
     @Disabled
     @Test
-    public void addNewCourse() {
+    @DisplayName("addNewCourse. Ignoring test due to planned refactoring of method")
+    void addNewCourse() {
         assertFalse(true);
     }
 
     @Test
-    public void grantWaivers() throws Exception {
+    @DisplayName("addNewCourse int Week = 9 throws CourseException")
+    void addNewCourse_Week9_throwsCourseException() throws CourseException {
+        assertThrows(CourseException.class, () ->  programCoordinator.addNewCourse(null,null,null,9));
+    }
+
+
+    @Test
+    void grantWaivers() throws Exception {
         programCoordinator.grantWaivers(fakeStudentID, fakeWaiverString);
 
         verify(studentMock).setWaivers(courseArgumentCaptor.capture());
@@ -59,7 +65,7 @@ public class ProgramCoordinatorTest {
     }
 
     @Test
-    public void increaseLoad()  {
+    void increaseLoad()  {
         programCoordinator.increaseLoad(fakeStudentID, 10);
         doNothing().when(studentMock).setMaxCurrentCourseLoad(10);
         verify(studentMock, atLeastOnce()).setMaxCurrentCourseLoad(10);
