@@ -33,6 +33,8 @@ class AdminTest {
     @BeforeEach
     void setUp(){
         MockitoAnnotations.initMocks(this);
+
+
         when(courseDirectoryMock.lookupLecturer(lecturerName)).thenReturn(lecturer);
         when(courseDirectoryMock.lookupCourse(courseName)).thenReturn(course);
         when(courseDirectoryMock.getCourseOffering(semester, maxStudents, lecturer, course))

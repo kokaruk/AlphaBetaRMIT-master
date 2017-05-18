@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 
-public class TestStaff {
+class TestStaff {
 
     private StuffConcrete stuffTest;
     private Set<String> testList;
@@ -20,7 +20,7 @@ public class TestStaff {
     @Mock private CourseOffering offering;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         stuffTest = new StuffConcrete();
         testList = new HashSet<>();
         MockitoAnnotations.initMocks(this);
@@ -34,7 +34,7 @@ public class TestStaff {
     }
 
 	@Test
-	public void testViewAllResults() {
+	void testViewAllResults() {
 		testList.add("2017 1 Test Course,High Distinction");
 		Set<String> results = stuffTest.viewAllResults(student);
 

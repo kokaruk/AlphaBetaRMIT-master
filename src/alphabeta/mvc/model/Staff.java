@@ -14,10 +14,7 @@ public abstract class Staff extends User {
         Set<String> forPrint = new HashSet<>();
         for (Enrollment enrol : list) {
             CourseOffering courseOffering = enrol.getCourseOffering();
-            String name = courseOffering.getName();
-            String result = enrol.getResult().getDescription();
-            String fullResult = name + "," + result;
-            forPrint.add(fullResult);
+            forPrint.add( courseOffering.getName() + "," + enrol.getResult().getDescription());
         }
         return forPrint;
     }
