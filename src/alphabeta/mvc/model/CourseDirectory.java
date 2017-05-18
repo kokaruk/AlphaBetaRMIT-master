@@ -3,6 +3,7 @@ package alphabeta.mvc.model;
 
 import alphabeta.mvc.systemDAL.FactoryDAO;
 import alphabeta.mvc.systemDAL.ICourseOfferingDAO;
+import alphabeta.mvc.systemDAL.ISemesterDAO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,12 +21,15 @@ public final class CourseDirectory {
 
     // singleton instance
     private static CourseDirectory instance = new CourseDirectory();
+    // DAO objects cluster
     private ICourseOfferingDAO courseOfferingDAO = FactoryDAO.courseOfferingDAO();
+    private ISemesterDAO semesterDAO = FactoryDAO.semesterDAO();
+
     private Set<Course> courseSet = new HashSet<>();
     private Set<Topic> topicSet = new HashSet<>();
     private Set<Student> studentSet = new HashSet<>();
     private Set<Lecturer> lecturerSet = new HashSet<>();
-    private Semester semester = new Semester(01, 2017, 01);
+    private Semester semester = semesterDAO.getCurrentSemester();
     // private constructor
     private CourseDirectory(){}
     public static CourseDirectory getInstance() {
@@ -65,6 +69,13 @@ public final class CourseDirectory {
     }
 
     public Semester getSemester() { return semester; }
+    void incrementWeek(){
+        semesterDAO.incrementWeek();
+    }
+    void incrementSemester(int semNUmber, int year){
+        semesterDAO.incrementSemester(semNUmber, year);
+    }
+
 
     Set<CourseOffering> getCourseOfferingSet() { return courseOfferingDAO.getCurrentOfferings(semester); }
 

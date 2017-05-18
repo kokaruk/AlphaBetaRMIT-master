@@ -4,7 +4,8 @@ package alphabeta.mvc.systemDAL;
  * @author dimz
  * @since 17/5/17.
  */
-public class FactoryDAO {
+public class FactoryDAO{
+
 
     private static ABConfigRead configRead = ABConfigRead.getInstance();
 
@@ -12,6 +13,12 @@ public class FactoryDAO {
         return isRealDAO("ICourseOfferingDAO")
                 ? CourseOfferingDAO.getInstance()
                 : CourseOfferingDAO_fake.getInstance();
+    }
+
+    public static ISemesterDAO semesterDAO(){
+        return isRealDAO("ISemesterDAO")
+                ? SemesterDAO.getInstance()
+                : SemesterDAO_fake.getInstance();
     }
 
     private static boolean isRealDAO(String methodReturnType){
@@ -23,6 +30,4 @@ public class FactoryDAO {
         }
 
     }
-
-
 }

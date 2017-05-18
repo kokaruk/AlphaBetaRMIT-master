@@ -45,22 +45,17 @@ public class Admin extends Staff {
     public void advanceSystem() {
         //increment the week by one, unless it is week 12 - in which case increment the semester. If the semester
         // is 02 - increment the year
-        int year = courseDirectory.getSemester().getYear();
         int week = courseDirectory.getSemester().getWeek();
         int semesterNumber = courseDirectory.getSemester().getSemesterNumber();
         //prob need to declare a final for max week in a semester
         if (week < 12) {
-            courseDirectory.getSemester().setWeek(++week);
+            courseDirectory.incrementWeek();
         } else {
             if (semesterNumber == 1) {
-                courseDirectory.getSemester().setSemesterNumber(++semesterNumber);
+                courseDirectory.incrementSemester(2, courseDirectory.getSemester().getYear());
             } else {
-                courseDirectory.getSemester().setYear(++year);
-                // reset semester number
-                courseDirectory.getSemester().setSemesterNumber(1);
+                courseDirectory.incrementSemester(1, courseDirectory.getSemester().getYear()+1);
             }
-            // reset week back to 1
-            courseDirectory.getSemester().setWeek(1);
         }
         System.out.println("Semester advanced. It is now week " + courseDirectory.getSemester().getWeek() +
                 " in semester " + courseDirectory.getSemester().getSemesterNumber() + " in " +

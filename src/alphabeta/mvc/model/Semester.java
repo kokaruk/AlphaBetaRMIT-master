@@ -26,16 +26,12 @@ public class Semester {
         return year;
     }
 
-    public void setYear(int year) {
-        this.year = year;
-    }
-
     public int getWeek() {
         return week;
     }
 
-    public void setWeek(int week) {
-        this.week = week;
+    public void incrementWeek() {
+        this.week++;
     }
 
     @Override
