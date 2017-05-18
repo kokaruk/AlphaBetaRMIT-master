@@ -23,5 +23,7 @@ local.properties
 
 
 ### IntelliJ ###
-
 workspace.xml
+
+#testing code
+/integration_tests
