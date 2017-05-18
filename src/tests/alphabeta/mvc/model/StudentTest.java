@@ -62,7 +62,7 @@ public class StudentTest {
 
     @Test
     void getIdString_builder(){
-        assertEquals("ST123",myStudent.getId());
+        assertEquals("ST0123",myStudent.getId());
     }
 
     @Test
