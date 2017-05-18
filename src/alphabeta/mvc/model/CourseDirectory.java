@@ -1,15 +1,11 @@
 package alphabeta.mvc.model;
 
 
-import alphabeta.mvc.systemDAL.FactoryDAO;
-import alphabeta.mvc.systemDAL.ICourseOfferingDAO;
-import alphabeta.mvc.systemDAL.ISemesterDAO;
+import alphabeta.mvc.systemDAL.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.HashSet;
-import java.util.NoSuchElementException;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Last edit by kristin on 13/5/17
@@ -24,97 +20,103 @@ public final class CourseDirectory {
     // DAO objects cluster
     private ICourseOfferingDAO courseOfferingDAO = FactoryDAO.courseOfferingDAO();
     private ISemesterDAO semesterDAO = FactoryDAO.semesterDAO();
+    private ICourseDAO courseDAO = FactoryDAO.courseDAO();
+    private ITopicDAO topicDAO = FactoryDAO.topicDAO();
+    private IStudentDAO studentDAO = FactoryDAO.studentDAO();
+    private ILecturerDAO lecturerDAO = FactoryDAO.lecturerDAO();
 
-    private Set<Course> courseSet = new HashSet<>();
-    private Set<Topic> topicSet = new HashSet<>();
-    private Set<Student> studentSet = new HashSet<>();
-    private Set<Lecturer> lecturerSet = new HashSet<>();
     private Semester semester = semesterDAO.getCurrentSemester();
+
     // private constructor
-    private CourseDirectory(){}
+    private CourseDirectory() {
+    }
+
     public static CourseDirectory getInstance() {
         return instance;
     }
 
-    void addCourse(Course course) {
-        courseSet.add(course);
+    /*
+     public Course(String name){
+        this.name = name;
+    }
+
+    public Course(String name, List<Course> prerequisiteList, List<Topic> topics)
+     */
+
+    Course getNewCourse(String name) {
+        return courseDAO.getNewCourse(name);
+    }
+
+    Course getNewCourse(String name, List<Course> prerequisiteList, List<Topic> topics) {
+        return courseDAO.getNewCourse(name, prerequisiteList, topics);
+    }
+
+    Set<Course> getCourseSet() {
+        return courseDAO.getCourseSet();
+    }
+
+    Set<Topic> getTopicSet() {
+        return topicDAO.getTopicSet();
     }
 
     void addTopic(Topic topic) {
-        topicSet.add(topic);
+        topicDAO.addTopic(topic);
     }
 
-    void addStudent(Student student) {
-        studentSet.add(student);
+    public Set getStudentSet() {
+        return studentDAO.getStudentSet();
     }
 
-    public Set<Student> getStudentSet() {
-        return studentSet;
+    public Student getNewStudent(String name, String username) {
+        return studentDAO.getNewStudent(name, username);
     }
 
-    void addLecturer(Lecturer lecturer) {
-        lecturerSet.add(lecturer);
+
+    Lecturer getNewLecturer(String name, String username) {
+        return lecturerDAO.getNewLecturer(name, username);
+    }
+
+
+    Lecturer lookupLectByName(String s){
+        return lecturerDAO.lookupLectByName(s);
     }
 
     CourseOffering getCourseOffering(Semester semester, int maxStudents, Lecturer lecturer, Course course) {
         return courseOfferingDAO.getCourseOffering(semester, maxStudents, lecturer, course);
     }
 
-    Set<Course> getCourseSet() {
-        return courseSet;
+
+    public Semester getSemester() {
+        return semester;
     }
 
-    Set<Topic> getTopicSet() {
-        return topicSet;
-    }
-
-    public Semester getSemester() { return semester; }
-    void incrementWeek(){
+    void incrementWeek() {
         semesterDAO.incrementWeek();
     }
-    void incrementSemester(int semNUmber, int year){
+
+    void incrementSemester(int semNUmber, int year) {
         semesterDAO.incrementSemester(semNUmber, year);
     }
 
 
-    Set<CourseOffering> getCourseOfferingSet() { return courseOfferingDAO.getCurrentOfferings(semester); }
+    Set<CourseOffering> getCourseOfferingSet() {
+        return courseOfferingDAO.getCurrentOfferings(semester);
+    }
 
     //Find a topic with a String
     Topic lookUpTopic(String s) {
-        Topic topic = null;
-        for (Topic t : topicSet) {
-            if (s.equals(t.getNameOfTopic())) {
-                topic = t;
-            }
-        }
-        return topic;
+        return topicDAO.lookUpTopic(s);
     }
 
     //Find a course with a String
     Course lookupCourse(String s) {
-        Course course = null;
-        for (Course c : courseSet) {
-            if (s.equals(c.getName())) {
-                course = c;
-            }
-        }
-        if (course == null)
-            throw new UnsupportedOperationException("Course could not be found. Please try again");
-        return course;
+        return courseDAO.lookupCourse(s);
     }
 
     //Find a Student with studentID
     //Probably need to change exception type here
-    public Student lookupStudent(String s) throws CourseException {
-        Student student = null;
-        for (Student st : studentSet) {
-            if (s.equals(st.getStudentID())) {
-                student = st;
-            }
-        }
-        if (student == null)
-            throw new CourseException("Student could not be found. Please try again.");
-        return student;
+    public Student lookupStudentByID(String s) throws CourseException {
+        return studentDAO.lookupStudentByID(s);
     }
 
     //Find a CourseOffering with a String
@@ -122,16 +124,5 @@ public final class CourseDirectory {
         return courseOfferingDAO.lookupCourseOffering(name);
     }
 
-    //Find a Lecturer with a String
-    Lecturer lookupLecturer(String s) throws UnsupportedOperationException {
-        Lecturer lecturer = null;
-        for (Lecturer l : lecturerSet) {
-            if (s.equals(l.getName())) {
-                lecturer = l;
-            }
-        }
-        if (lecturer == null)
-            throw new UnsupportedOperationException("Lecturer could not be found. Please try again");
-        return lecturer;
-    }
+
 }

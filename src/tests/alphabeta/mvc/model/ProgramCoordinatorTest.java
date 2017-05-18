@@ -27,13 +27,13 @@ class ProgramCoordinatorTest {
     void setup() throws CourseException {
         MockitoAnnotations.initMocks(this);
         courseArgumentCaptor = ArgumentCaptor.forClass(Course.class);
-        when(courseDirectoryMock.lookupStudent(fakeStudentID)).thenReturn(studentMock);
+        when(courseDirectoryMock.lookupStudentByID(fakeStudentID)).thenReturn(studentMock);
         when(courseDirectoryMock.lookupCourse(fakeWaiverString)).thenReturn(courseMock);
         doNothing().when(studentMock).setWaivers(courseArgumentCaptor.capture());
 
         // inject fake dependency
         ModelHelper.setCDMock(courseDirectoryMock);
-        programCoordinator = new ProgramCoordinator("Foo Bar", "foo bar");
+        programCoordinator = new ProgramCoordinator("Foo Bar", "foo bar", 123);
     }
 
     @AfterEach

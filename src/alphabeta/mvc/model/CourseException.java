@@ -1,20 +1,14 @@
 package alphabeta.mvc.model;
 
 
-public class CourseException extends Exception {
+import java.util.NoSuchElementException;
 
-	private String reason;
-			
+public class CourseException extends NoSuchElementException {
 		public CourseException(String reason)
 		{
-			this.reason = reason;
+            super(reason);
 		}
-			
-		public String getReason()
-		{
-			return reason;
-		}
-	}
+}
 
 
 

@@ -13,14 +13,14 @@ public class Admin extends Staff {
 
     private CourseDirectory courseDirectory = ModelHelper.getCourseDirectory();
 
-    public Admin(String name, String password) {
-        super(name, password);
+    public Admin(String name, String password, int ID) {
+        super(name, password, ID);
     }
 
     //create a new course offering
     public void addNewCourseOffering(Semester semester, int maxStudents, String lecturerString, String courseString) {
         try {
-            Lecturer lecturer = courseDirectory.lookupLecturer(lecturerString);
+            Lecturer lecturer = courseDirectory.lookupLectByName(lecturerString);
             Course course = courseDirectory.lookupCourse(courseString);
             CourseOffering courseOffering = courseDirectory.getCourseOffering(semester, maxStudents, lecturer, course);
             System.out.println("Course Offering " + courseOffering.getName()
@@ -33,7 +33,7 @@ public class Admin extends Staff {
 
     public void assignLecturerCourse(String lecturerString, String courseOfferingString) {
         try {
-            Lecturer lecturer = courseDirectory.lookupLecturer(lecturerString);
+            Lecturer lecturer = courseDirectory.lookupLectByName(lecturerString);
             CourseOffering courseOffering = courseDirectory.lookupCourseOffering(courseOfferingString);
             courseOffering.setMyLecturer(lecturer);
             lecturer.addMyCourse(courseOffering.getMyCourse());

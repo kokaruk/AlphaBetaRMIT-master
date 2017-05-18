@@ -22,18 +22,17 @@ class AdminTest {
     private String lecturerName = "blah";
     private Integer maxStudents = 50;
     private String courseName = "blahblah";
-    private int semNum = 1;
-    private int semYear = 2010;
-    private int semWeek = 6;
+
 
 
     @BeforeEach
     void setUp(){
+        int semNum = 1;
+        int semYear = 2010;
+        int semWeek = 6;
         semesterStatic = new Semester(semNum, semYear, semWeek);
         MockitoAnnotations.initMocks(this);
-
-
-        when(courseDirectoryMock.lookupLecturer(lecturerName)).thenReturn(lecturer);
+        when(courseDirectoryMock.lookupLectByName(lecturerName)).thenReturn(lecturer);
         when(courseDirectoryMock.lookupCourse(courseName)).thenReturn(course);
         when(courseDirectoryMock.getCourseOffering(semesterStatic, maxStudents, lecturer, course))
                 .thenReturn(courseOffering);
@@ -41,7 +40,7 @@ class AdminTest {
         when(courseOffering.getName()).thenReturn(courseName);
         when(courseOffering.getMySemester()).thenReturn(semesterStatic);
         ModelHelper.setCDMock(courseDirectoryMock);
-        admin = new Admin("Foo Bar", "foo bar");
+        admin = new Admin("Foo Bar", "foo bar", 123);
     }
 
     @AfterEach
@@ -53,7 +52,7 @@ class AdminTest {
     @Test
     void addNewCourseOffering_createNewOffering_verifyMethodCall(){
         admin.addNewCourseOffering(semesterStatic, maxStudents, lecturerName, courseName );
-        verify(courseDirectoryMock, atLeastOnce()).lookupLecturer(lecturerName);
+        verify(courseDirectoryMock, atLeastOnce()).lookupLectByName(lecturerName);
         verify(courseDirectoryMock, atLeastOnce()).getCourseOffering(semesterStatic, maxStudents, lecturer, course);
     }
 

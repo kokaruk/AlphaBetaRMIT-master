@@ -10,8 +10,9 @@ import java.util.Set;
 
 public class Lecturer extends Staff {
     private static Logger logger = LogManager.getLogger();
-    public Lecturer(String name, String username) {
-        super(name, username);
+    //constructor
+    public Lecturer(String name, String username, int ID) {
+        super(name, username, ID);
     }
 
     private Set<Course> myCourses = new HashSet<>();

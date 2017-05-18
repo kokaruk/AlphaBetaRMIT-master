@@ -1,8 +1,6 @@
 package alphabeta.mvc.model;
 
 import java.util.Set;
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Created by dimz on 5/4/17.
@@ -11,6 +9,7 @@ import java.util.List;
  */
 public abstract class User {
 
+    private Integer ID;
     private CourseDirectory courseDirectory = ModelHelper.getCourseDirectory();
 
     // readonly properties
@@ -20,9 +19,16 @@ public abstract class User {
     private String username;
 
     //constructor
-    public User(String name, String username) {
+    public User(String name, String username, int ID) {
         this.name = name;
         this.username = username;
+        this.ID = ID;
+    }
+
+
+    public String getId(){
+        String.format("%s%03d", this.getClass().getName().charAt(0), ID);
+        return ID.toString();
     }
 
     public String getName() {

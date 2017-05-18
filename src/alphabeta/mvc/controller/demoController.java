@@ -17,11 +17,11 @@ public class demoController {
     private static Scanner input = new Scanner(System.in);
     private static demoView view = new demoView();
     //just inventing a coordinator for now
-    private static ProgramCoordinator progCoord = new ProgramCoordinator("Bob", "bob123");
+    private static ProgramCoordinator progCoord = new ProgramCoordinator("Bob", "bob123", 123);
     //just inventing an admin for now
-    private static Admin admin = new Admin("Mary", "mary123");
+    private static Admin admin = new Admin("Mary", "mary123", 123);
     //just inventing a lecturer for now
-    private static Lecturer lecturer = new Lecturer("Jane", "jane123");
+    private static Lecturer lecturer = new Lecturer("Jane", "jane123", 123);
 
     private CourseDirectory courseDirectory = CourseDirectory.getInstance();
     
@@ -84,8 +84,8 @@ public class demoController {
     public void createStudent() {
         //Creates a new Student object for the purposes of demonstration
         //needs an edit so that username is unique!
-        Student student = new Student(view.getStudentName(), "DemoUsername");
-        System.out.println("New student created: " + student.getName() + ", student ID: " + student.getStudentID());
+        Student student =  courseDirectory.getNewStudent(view.getStudentName(), "DemoUsername");
+        System.out.println("New student created: " + student.getName() + ", student ID: " + student.getId());
     }
 
     /**
@@ -144,7 +144,7 @@ public class demoController {
     		}
     	}
     	catch (CourseException e) {
-    		System.out.println(e.getReason());
+    		System.out.println(e.getMessage());
     	}
     }
 
@@ -178,13 +178,13 @@ public class demoController {
     public void viewResults() {
         String s = view.getStudentID();
         try {
-            Student st = courseDirectory.lookupStudent(s);
+            Student st = courseDirectory.lookupStudentByID(s);
             Set<String> results = lecturer.viewAllResults(st);
             System.out.println("Student: " + st.getName());
             results.forEach(System.out::println);
         }
         catch (CourseException e) {
-            System.out.println(e.getReason());
+            System.out.println(e.getMessage());
         }
     }
 

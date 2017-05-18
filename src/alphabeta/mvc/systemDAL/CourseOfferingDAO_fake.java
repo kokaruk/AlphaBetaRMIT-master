@@ -13,12 +13,13 @@ import java.util.Set;
 public class CourseOfferingDAO_fake implements ICourseOfferingDAO {
 
     private Set<CourseOffering> courseOfferingSet = new HashSet<>();
-
-
+    private ILecturerDAO lecturerDAO = FactoryDAO.lecturerDAO();
+    private ISemesterDAO semesterDAO = FactoryDAO.semesterDAO();
     // singleton instance
     private static ICourseOfferingDAO instance;
     // private constructor
     private CourseOfferingDAO_fake() {
+        makeTestOffering();
     }
     // lazy instantiation
     public static ICourseOfferingDAO getInstance() {
@@ -30,13 +31,7 @@ public class CourseOfferingDAO_fake implements ICourseOfferingDAO {
 
     @Override
     public Set<CourseOffering> getCurrentOfferings(Semester currentSemester) {
-        Lecturer lecturer = new Lecturer("Foo Bar", "foobar");
-        return new HashSet<>();
-    /*    Course testCourse1 = new Course("Programming 1");
-        CourseOffering testOffering = new CourseOffering(currentSemester, 50, lecturer,testCourse1);
-        courseOffering.add(testOffering);
-        return courseOffering;
-        */
+        return courseOfferingSet;
     }
 
     @Override
@@ -53,5 +48,12 @@ public class CourseOfferingDAO_fake implements ICourseOfferingDAO {
                 .filter(co -> co.getName().contains(name))
                 .findAny()
                 .orElseThrow(NoSuchElementException::new);
+    }
+
+    private void makeTestOffering(){
+        Lecturer lecturer = lecturerDAO.getNewLecturer("Foo Bar", "foobar");
+        Course testCourse1 = new Course("Programming 1");
+        CourseOffering testOffering = new CourseOffering(semesterDAO.getCurrentSemester(), 50, lecturer,testCourse1);
+        courseOfferingSet.add(testOffering);
     }
 }

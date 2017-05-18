@@ -43,7 +43,7 @@ class TestStaff {
 
 	private class StuffConcrete extends Staff {
         StuffConcrete() {
-            super("Test Name", "testname2");
+            super("Test Name", "testname2", 123);
         }
     }
 

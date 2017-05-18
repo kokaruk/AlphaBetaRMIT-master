@@ -5,8 +5,8 @@ import java.util.Set;
 
 public abstract class Staff extends User {
 
-    public Staff(String name, String username) {
-        super(name, username);
+    public Staff(String name, String username, int ID) {
+        super(name, username, ID);
     }
 
     public Set<String> viewAllResults(Student student) {

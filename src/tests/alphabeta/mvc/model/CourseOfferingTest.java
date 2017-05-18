@@ -1,9 +1,13 @@
 package alphabeta.mvc.model;
 
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Created by Bill Thompson on 9/4/17.
@@ -19,7 +23,7 @@ public class CourseOfferingTest {
 
     @BeforeEach
     public void setup(){
-        sef2017 = FactoryHelperClass.getCourseOffering();
+        sef2017 = getCourseOffering();
         mySemester  = new Semester(01,2018,01);
         //mySemester.semesterNumber = 1;
         //mySemester.year = 2018;
@@ -49,12 +53,22 @@ public class CourseOfferingTest {
 
 	@Test
 	public void testAssignLecturerCourse() {
-		CourseOffering sef2017 = FactoryHelperClass.getCourseOffering();
-        String lecturer[] = new String[]{"Bill T", "billt"};
-		Staff myLecturer = new Lecturer(lecturer[0], lecturer[1]);
+		CourseOffering sef2017 = getCourseOffering();
+		Staff myLecturer = new Lecturer("Bill T", "billt", 123);
         sef2017.setMyLecturer((Lecturer) myLecturer);
 
-		assertEquals(lecturer[0], sef2017.getMyLecturer().getName());
+		assertEquals("Bill T", sef2017.getMyLecturer().getName());
 	}
+
+    // make fake course offering
+    private CourseOffering getCourseOffering() {
+        Semester mySemester = new Semester(2, 2017, 1);
+        Lecturer myLecturer = new Lecturer("Test Name", "testname2", 123);
+        List<Topic> myTopics = new ArrayList<>();
+        myTopics.add(new Topic("Topic Name"));
+        Course myCourse = new Course("Test Course");
+        myCourse.topics = myTopics;
+        return new CourseOffering(mySemester, 28, myLecturer, myCourse);
+    }
 
 }

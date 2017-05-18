@@ -12,8 +12,8 @@ public class ProgramCoordinator extends Staff {
 
     private CourseDirectory courseDirectory = ModelHelper.getCourseDirectory();
 
-    public ProgramCoordinator(String name, String password) {
-        super(name, password);
+    public ProgramCoordinator(String name, String password, int ID) {
+        super(name, password, ID);
     }
 
     public Course addNewCourse(String name, List<String> prerequisites, List<String> topics, int week) throws CourseException {
@@ -63,20 +63,20 @@ public class ProgramCoordinator extends Staff {
     public void grantWaivers(String studentID, String waiverString) {
         //lookup Student
         try {
-            Student st = courseDirectory.lookupStudent(studentID);
+            Student st = courseDirectory.lookupStudentByID(studentID);
             //find waiver in directory
             try {
                 Course c = courseDirectory.lookupCourse(waiverString);
                 st.setWaivers(c);
                 System.out.println("Waiver for " + c.getName() + " added for " + st.getName() + " (student ID: "
-                        + st.getStudentID() + ").");
+                        + st.getId() + ").");
             }
             catch (UnsupportedOperationException e) {
                 System.out.println(e.getMessage());
             }
         }
         catch (CourseException e) {
-            System.out.println(e.getReason());
+            System.out.println(e.getMessage());
         }
     }
 
@@ -84,13 +84,13 @@ public class ProgramCoordinator extends Staff {
     public void increaseLoad(String studentID, int load) {
         // Change Student's max course load
         try {
-            Student s = courseDirectory.lookupStudent(studentID);
+            Student s = courseDirectory.lookupStudentByID(studentID);
             s.setMaxCurrentCourseLoad(load);
-            System.out.println("Course load for " + s.getName() + " (student ID: " + s.getStudentID() + ") is "
+            System.out.println("Course load for " + s.getName() + " (student ID: " + s.getId() + ") is "
                     + s.getMaxCurrentCourseLoad());
         }
         catch (CourseException e) {
-            System.out.println(e.getReason());
+            System.out.println(e.getMessage());
         }
     }
 

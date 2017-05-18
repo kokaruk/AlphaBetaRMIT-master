@@ -37,7 +37,7 @@ public class LecturerTest {
 
 	@BeforeEach
 	public void setUp() {
-        lecturer = new Lecturer("Foo Bar", "foobar");
+        lecturer = new Lecturer("Foo Bar", "foobar", 123);
         MockitoAnnotations.initMocks(this);
         when(student.getEnrollment()).thenReturn(enrollmentSet);
         when(enrollmentIterator.hasNext()).thenReturn(true, false);
