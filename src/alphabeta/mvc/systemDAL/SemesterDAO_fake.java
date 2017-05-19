@@ -3,6 +3,7 @@ package alphabeta.mvc.systemDAL;
 import alphabeta.mvc.model.Semester;
 
 import java.util.Calendar;
+import java.util.Set;
 
 /**
  * @author dimz
@@ -16,6 +17,7 @@ public class SemesterDAO_fake implements ISemesterDAO {
     private static ISemesterDAO instance;
     // private constructor
     private SemesterDAO_fake() {
+        //makeTestSemesters();
     }
     // lazy instantiation
     public static ISemesterDAO getInstance() {
@@ -46,4 +48,16 @@ public class SemesterDAO_fake implements ISemesterDAO {
     public void incrementSemester(int semNUmber, int year) {
         currentSemester = new Semester(semNUmber, year, 1);
     }
+
+    /**
+    public void makeTestSemesters() {
+        Semester semester1 = new Semester(02, 2017, 01);
+        Semester semester2 = new Semester(01, 2018, 01);
+        Semester semester3 = new Semester(02, 2018, 01);
+        semesterSet.add(semester1);
+        semesterSet.add(semester2);
+        semesterSet.add(semester3);
+
+    }
+*/
 }

@@ -52,15 +52,15 @@ public final class CourseDirectory {
         return courseDAO.getNewCourse(name, prerequisiteList, topics);
     }
 
-    Set<Course> getCourseSet() {
+    public Set<Course> getCourseSet() {
         return courseDAO.getCourseSet();
     }
 
-    Set<Topic> getTopicSet() {
+    public Set<Topic> getTopicSet() {
         return topicDAO.getTopicSet();
     }
 
-    void addTopic(Topic topic) {
+    public void addTopic(Topic topic) {
         topicDAO.addTopic(topic);
     }
 
@@ -77,6 +77,8 @@ public final class CourseDirectory {
         return lecturerDAO.getNewLecturer(name, username);
     }
 
+    public Set getLecturerSet() { return lecturerDAO.getLecturerSet(); }
+
 
     Lecturer lookupLectByName(String s){
         return lecturerDAO.lookupLectByName(s);
@@ -91,11 +93,12 @@ public final class CourseDirectory {
         return semester;
     }
 
-    void incrementWeek() {
+
+    public void incrementWeek() {
         semesterDAO.incrementWeek();
     }
 
-    void incrementSemester(int semNUmber, int year) {
+    public void incrementSemester(int semNUmber, int year) {
         semesterDAO.incrementSemester(semNUmber, year);
     }
 

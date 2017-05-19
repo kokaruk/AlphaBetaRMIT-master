@@ -15,7 +15,7 @@ public class Topic {
     // Construct a Topic with a particular name
     public Topic(String topicName) {
         this.myName = topicName;
-        courseDirectory.addTopic(this);
+        //courseDirectory.addTopic(this);
     }
 
     // Set the name of the topic

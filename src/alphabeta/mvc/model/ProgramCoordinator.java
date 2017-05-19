@@ -17,7 +17,7 @@ public class ProgramCoordinator extends Staff {
         super(name, password, ID);
     }
 
-    public Course addNewCourse(String name, List<String> prerequisites, List<String> topics, int week) throws CourseException {
+    public Course addNewCourse(String courseName, List<String> prerequisites, List<String> topics, int week) throws CourseException {
         Set<Course> allCourses = courseDirectory.getCourseSet();
         Set<Topic> allTopics = courseDirectory.getTopicSet();
         List<Course> courseList = new ArrayList<>();
@@ -36,10 +36,10 @@ public class ProgramCoordinator extends Staff {
                     }
                 }
             }
-            if (!(prerequisites.size() == courseList.size())) {
-                throw new CourseException("Error - Prerequisite not found in course list. " +
-                        "Prerequisite must be an existing course. Please try again.");
-            }
+          //  if (!(prerequisites.size() == courseList.size())) {
+          //      throw new CourseException("Error - Prerequisite not found in course list. " +
+          //              "Prerequisite must be an existing course. Please try again.");
+          //  }
             for (Topic z : allTopics) {
                 stringTopics.add(z.getNameOfTopic());
             }
@@ -57,7 +57,8 @@ public class ProgramCoordinator extends Staff {
                 topicsConvert.add(t);
             }
         }
-        Course newCourse = new Course(name, courseList, topicsConvert);
+        Course newCourse = new Course(courseName, courseList, topicsConvert);
+        System.out.println("Topic created");
         return newCourse;
     }
 

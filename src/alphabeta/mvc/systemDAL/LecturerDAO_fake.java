@@ -16,7 +16,7 @@ public class LecturerDAO_fake implements ILecturerDAO {
     // singleton instance
     private static ILecturerDAO instance;
     // private constructor
-    private LecturerDAO_fake() {
+    private LecturerDAO_fake() { makeTestLecturer();
     }
     // lazy instantiation
     public static ILecturerDAO getInstance() {
@@ -28,7 +28,7 @@ public class LecturerDAO_fake implements ILecturerDAO {
 
     @Override
     public Set<Lecturer> getLecturerSet() {
-        return null;
+        return userSet;
     }
 
     @Override
@@ -45,5 +45,15 @@ public class LecturerDAO_fake implements ILecturerDAO {
     @Override
     public Lecturer lookupLectByName(String s) throws CourseException {
         return null;
+    }
+
+    private void makeTestLecturer(){
+        Lecturer lecturer1 = new Lecturer("Jane Doe", "jd123", 01);
+        userSet.add(lecturer1);
+        Lecturer lecturer2 = new Lecturer("Dave Smith", "ds103", 02);
+        userSet.add(lecturer2);
+        Lecturer lecturer3 = new Lecturer("Bill Thompson", "bt123", 03);
+        userSet.add(lecturer3);
+
     }
 }

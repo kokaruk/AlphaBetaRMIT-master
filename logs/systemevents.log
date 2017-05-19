@@ -17,3 +17,5 @@
   Position: 15
 [ERROR] 2017-05-19 04:45:45.630 [main] postgreConnection - ERROR: relation "system_uses" does not exist
   Position: 15
+[ERROR] 2017-05-19 08:08:18.680 [main] StudentDAO - Nathaniel Henry can't write new student to database. Will throw
+[WARN ] 2017-05-19 08:08:18.683 [main] IntegrationTestRunner - The connection attempt failed.
