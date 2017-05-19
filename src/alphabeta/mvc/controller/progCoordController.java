@@ -48,6 +48,7 @@ public class progCoordController {
     @FXML
     private ListView viewCourses; // View Courses tab
 
+
     @FXML
     public void initialize() {
         // populate prereqs drop down im Add New Course tab
@@ -95,7 +96,8 @@ public class progCoordController {
             List<String> prereqs = new ArrayList<>();
             prereqs.addAll(prereqList.getItems());
             topics.addAll(topicList.getItems());
-            progCoord.addNewCourse(courseName.getText(), prereqs, topics, courseDirectory.getSemester().getWeek());
+            Course newCourse = progCoord.addNewCourse(courseName.getText(), prereqs, topics, courseDirectory.getSemester().getWeek());
+            // TODO - add newCourse to the course directory
             newMessage("New course " + courseName.getText() + " created.");
         }
     }
@@ -123,6 +125,19 @@ public class progCoordController {
         }
         Collections.sort(courseOffsStrings);
         courseOfferings.getItems().addAll(courseOffsStrings);
+    }
+
+    public void refreshClicked() {
+        //refresh course list in view courses tab
+        viewCourses.getItems().clear();
+        Set<Course> prequisites = courseDirectory.getCourseSet();
+        List<String> prereqStrings = new ArrayList<>();
+        for (Course c : prequisites) {
+            prereqStrings.add(c.getName());
+        }
+        Collections.sort(prereqStrings);
+        viewCourses.getItems().addAll(prereqStrings);
+
     }
 
     public void newMessage(String message) {

@@ -113,7 +113,7 @@ public final class CourseDirectory {
     }
 
     //Find a course with a String
-    Course lookupCourse(String s) {
+    public Course lookupCourse(String s) {
         return courseDAO.lookupCourse(s);
     }
 

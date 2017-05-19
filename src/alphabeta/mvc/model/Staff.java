@@ -10,6 +10,7 @@ public abstract class Staff extends User {
     }
 
     public Set<String> viewAllResults(Student student) {
+        // TODO - currently view results is only available through the view for lecturers. Needs to be made available for all staff.
         Set<Enrollment> list = student.getEnrollment();
         Set<String> forPrint = new HashSet<>();
         for (Enrollment enrol : list) {

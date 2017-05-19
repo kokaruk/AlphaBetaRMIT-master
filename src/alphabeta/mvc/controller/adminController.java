@@ -89,7 +89,7 @@ public class adminController {
             resultsList.getItems().addAll(results);
         }
         catch (SQLException e) {
-            System.out.println("SQL Exception derp");
+            System.out.println(e.getMessage());
         }
     }
 

@@ -26,7 +26,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/alphabeta/mvc/view/progCoord.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/alphabeta/mvc/view/main.fxml"));
         Scene scene = new Scene(root, 600, 400);
         primaryStage.setTitle("Course Management System");
         primaryStage.setScene(scene);

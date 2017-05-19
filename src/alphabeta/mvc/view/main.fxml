@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alphabeta.mvc.controller.mainController">
+   <children>
+      <SplitPane dividerPositions="0.20351758793969849" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="78.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label alignment="CENTER" text="Welcome to the AlphaBeta Course Management System">
+                           <font>
+                              <Font name="Berlin Sans FB" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <HBox prefHeight="314.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="314.0" prefWidth="303.0" spacing="50.0">
+                           <children>
+                              <Button fx:id="studentButton" mnemonicParsing="false" onAction="#loadStudent" prefHeight="70.0" prefWidth="150.0" text="Students" />
+                              <Button fx:id="lecturerButton" mnemonicParsing="false" onAction="#loadLecturer" prefHeight="70.0" prefWidth="150.0" text="Lecturers" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="314.0" prefWidth="286.0" spacing="50.0">
+                           <children>
+                              <Button fx:id="adminButton" mnemonicParsing="false" onAction="#loadAdmin" prefHeight="70.0" prefWidth="150.0" text="Administrators" />
+                              <Button fx:id="progCoordButton" mnemonicParsing="false" onAction="#loadProgCoord" prefHeight="70.0" prefWidth="150.0" text="Program Coordinators" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

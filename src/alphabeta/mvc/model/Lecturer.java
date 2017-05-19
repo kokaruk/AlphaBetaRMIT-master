@@ -21,7 +21,7 @@ public class Lecturer extends Staff {
         myCourses.add(myCourse);
     }
 
-    void upLoadResults(Student student, Result result, Course course) throws NoSuchElementException {
+    public void upLoadResults(Student student, Result result, Course course) throws NoSuchElementException {
         if (!myCourses.contains(course)) throw new NoSuchElementException();
         student.getEnrollment().stream()
                .filter( enr -> enr.getCourseOffering().getMyCourse().equals(course))
