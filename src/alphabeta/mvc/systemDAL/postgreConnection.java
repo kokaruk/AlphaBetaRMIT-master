@@ -36,9 +36,12 @@ public class postgreConnection {
                 logger.error(e.getMessage());
                 con.rollback();
                 con.setAutoCommit(true);
+                throw e;
             }
             con.commit();
             con.setAutoCommit(true);
+        } catch ( ClassNotFoundException e) {
+            logger.error(e.getMessage());
         }
         return id;
     }
@@ -57,9 +60,12 @@ public class postgreConnection {
                 fillParameters(ps, paramsValues  );
                 rs = ps.executeQuery();
                 crs.populate(rs);
-            } catch (SQLException e) {
+            } catch (SQLException e ) {
                 logger.error(e.getMessage());
+                throw e;
             }
+        } catch ( ClassNotFoundException e) {
+            logger.error(e.getMessage());
         }
         return crs;
     }
@@ -83,7 +89,7 @@ public class postgreConnection {
     }
 
 
-    private static Connection getConnection() throws SQLException {
+    private static Connection getConnection() throws SQLException, ClassNotFoundException {
         Properties props = new Properties();
         try {
             props = configRead.getProperties("postgre.properties");
@@ -91,6 +97,7 @@ public class postgreConnection {
             logger.fatal(e.getMessage());
             System.exit(1);
         }
+        Class.forName("org.postgresql.Driver");
         return DriverManager.getConnection(props.getProperty("url"), props);
     }
 

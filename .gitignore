@@ -1,4 +1,6 @@
+### apple system junk ###
 .DS_Store
+/src/.com.apple.timemachine.supported
 out/
 *.class
 bin/
@@ -27,3 +29,4 @@ workspace.xml
 
 #testing code
 /integration_tests
+
