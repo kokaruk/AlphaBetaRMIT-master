@@ -1,12 +1,14 @@
 package alphabeta.mvc.controller;
 
 
-import alphabeta.mvc.model.CourseDirectory;
-import alphabeta.mvc.model.CourseOffering;
-import alphabeta.mvc.model.Student;
+import alphabeta.mvc.model.*;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,7 +34,7 @@ public class studentController {
         Set<CourseOffering> courseOffs = courseDirectory.getCourseOfferingSet();
         List<String> courseOffsStrings = new ArrayList<>();
         for (CourseOffering co : courseOffs) {
-            courseOffsStrings.add(co.getName() + ": Semester 0" + co.getMySemester().getSemesterNumber() + " " + co.getMySemester().getYear());
+            courseOffsStrings.add(co.getName()); // + " Semester 0" + co.getMySemester().getSemesterNumber() + " " + co.getMySemester().getYear());
         }
         Collections.sort(courseOffsStrings);
         enrolCourseBox.getItems().addAll(courseOffsStrings);
@@ -48,14 +50,39 @@ public class studentController {
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
+
+        // set student course load;
+        student.setMaxCurrentCourseLoad(100);
     }
 
     public void enrolClicked() {
-        // TODO - this. Unsure how to generate the enrol object to make this work.
+        Enrollment enrollment = new Enrollment();
+        CourseOffering forEnrol = courseDirectory.lookupCourseOffering(enrolCourseBox.getValue());
+        enrollment.setCourseOffering(forEnrol);
+        try {
+            student.enrol(enrollment);
+            newMessage(student.getName() + " now enrolled in " + enrollment.getCourseOffering().getName());
+        }
+        catch (PrerequisitesNotMetException e) {
+            newMessage("Prerequisite not met");
+        }
     }
 
     public void withdrawButtonClicked() {
         // TODO - withdraw method in Student not yet built
+    }
+
+    public void newMessage(String message) {
+        // call this to create a new pop-up message
+        Text text = new Text(50, 50, message);
+        StackPane pane = new StackPane();
+        pane.setPrefSize(350, 100);
+        pane.getChildren().add(text);
+        Scene scene = new Scene(pane);
+        Stage stage = new Stage();
+        stage.setTitle("Enrol");
+        stage.setScene(scene);
+        stage.show();
     }
 
 

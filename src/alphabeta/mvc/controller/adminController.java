@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.mockito.internal.matchers.Null;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -91,6 +92,9 @@ public class adminController {
         catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        catch (NullPointerException e) {
+            newMessage("Student does not exist");
+        }
     }
 
     public void showCourseOfferingsButtonClick() {
@@ -99,7 +103,7 @@ public class adminController {
         Set<CourseOffering> courseOffs = courseDirectory.getCourseOfferingSet();
         List<String> courseOffsStrings = new ArrayList<>();
         for (CourseOffering co : courseOffs) {
-            courseOffsStrings.add(co.getName() + ": Semester 0" + co.getMySemester().getSemesterNumber() + " " +co.getMySemester().getYear());
+            courseOffsStrings.add(co.getName()); //+ ": Semester 0" + co.getMySemester().getSemesterNumber() + " " +co.getMySemester().getYear());
         }
         Collections.sort(courseOffsStrings);
         courseOfferingsList.getItems().addAll(courseOffsStrings);
@@ -122,7 +126,7 @@ public class adminController {
         pane.getChildren().add(text);
         Scene scene = new Scene(pane);
         Stage stage = new Stage();
-        stage.setTitle("Success!");
+        stage.setTitle("Message");
         stage.setScene(scene);
         stage.show();
     }

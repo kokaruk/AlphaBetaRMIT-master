@@ -62,7 +62,7 @@ public class ProgramCoordinator extends Staff {
         return newCourse;
     }
 
-    public void grantWaivers(String studentID, String waiverString) {
+    public void grantWaivers(String studentID, String waiverString) throws NullPointerException {
         //lookup Student
         try {
             Student st = courseDirectory.lookupStudentByID(studentID);

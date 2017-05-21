@@ -23,9 +23,9 @@ public class Admin extends Staff {
             Lecturer lecturer = courseDirectory.lookupLectByName(lecturerString);
             Course course = courseDirectory.lookupCourse(courseString);
             CourseOffering courseOffering = courseDirectory.getCourseOffering(semester, maxStudents, lecturer, course);
-            System.out.println("Course Offering " + courseOffering.getName()
-                    + " in semester " + courseOffering.getMySemester().getSemesterNumber()
-                    + " " + courseOffering.getMySemester().getYear() + " created.");
+            System.out.println("Course Offering " + courseOffering.getName() + " created");
+                    //+ " in semester " + courseOffering.getMySemester().getSemesterNumber()
+                    //+ " " + courseOffering.getMySemester().getYear() + " created.");
         } catch (UnsupportedOperationException e) {
             logger.error(e.getMessage());
         }

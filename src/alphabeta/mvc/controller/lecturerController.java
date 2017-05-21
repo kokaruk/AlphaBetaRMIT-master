@@ -5,9 +5,13 @@ import alphabeta.mvc.model.CourseDirectory;
 import alphabeta.mvc.model.Lecturer;
 import alphabeta.mvc.model.Result;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -55,6 +59,9 @@ public class lecturerController {
         catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        catch (NullPointerException e) {
+            newMessage("Student does not exist");
+        }
     }
 
     public void showResultsClick() {
@@ -67,6 +74,22 @@ public class lecturerController {
         catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        catch (NullPointerException e) {
+            newMessage("Student does not exist");
+        }
+    }
+
+    public void newMessage(String message) {
+        // call this to create a new pop-up message
+        Text text = new Text(50, 50, message);
+        StackPane pane = new StackPane();
+        pane.setPrefSize(350, 100);
+        pane.getChildren().add(text);
+        Scene scene = new Scene(pane);
+        Stage stage = new Stage();
+        stage.setTitle("Results");
+        stage.setScene(scene);
+        stage.show();
     }
 
 

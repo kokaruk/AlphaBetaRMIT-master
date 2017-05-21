@@ -25,10 +25,12 @@ public class CourseOffering {
 
 
     public String getName() {
-        String name = myCourse.getName();
+        // String name = myCourse.getName();
+        // return name;
+        if (this.name == null) {
+            this.name = String.format("%d %d %s", mySemester.year, mySemester.semesterNumber, myCourse.name);
+        }
         return name;
-       // if (this.name == null)
-       //     this.name = String.format("%d %d %s", mySemester.year, mySemester.semesterNumber, myCourse.name);//return name;
     }
 
     Course getMyCourse() {

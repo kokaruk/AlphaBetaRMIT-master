@@ -127,7 +127,7 @@ public final class CourseDirectory {
     }
 
     //Find a CourseOffering with a String
-    CourseOffering lookupCourseOffering(String name) throws NoSuchElementException {
+    public CourseOffering lookupCourseOffering(String name) throws NoSuchElementException {
         return courseOfferingDAO.lookupCourseOffering(name);
     }
 

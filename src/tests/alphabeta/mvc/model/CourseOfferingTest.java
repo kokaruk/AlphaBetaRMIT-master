@@ -33,7 +33,7 @@ public class CourseOfferingTest {
 
 	@Test
 	public void testNewCourseOffering() {
-		assertEquals("Test Course", sef2017.getName());
+		assertEquals("2018 1 Test Course", sef2017.getName());
 	}
 
 

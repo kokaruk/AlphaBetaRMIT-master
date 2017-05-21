@@ -29,7 +29,7 @@
                                  <children>
                                     <VBox prefHeight="369.0" prefWidth="175.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <Label text="This semester's course offerings:" />
+                                          <Label text="All course offerings:" />
                                           <Button fx:id="showCourseOfferings" mnemonicParsing="false" onAction="#showCourseOfferingsButtonClick" text="Show" />
                                        </children>
                                        <padding>

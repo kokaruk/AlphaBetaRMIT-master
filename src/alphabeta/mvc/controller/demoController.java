@@ -199,7 +199,7 @@ public class demoController {
         System.out.println("All courses offerings for year " + courseDirectory.getSemester().getYear() + " are: ");
         for (CourseOffering co : admin.viewCourseOfferings()) {
             if ((co.getMySemester().getYear() == courseDirectory.getSemester().getYear())) {
-                System.out.println("Course Name: " + co.getName() + ", Semester: " + co.getMySemester().getSemesterNumber());
+                System.out.println("Course Name: " + co.getName()); // + ", Semester: " + co.getMySemester().getSemesterNumber());
             }
         }
     }

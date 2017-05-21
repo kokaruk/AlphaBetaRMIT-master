@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.mockito.internal.matchers.Null;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -104,15 +105,31 @@ public class progCoordController {
     public void clickWaiverButton() {
         // grant waiver button in Grant Waiver tab
         // TODO - this method throws an exception. Also shows success message no matter what happens
-        progCoord.grantWaivers(studentID.getText(), courseWaiver.getValue());
-        newMessage("Waiver granted for student number " + studentID.getText());
+        try {
+            progCoord.grantWaivers(studentID.getText(), courseWaiver.getValue());
+            newMessage("Waiver granted for student number " + studentID.getText());
+        }
+        catch (NullPointerException e) {
+            newMessage("Student does not exist");
+        }
+
+
     }
 
     public void clickSaveLoad() {
         // save new student load for a student in Increase Loading tab
         // TODO - this method throws an exception. Also shows success message no matter what happens
-        progCoord.increaseLoad(loadStudentID.getText(), Integer.parseInt(load.getText()));
-        newMessage("New load saved for student " + loadStudentID.getText());
+        try {
+            progCoord.increaseLoad(loadStudentID.getText(), Integer.parseInt(load.getText()));
+            newMessage("New load saved for student " + loadStudentID.getText());
+        }
+        catch (NullPointerException e) {
+            newMessage("Student does not exist");
+        }
+        catch (NumberFormatException e) {
+            newMessage("Please enter a number");
+        }
+
     }
 
     public void showCourseOfferingsClick() {
@@ -121,7 +138,7 @@ public class progCoordController {
         Set<CourseOffering> courseOffs = courseDirectory.getCourseOfferingSet();
         List<String> courseOffsStrings = new ArrayList<>();
         for (CourseOffering co : courseOffs) {
-            courseOffsStrings.add(co.getName() + ": Semester 0" + co.getMySemester().getSemesterNumber() + "  " +co.getMySemester().getYear());
+            courseOffsStrings.add(co.getName()); //+ ": Semester 0" + co.getMySemester().getSemesterNumber() + "  " +co.getMySemester().getYear());
         }
         Collections.sort(courseOffsStrings);
         courseOfferings.getItems().addAll(courseOffsStrings);

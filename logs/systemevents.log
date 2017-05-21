@@ -19,3 +19,12 @@
   Position: 15
 [ERROR] 2017-05-19 08:08:18.680 [main] StudentDAO - Nathaniel Henry can't write new student to database. Will throw
 [WARN ] 2017-05-19 08:08:18.683 [main] IntegrationTestRunner - The connection attempt failed.
+[ERROR] 2017-05-20 19:24:48.737 [main] StudentDAO - Blanch Wray can't write new student to database. Will throw
+[WARN ] 2017-05-20 19:24:48.737 [main] IntegrationTestRunner - The connection attempt failed.
+[ERROR] 2017-05-20 19:28:29.161 [main] StudentDAO - Catrice Parrott can't write new student to database. Will throw
+[WARN ] 2017-05-20 19:28:29.177 [main] IntegrationTestRunner - The connection attempt failed.
+[ERROR] 2017-05-21 13:22:32.221 [main] postgreConnection - ERROR: duplicate key value violates unique constraint "table_name_username_uindex"
+  Detail: Key (username)=(aubreyrobbins) already exists.
+[ERROR] 2017-05-21 13:22:32.441 [main] StudentDAO - Aubrey Robbins can't write new student to database. Will throw
+[WARN ] 2017-05-21 13:22:32.441 [main] IntegrationTestRunner - ERROR: duplicate key value violates unique constraint "table_name_username_uindex"
+  Detail: Key (username)=(aubreyrobbins) already exists.
