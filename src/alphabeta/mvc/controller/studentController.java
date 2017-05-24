@@ -21,7 +21,7 @@ import java.util.Set;
 public class studentController {
 
     private CourseDirectory courseDirectory = CourseDirectory.getInstance();
-    private Student student = new Student("Dianne", "d333", 13);
+    private Student student =    new Student("Dianne", "d333", 13);
 
     @FXML
     private ComboBox<String> enrolCourseBox; // Enrol tab
