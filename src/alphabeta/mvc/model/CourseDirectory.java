@@ -19,12 +19,12 @@ public final class CourseDirectory {
     // singleton instance
     private static CourseDirectory instance = new CourseDirectory();
     // DAO objects cluster
-    private ICourseOfferingDAO courseOfferingDAO = FactoryDAO.courseOfferingDAO();
-    private ISemesterDAO semesterDAO = FactoryDAO.semesterDAO();
-    private ICourseDAO courseDAO = FactoryDAO.courseDAO();
-    private ITopicDAO topicDAO = FactoryDAO.topicDAO();
-    private IStudentDAO studentDAO = FactoryDAO.studentDAO();
-    private ILecturerDAO lecturerDAO = FactoryDAO.lecturerDAO();
+    private ICourseOfferingDAO courseOfferingDAO = ISystemDAL.courseOfferingDAO();
+    private ISemesterDAO semesterDAO = ISystemDAL.semesterDAO();
+    private ICourseDAO courseDAO = ISystemDAL.courseDAO();
+    private ITopicDAO topicDAO = ISystemDAL.topicDAO();
+    private IStudentDAO studentDAO = ISystemDAL.studentDAO();
+    private ILecturerDAO lecturerDAO = ISystemDAL.lecturerDAO();
 
     private Semester semester = semesterDAO.getCurrentSemester();
 

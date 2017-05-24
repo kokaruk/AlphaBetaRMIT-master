@@ -4,7 +4,7 @@ package alphabeta.mvc.systemDAL;
  * @author dimz
  * @since 17/5/17.
  */
-public class FactoryDAO{
+public class ISystemDAL {
 
 
     private static ABConfigRead configRead = ABConfigRead.getInstance();
@@ -50,7 +50,7 @@ public class FactoryDAO{
     private static boolean isRealDAO(String methodReturnType){
         try {
             return Boolean.parseBoolean(configRead
-                    .getConfigString(methodReturnType, "FactoryDAO.properties"));
+                    .getConfigString(methodReturnType, "ISystemDAL.properties"));
         } catch (Exception e) {
             return false;
         }

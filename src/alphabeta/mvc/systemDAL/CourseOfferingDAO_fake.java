@@ -13,8 +13,8 @@ import java.util.Set;
 public class CourseOfferingDAO_fake implements ICourseOfferingDAO {
 
     private Set<CourseOffering> courseOfferingSet = new HashSet<>();
-    private ILecturerDAO lecturerDAO = FactoryDAO.lecturerDAO();
-    private ISemesterDAO semesterDAO = FactoryDAO.semesterDAO();
+    private ILecturerDAO lecturerDAO = ISystemDAL.lecturerDAO();
+    private ISemesterDAO semesterDAO = ISystemDAL.semesterDAO();
     // singleton instance
     private static ICourseOfferingDAO instance;
     // private constructor
