@@ -1,5 +1,6 @@
 package alphabeta.mvc.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,7 +9,7 @@ import java.util.List;
 public class Course {
     private CourseDirectory courseDirectory = ModelHelper.getCourseDirectory();
     public String name;
-    public List<Course> prerequisiteList;
+    public List<Course> prerequisiteList = new ArrayList<>();
     public List<Topic> topics;
 
     public Course(String name){
